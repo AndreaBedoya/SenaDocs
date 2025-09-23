@@ -66,3 +66,40 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+/* -------------------------------------------------- */
+/* Estilos Propios */
+/* ---------------------------------------------------- */
+
+/* Fondo general */
+body {
+  background-color: #ffffff; 
+  color: #1ebe26;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Título principal */
+h1 {
+  color: #125C13; 
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Botones */
+button {
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #1b5e20;
+  transform: scale(1.05);
+}
