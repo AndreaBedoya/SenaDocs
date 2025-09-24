@@ -43,7 +43,6 @@ export default function UploadForm() {
 
       const data = await response.json();
 
-      // ✅ Carpetas creadas
       if (data.carpetasCreadas?.length > 0) {
         Swal.fire({
           title: "📁 Carpetas creadas",
@@ -60,7 +59,9 @@ export default function UploadForm() {
         });
       }
 
-      // ⚠️ Archivos ignorados
+      {/* ----------------------- */}
+      {/*     MANEJO DE ALERTAS   */}
+      {/* ----------------------- */}
       if (data.errores?.length > 0) {
         Swal.fire({
           title: "⚠️ Archivos ignorados",
@@ -70,7 +71,6 @@ export default function UploadForm() {
         });
       }
 
-      // ✅ Éxito general
       Swal.fire({
         title: "✅ Subida completada",
         text: `Archivos subidos: ${data.cantidad}`,
@@ -92,18 +92,28 @@ export default function UploadForm() {
 
   return (
     <div className="upload-container">
-      <div className="steps">
-        <h3>¿Cómo subir tus archivos?</h3>
-        <ol>
-          <li>Escribe el nombre de la carpeta principal</li>
-          <li>Escribe el número de la ficha</li>
-          <li>Selecciona los archivos PDF</li>
-          <li>Haz clic en Enviar</li>
-        </ol>
-        <h4><strong>NOTA:</strong> Si deseas renombrar los documentos con la estructura recomendada, se sugiere que todos los archivos PDF pertenezcan a una sola ficha.</h4>
-      </div>
-
-      <form className="formulario" onSubmit={handleSubmit}>
+      {/* ----------------------- */}
+      {/*     CABECERA DEL SITIO */}
+      {/* ----------------------- */}
+      <header className="site-header">
+        <nav className="navbar">
+          <div className="senadocs"><a href="#"><img src="/logoSena.png" alt="Logo SenaDocs" className="logo" /></a>
+          <p><strong>SENA</strong>DOCS</p>
+          </div>
+          <ul className="nav-links">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Herramientas</a></li>
+            <li><a href="#">Manuales</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+      
+      {/* ----------------------- */}
+      {/*   FORMULARIO DE SUBIDA */}
+      {/* ----------------------- */}
+      <section className="subirpdf">
+        <form className="formulario" onSubmit={handleSubmit}>
         <h2>Organiza tus documentos PDF</h2>
         <h3>Renombra y organiza tus archivos PDF con la estructura (Cédula, nombre y apellido)</h3>
 
@@ -138,7 +148,9 @@ export default function UploadForm() {
 
         <button type="submit">Enviar</button>
       </form>
+      </section>
+
+      
     </div>
   );
 }
-
