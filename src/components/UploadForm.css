@@ -1,29 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    overflow-x: hidden; 
-    overflow-y: auto;   
+/* ------------------------------------------------------------ */
+/* Reset y configuración global */
+/* ------------------------------------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
 }
-/* ------------------------------------------------------------ */
-/* Estilos del la barra de navegacion de la pagina*/
-/* ------------------------------------------------------------ */
 
-.senadocs{
+header {
+  overflow-x: hidden;
+
+}
+
+/* ------------------------------------------------------------ */
+/* Barra de navegación */
+/* ------------------------------------------------------------ */
+.senadocs {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.senadocs p strong{
+.senadocs p strong {
   font-size: 28px;
   color: #5eb319;
 }
 
-.senadocs p{
+.senadocs p {
   font-size: 28px;
-  color:black;
+  color: black;
   font-weight: 700;
 }
 
@@ -32,10 +41,9 @@
 }
 
 .site-header {
-  width: 100dvw;
+  width: 100%;
   background: #F5F5F5;
-  background-size: cover;
-  padding: 10px 30px;
+  padding: 10px 40px;
 }
 
 .navbar {
@@ -46,13 +54,10 @@
   margin: 0 auto;
 }
 
-
 .nav-links {
   display: flex;
   gap: 30px;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .nav-links li a {
@@ -68,15 +73,113 @@
 }
 
 /* ------------------------------------------------------------ */
-/* Estilos del formulario de la funcionalidad para organizar pdf*/
+/* Sección de inicio */
 /* ------------------------------------------------------------ */
-.upload-container {
-  padding: 0px;
+.inicio {
+  min-height: 92vh;
+  padding: 60px 40px;
+  background-color: #f5f5f5;
+  color: #5eb319;
 }
 
-.subirpdf{
+.inicio-contenido {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 100px;
+}
+
+.texto {
+  flex: 1;
+  min-width: 300px;
+}
+
+.texto h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.texto h2 strong{
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #5eb319;
+  margin-bottom: 20px;
+}
+
+.texto p {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #000000;
+}
+
+.texto ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.texto li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.inicio-contenido h3{
+  color: #000;
+  font-size: 24px;
+  text-shadow: 2px 2px 4px #5eb319;
+}
+
+.imagen {
+  flex: 1;
+  max-width: 560px;
+  text-align: center;
+}
+
+.imagen img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ------------------------------------------------------------ */
+/* Formulario de subida de PDFs */
+/* ------------------------------------------------------------ */
+section{
+  padding-top: 80px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.herramientas{
+  color: #000;
+  font-size: 60px;
+  font-weight: 700;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.upload-container {
+  padding: 0;
+  width: 100%;
+  background: #ffffff;
+}
+#subirpdf {
   display: flex;
   justify-content: center;
+}
+
+#subirpdf h3{
+  font-size: 30px;
+  color: #000000;
+  text-align: center;
+  text-shadow: 2px 2px 4px #5eb319;
+
 }
 
 .formulario {
@@ -85,27 +188,29 @@
   flex-direction: column;
   gap: 15px;
   background: #ffffff;
-  padding: 20px;
+  padding: 40px 50px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   color: #000;
+  border: 2px solid #28a745;
+
 }
 
-.formulario h3{
+.formulario h4 {
   font-size: 18px;
   font-weight: 400;
 }
 
-input{
-background: transparent;
-padding: 10px;
-border: 2px solid #5eb319;
-border-radius: 10px;
-color: #000;
+input {
+  background: transparent;
+  padding: 10px;
+  border: 2px solid #5eb319;
+  border-radius: 10px;
+  color: #000;
 }
 
 /* ------------------------------------------------------------ */
-/* Estilos del boton de la funcionalidad para organizar pdf*/
+/* Botón y zona de carga */
 /* ------------------------------------------------------------ */
 .dropzone, button {
   padding: 10px;
@@ -115,7 +220,7 @@ color: #000;
 
 .dropzone {
   background-color: #f2f2f2;
-  border: 2px dashed #ccc;
+  border: 2px #ccc;
   border-radius: 8px;
   padding: 30px;
   text-align: center;
@@ -124,19 +229,19 @@ color: #000;
 }
 
 .dropzone:hover {
-  background-color: #e6ffe6; 
-  border-color: #28a745;    
-  transform: scale(1.02);   
+  background-color: #e6ffe6;
+  border-color: #28a745;
+  transform: scale(1.02);
 }
 
-.boton{
+.boton {
   display: flex;
   justify-content: center;
 }
 
 button {
   width: 20vh;
-  background: #1b5e20; 
+  background: #1b5e20;
   color: white;
   border: none;
   cursor: pointer;
@@ -146,39 +251,33 @@ button:hover {
   background: #2e7d32;
 }
 
-
-/* --------------------------------------------------------- */
-/* Estilos juicios evaluativos */
-/* --------------------------------------------------------- */
-
-section{
+/* ------------------------------------------------------------ */
+/* Juicios Evaluativos */
+/* ------------------------------------------------------------ */
+.evaluativos {
   padding: 40px;
-}
-
-.evaluativos{
   background: #ffffff;
-  max-width: 100dvw;
-
+  width: 100%;
 }
 
-.juicios{
+.juicios {
   background-color: #ffffff;
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   color: #000;
-  max-width: 65%;
-  height: 30vh;
-  margin-left: auto;
-  margin-right: auto;
- 
+  max-width: 68%;
+  min-height: 30vh;
+  margin: 0 auto;
+  border: 2px solid #28a745;
 }
 
-.juicios h2 { 
+.juicios h2 {
   font-size: 1.8rem;
   margin-bottom: 10px;
-  color: #1b5e20;
+  color: #000000;
   text-align: center;
+  text-shadow: 2px 2px 4px #5eb319;
 }
 
 .juicios p {
@@ -231,41 +330,42 @@ section{
   background-color: #2e7d32;
 }
 
-/* --------------------------------------------------------- */
-/* Estilos juicios evaluativos */
-/* --------------------------------------------------------- */
-
-section{
+/* ------------------------------------------------------------ */
+/* Novedades Académicas */
+/* ------------------------------------------------------------ */
+.novedades {
   padding: 40px;
+  background: #ffffff;
+  width: 100%;
 }
 
-.novedades {
-  margin-top: 40px;
+.academicas {
   background-color: #ffffff;
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   color: #000;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 68%;
+  min-height: 30vh;
+  margin: 0 auto;
+  border: 2px solid #28a745;
 }
 
-.novedades h2 {
+.academicas h2 {
   font-size: 1.8rem;
   margin-bottom: 10px;
-  color: #1b5e20;
+  color: #000000;
   text-align: center;
+  text-shadow: 2px 2px 4px #5eb319;
 }
 
-.novedades p {
+.academicas p {
   font-size: 1rem;
   margin-bottom: 15px;
   text-align: center;
 }
 
-.novedades input[type="file"] {
+.academicas input[type="file"] {
   display: block;
   margin: 0 auto 20px auto;
   padding: 10px;
@@ -276,6 +376,6 @@ section{
   transition: border-color 0.3s ease;
 }
 
-.novedades input[type="file"]:hover {
+.academicas input[type="file"]:hover {
   border-color: #2e7d32;
 }

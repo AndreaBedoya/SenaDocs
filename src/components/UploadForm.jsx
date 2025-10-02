@@ -178,103 +178,130 @@ const handleNovedades = async () => {
             <p><strong>SENA</strong>DOCS</p>
           </div>
           <ul className="nav-links">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Herramientas</a></li>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#subirpdf">Herramientas</a></li>
             <li><a href="#">Manuales</a></li>
             <li><a href="#">Contacto</a></li>
           </ul>
         </nav>
+
+        {/* ----------------------- */}
+        {/*          Inicio         */}
+        {/* ----------------------- */}
+        <div className="inicio">
+          <div className="inicio-contenido">
+            <div className="texto">
+              <h2>Bienvenido a <strong>SENA</strong>DOCS</h2>
+              <p>
+                SENA DOCS es más que una herramienta es tu aliado para transformar la gestión académica. 
+                Diseñada para funcionarios, instructores y coordinadores, esta plataforma agiliza procesos, 
+                mejora la organización documental y potencia la toma de decisiones educativas.
+              </p>
+              
+              <h3>
+                Únete a la transformación digital del aprendizaje con una experiencia intuitiva, rápida y confiable.
+              </h3>
+            </div>
+
+            <div className="imagen">
+              <img src="./ImagenSena.jpg" alt="Ilustración institucional del SENA" />
+            </div>
+          </div>
+      </div>
       </header>
 
       {/* ----------------------- */}
       {/*   FORMULARIO DE SUBIDA */}
       {/* ----------------------- */}
-      <section className="subirpdf">
-        <form className="formulario" onSubmit={handleSubmit}>
-          <h2>Organiza tus documentos PDF</h2>
-          <h3>Renombra y organiza tus archivos PDF con la estructura (Cédula, nombre y apellido)</h3>
 
-          <label>Nombre de la carpeta</label>
-          <input
-            type="text"
-            placeholder="Ej: Certificación"
-            value={carpeta}
-            onChange={(e) => setCarpeta(e.target.value)}
-            required
-          />
+      <section id="subirpdf">
+        <h2 className="herramientas">Herramientas</h2>
+          <form className="formulario" onSubmit={handleSubmit}>
+            <h3>Organiza tus documentos PDF</h3>
+            <h4>Renombra y organiza tus archivos PDF con la estructura (Cédula, nombre y apellido)</h4>
 
-          <label>Número de la ficha</label>
-          <input
-            type="text"
-            placeholder="Ej: 2828866"
-            value={ficha}
-            onChange={(e) => setFicha(e.target.value)}
-          />
-
-          <label>Selecciona los archivos PDF</label>
-          <div {...getRootProps({ className: "dropzone" })}>
-            <input {...getInputProps()} />
-            <p>Arrastra tus archivos aquí o haz clic para seleccionarlos</p>
-          </div>
-
-          <ul>
-            {archivos.map((file) => (
-              <li key={file.path || file.name}>{file.name}</li>
-            ))}
-          </ul>
-
-          <div className="boton">
-            <button type="submit">Enviar</button>
-          </div>
-        </form>
-      </section>
-
-      {/* ----------------------- */}
-      {/*   JUICIOS EVALUATIVOS   */}
-      {/* ----------------------- */}
-      <section className="evaluativos">
-        <div className=" juicios">
-            <h2>Juicios Evaluativos</h2>
-            <p>Sube el archivo Excel con los resultados de los aprendices para calcular el porcentaje de aprobación.</p>
-
+            <label>Nombre de la carpeta</label>
             <input
-              type="file"
-              accept=".xlsx, .xls"
-              onChange={(e) => setExcelEvaluativo(e.target.files[0])}
+              type="text"
+              placeholder="Ej: Certificación"
+              value={carpeta}
+              onChange={(e) => setCarpeta(e.target.value)}
+              required
             />
 
-            {excelEvaluativo && (
-              <div className="archivo-info">
-                <p>Archivo seleccionado: <strong>{excelEvaluativo.name}</strong></p>
-                <button onClick={handleEvaluativo}>Procesar Juicios</button>
-              </div>
-            )}
+            <label>Número de la ficha</label>
+            <input
+              type="text"
+              placeholder="Ej: 2828866"
+              value={ficha}
+              onChange={(e) => setFicha(e.target.value)}
+            />
+
+            <label>Selecciona los archivos PDF</label>
+            <div {...getRootProps({ className: "dropzone" })}>
+              <input {...getInputProps()} />
+              <p>Arrastra tus archivos aquí o haz clic para seleccionarlos</p>
+            </div>
+
+            <ul>
+              {archivos.map((file) => (
+                <li key={file.path || file.name}>{file.name}</li>
+              ))}
+            </ul>
+
+            <div className="boton">
+              <button type="submit">Enviar</button>
+            </div>
+          </form>
+          {/* ----------------------- */}
+          {/*   JUICIOS EVALUATIVOS   */}
+          {/* ----------------------- */}
+          <div className="evaluativos">
+            <div className=" juicios">
+                <h2>Juicios Evaluativos</h2>
+                <p>Sube el archivo Excel con los resultados de los aprendices para calcular el porcentaje de aprobación.</p>
+
+                <input
+                  type="file"
+                  accept=".xlsx, .xls"
+                  onChange={(e) => setExcelEvaluativo(e.target.files[0])}
+                />
+
+                {excelEvaluativo && (
+                  <div className="archivo-info">
+                    <p>Archivo seleccionado: <strong>{excelEvaluativo.name}</strong></p>
+                    <button onClick={handleEvaluativo}>Procesar Juicios</button>
+                  </div>
+                )}
+            </div>
+          </div>
+          {/* ----------------------- */}
+          {/*   Novedades Académicas */}
+          {/* ----------------------- */}
+          
+          <div className="novedades">
+            <div className="academicas">
+              <h2>Novedades Académicas</h2>
+                <p>Sube el archivo Excel con las novedades registradas por los aprendices para visualizar su distribución por categoría.</p>
+
+                <input
+                  type="file"
+                  accept=".xlsx, .xls"
+                  onChange={(e) => setExcelNovedades(e.target.files[0])}
+                />
+
+                {excelNovedades && (
+                  <div className="archivo-info">
+                    <p>Archivo seleccionado: <strong>{excelNovedades.name}</strong></p>
+                    <button onClick={handleNovedades}>Visualizar Novedades</button>
+                  </div>
+                )}
+            {/* renderizar la gráfica más adelante */}
+          </div>
         </div>
       </section>
-      {/* ----------------------- */}
-      {/*   Novedades Académicas */}
-      {/* ----------------------- */}
+
       
-      <section className="novedades">
-        <div className="academicas">
-          <h2>Novedades Académicas</h2>
-            <p>Sube el archivo Excel con las novedades registradas por los aprendices para visualizar su distribución por categoría.</p>
-
-            <input
-              type="file"
-              accept=".xlsx, .xls"
-              onChange={(e) => setExcelNovedades(e.target.files[0])}
-            />
-
-            {excelNovedades && (
-              <div className="archivo-info">
-                <p>Archivo seleccionado: <strong>{excelNovedades.name}</strong></p>
-                <button onClick={handleNovedades}>Visualizar Novedades</button>
-              </div>
-             )}
-         {/* renderizar la gráfica más adelante */}
-       </div>
-      </section>
 
     </div>
   );
