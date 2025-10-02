@@ -3,6 +3,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden; 
+    overflow-y: auto;   
 }
 /* ------------------------------------------------------------ */
 /* Estilos del la barra de navegacion de la pagina*/
@@ -33,7 +35,7 @@
   width: 100dvw;
   background: #F5F5F5;
   background-size: cover;
-  padding: 10px 40px;
+  padding: 10px 30px;
 }
 
 .navbar {
@@ -75,8 +77,8 @@
 .subirpdf{
   display: flex;
   justify-content: center;
-  margin: 5% 0px;
 }
+
 .formulario {
   width: 65%;
   display: flex;
@@ -90,8 +92,8 @@
 }
 
 .formulario h3{
-    font-size: 18px;
-    font-weight: 400;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 input{
@@ -127,7 +129,13 @@ color: #000;
   transform: scale(1.02);   
 }
 
+.boton{
+  display: flex;
+  justify-content: center;
+}
+
 button {
+  width: 20vh;
   background: #1b5e20; 
   color: white;
   border: none;
@@ -136,4 +144,138 @@ button {
 
 button:hover {
   background: #2e7d32;
+}
+
+
+/* --------------------------------------------------------- */
+/* Estilos juicios evaluativos */
+/* --------------------------------------------------------- */
+
+section{
+  padding: 40px;
+}
+
+.evaluativos{
+  background: #ffffff;
+  max-width: 100dvw;
+
+}
+
+.juicios{
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: #000;
+  max-width: 65%;
+  height: 30vh;
+  margin-left: auto;
+  margin-right: auto;
+ 
+}
+
+.juicios h2 { 
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #1b5e20;
+  text-align: center;
+}
+
+.juicios p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.juicios input[type="file"] {
+  display: block;
+  margin: 0 auto 20px auto;
+  padding: 10px;
+  border: 2px solid #5cb359;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.juicios input[type="file"]:hover {
+  border-color: #2e7d32;
+}
+
+.archivo-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e8f5e9;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.archivo-info p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.archivo-info button {
+  background-color: #1b5e20;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.archivo-info button:hover {
+  background-color: #2e7d32;
+}
+
+/* --------------------------------------------------------- */
+/* Estilos juicios evaluativos */
+/* --------------------------------------------------------- */
+
+section{
+  padding: 40px;
+}
+
+.novedades {
+  margin-top: 40px;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: #000;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.novedades h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #1b5e20;
+  text-align: center;
+}
+
+.novedades p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.novedades input[type="file"] {
+  display: block;
+  margin: 0 auto 20px auto;
+  padding: 10px;
+  border: 2px solid #5cb359;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.novedades input[type="file"]:hover {
+  border-color: #2e7d32;
 }
