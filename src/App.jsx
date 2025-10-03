@@ -1,14 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Registro from "./components/Registro";
-import UploadForm from "./components/UploadForm"; 
+import Login from "./components/Login";
+import VistaPrincipal from "./components/VistaPrincipal"; 
 import "./index.css";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Registro />} />
-        <Route path="/Upload" element={<UploadForm />} />
+        <Route path="/registro" element={<Registro />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/vistaPrincipal" element={<VistaPrincipal />} />
       </Routes>
     </Router>
   );

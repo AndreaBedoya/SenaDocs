@@ -61,7 +61,7 @@ export default function Registro() {
 
         <p className="login-link">
           ¿Ya tienes cuenta?{" "}
-          <span onClick={() => navigate("/upload")} className="link">
+          <span onClick={() => navigate("/Login")} className="link">
             Inicia sesión
           </span>
         </p>

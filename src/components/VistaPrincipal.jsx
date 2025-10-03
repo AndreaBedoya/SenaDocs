@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Swal from "sweetalert2";
-import "./UploadForm.css";
+import "./VistaPrincipal.css";
 
 export default function UploadForm() {
   const [carpeta, setCarpeta] = useState("");
@@ -180,8 +180,8 @@ const handleNovedades = async () => {
           <ul className="nav-links">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#subirpdf">Herramientas</a></li>
-            <li><a href="#">Manuales</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="#manuales">Manuales</a></li>
+            
           </ul>
         </nav>
 
@@ -301,7 +301,48 @@ const handleNovedades = async () => {
         </div>
       </section>
 
-      
+      {/* ----------------------- */}
+      {/*   MANUALES DE USO      */}
+      {/* ----------------------- */}
+      <section className="manuales">
+        <h2>📘 Manuales disponibles</h2>
+        <p>Consulta y descarga los manuales para usar correctamente la herramienta.</p>
+
+        <div className="manuales-row">
+          {/* Tarjeta 1 */}
+          <div className="manual-box">
+            <h3>Renombrar PDF</h3>
+            <p>Con este manual aprenderás a usar la herramienta para renombrar y organizar tus archivos PDF, de forma rápida y sencilla.</p>
+            <a href="/manuales/renombrar.pdf" download className="manual-button">
+              Descargar manual
+            </a>
+        </div>
+
+          {/* Tarjeta 2 */}
+          <div className="manual-box">
+            <h3>Juicios Evaluativos</h3>
+            <p>Con este manual aprenderás a cargar tus archivos en Excel y calcular de manera sencilla los porcentajes de aprobación. </p>
+            <a href="/manuales/juicios.pdf" download className="manual-button">
+              Descargar manual
+            </a>
+          </div>
+
+          {/* Tarjeta 3 */}
+          <div className="manual-box">
+              <h3>Novedades Académicas</h3>
+              <p>Con este manual aprenderás a categorizar las novedades registradas de los aprendices para llevar un control más organizado.</p>
+              <a href="/manuales/novedades.pdf" download className="manual-button">
+                Descargar manual
+              </a>
+          </div>
+        </div>
+      </section>
+    <footer className="footer">
+      <div className="footer-content">
+        <p>SENA DOCS © 2025 — Todos los derechos reservados</p>
+        <p>Desarrollado por Andrea | Proyecto de gestión documental</p>
+      </div>
+    </footer>
 
     </div>
   );
