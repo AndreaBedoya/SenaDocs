@@ -3,7 +3,7 @@ import { useDropzone } from "react-dropzone";
 import Swal from "sweetalert2";
 import "./VistaPrincipal.css";
 
-export default function UploadForm() {
+export default function VistaPrincipal() {
   const [carpeta, setCarpeta] = useState("");
   const [ficha, setFicha] = useState("");
   const [archivos, setArchivos] = useState([]);
@@ -313,7 +313,7 @@ const handleNovedades = async () => {
           <div className="manual-box">
             <h3>Renombrar PDF</h3>
             <p>Con este manual aprenderás a usar la herramienta para renombrar y organizar tus archivos PDF, de forma rápida y sencilla.</p>
-            <a href="/manuales/renombrar.pdf" download className="manual-button">
+            <a href="/Manuales/Manual organizar PDF.pdf" download className="manual-button">
               Descargar manual
             </a>
         </div>

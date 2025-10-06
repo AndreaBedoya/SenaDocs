@@ -4,6 +4,7 @@ import "./Registro.css";
 
 export default function Registro() {
   const navigate = useNavigate();
+  const [Identificacion, setIdentificacion] = useState("");
   const [nombre, setNombre] = useState("");
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +13,7 @@ export default function Registro() {
   const handleRegistro = (e) => {
     e.preventDefault();
     // Aquí luego agregas validación y conexión con backend
-    navigate("/upload"); // Por ahora, continúa al sistema
+    navigate("/vistaPrincipal"); // Por ahora, continúa al sistema
   };
 
   return (
@@ -20,6 +21,15 @@ export default function Registro() {
       <form className="registro-form" onSubmit={handleRegistro}>
         <h2>Registro en <strong>SENA</strong>DOCS</h2>
         <p>Crea tu cuenta para acceder a todas las funcionalidades.</p>
+
+        <label>Numero de identificación</label>
+        <input
+          type="text"
+          value={Identificacion}
+          onChange={(e) => setIdentificacion(e.target.value)}
+          placeholder="Ej: 15248769241"
+          required
+        />
 
         <label>Nombre completo</label>
         <input
