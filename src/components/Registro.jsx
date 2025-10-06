@@ -10,11 +10,45 @@ export default function Registro() {
   const [password, setPassword] = useState("");
   const [confirmar, setConfirmar] = useState("");
 
-  const handleRegistro = (e) => {
-    e.preventDefault();
-    // Aquí luego agregas validación y conexión con backend
-    navigate("/vistaPrincipal"); // Por ahora, continúa al sistema
+  const handleRegistro = async (e) => {
+  e.preventDefault();
+  if (password !== confirmar) {
+    alert("Las contraseñas no coinciden");
+    return;
+  }
+
+  const datos = {
+  identificacion: Identificacion,
+  nombre_completo: nombre,
+  correo: correo,
+  contraseña: password
   };
+
+
+  try {
+    const respuesta = await fetch("http://localhost:4000/api/registro", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(datos)
+    });
+
+    const resultado = await respuesta.json();
+
+    if (respuesta.ok) {
+      console.log("✅ Usuario registrado:", resultado.usuario);
+      navigate("/vistaPrincipal");
+    } else {
+      console.error("❌ Error:", resultado.error);
+      alert("No se pudo registrar el usuario");
+    }
+  } catch (error) {
+    console.error("❌ Error de conexión:", error);
+    alert("Error al conectar con el servidor");
+  }
+};
+
 
   return (
     <div className="registro-container">
