@@ -1,12 +1,41 @@
-# React + Vite
+# 📄 SenaDocs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**SenaDocs** es una plataforma web desarrollada para facilitar la gestión de documentos académicos en el entorno institucional del SENA. Su propósito es ofrecer a los usuarios una experiencia segura, intuitiva y eficiente para:
 
-Currently, two official plugins are available:
+- Registrarse con validación y encriptación de contraseñas.
+- Iniciar sesión para acceder a funcionalidades personalizadas.
+- Subir, organizar y visualizar documentos académicos.
+- Evaluar la originalidad y novedad de los archivos cargados.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🧪 Tecnologías utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🔹 Frontend
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [SweetAlert2](https://sweetalert2.github.io/) — para alertas visuales
+- [React Router DOM](https://reactrouter.com/) — para navegación entre pantallas
+
+### 🔹 Backend
+- [Node.js](https://nodejs.org/)
+- [Express](https://expressjs.com/) — servidor web
+- [pg](https://node-postgres.com/) — cliente PostgreSQL
+- [bcrypt](https://www.npmjs.com/package/bcrypt) — encriptación de contraseñas
+- [dotenv](https://www.npmjs.com/package/dotenv) — manejo de variables de entorno
+- [nodemon](https://www.npmjs.com/package/nodemon) — recarga automática en desarrollo
+
+### 🔹 Base de datos
+- [PostgreSQL](https://www.postgresql.org/) — base de datos relacional
+
+---
+
+## 📦 Dependencias instaladas
+
+```bash
+# Frontend
+npm install react react-dom react-router-dom sweetalert2
+
+# Backend
+npm install express pg bcrypt dotenv
+npm install --save-dev nodemon

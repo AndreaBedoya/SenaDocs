@@ -1,16 +1,66 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import "./Login.css";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [correo, setCorreo] = useState("");
+  const [identificacion, setIdentificacion] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Aquí luego agregas validación y conexión con backend
-    navigate("/vistaPrincipal"); // Por ahora, redirige al sistema
+
+    // Validación de campos
+    if (!identificacion || !password) {
+      Swal.fire({
+        icon: "warning",
+        title: "Campos incompletos",
+        text: "Por favor ingresa tu número de identificación y contraseña"
+      });
+      return;
+    }
+
+    const datos = {
+      identificacion: identificacion,
+      contrasena: password
+    };
+
+    try {
+      const respuesta = await fetch("http://localhost:4000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(datos)
+      });
+
+      const resultado = await respuesta.json();
+
+      if (respuesta.ok) {
+        Swal.fire({
+          icon: "success",
+          title: "¡Bienvenido!",
+          text: `Hola ${resultado.usuario.nombre_completo}`,
+          confirmButtonText: "Continuar"
+        }).then(() => {
+          navigate("/vistaPrincipal");
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error al iniciar sesión",
+          text: resultado.error || "Credenciales incorrectas"
+        });
+      }
+    } catch (error) {
+      console.error("❌ Error de conexión:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error de conexión",
+        text: "No se pudo conectar con el servidor"
+      });
+    }
   };
 
   return (
@@ -19,12 +69,12 @@ export default function Login() {
         <h2>Iniciar Sesión</h2>
         <p>Accede a tu cuenta para continuar con <strong>SENA</strong>DOCS.</p>
 
-        <label>Correo institucional</label>
+        <label>Numero de Identificación</label>
         <input
-          type="email"
-          value={correo}
-          onChange={(e) => setCorreo(e.target.value)}
-          placeholder="Ej: andrea@sena.edu.co"
+          type="text"
+          value={identificacion}
+          onChange={(e) => setIdentificacion(e.target.value)}
+          placeholder="Ej: 1055688999"
           required
         />
 
