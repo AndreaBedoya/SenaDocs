@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Swal from "sweetalert2";
 import "./VistaPrincipal.css";
+import { useNavigate } from "react-router-dom";
 
 export default function VistaPrincipal() {
   const [carpeta, setCarpeta] = useState("");
@@ -9,7 +10,6 @@ export default function VistaPrincipal() {
   const [archivos, setArchivos] = useState([]);
   const [excelEvaluativo, setExcelEvaluativo] = useState(null);
   const [excelNovedades, setExcelNovedades] = useState(null);
-
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: { "application/pdf": [".pdf"] },
@@ -20,7 +20,6 @@ export default function VistaPrincipal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!carpeta || archivos.length === 0) {
       Swal.fire({
         title: "⚠️ Campos incompletos",
@@ -37,15 +36,12 @@ export default function VistaPrincipal() {
     archivos.forEach((file) => {
       formData.append("archivos", file);
     });
-
     try {
       const response = await fetch("http://localhost:4000/api/upload", {
         method: "POST",
         body: formData,
       });
-
       const data = await response.json();
-
       if (data.carpetasCreadas?.length > 0) {
         Swal.fire({
           title: "📁 Carpetas creadas",
@@ -61,7 +57,6 @@ export default function VistaPrincipal() {
           confirmButtonText: "Aceptar"
         });
       }
-
       if (data.errores?.length > 0) {
         Swal.fire({
           title: "⚠️ Archivos ignorados",
@@ -70,14 +65,12 @@ export default function VistaPrincipal() {
           confirmButtonText: "Revisar"
         });
       }
-
       Swal.fire({
         title: "✅ Subida completada",
         text: `Archivos subidos: ${data.cantidad}`,
         icon: "success",
         confirmButtonText: "Aceptar"
       });
-
       setArchivos([]);
     } catch (error) {
       console.error("Error al subir archivos:", error);
@@ -165,7 +158,23 @@ const handleNovedades = async () => {
   }
 };
 
-
+const navigate = useNavigate();
+const handleCerrarSesion = () => {
+  Swal.fire({
+    title: "¿Cerrar sesión?",
+    text: "¿Estás seguro de que quieres cerrar sesión?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Sí, cerrar sesión",
+    cancelButtonText: "Cancelar"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("usuario");
+      navigate("/login");
+    }
+  });
+};
   return (
     <div className="upload-container">
       {/* ----------------------- */}
@@ -181,10 +190,20 @@ const handleNovedades = async () => {
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#subirpdf">Herramientas</a></li>
             <li><a href="#manuales">Manuales</a></li>
-            
+            <li className="perfil-dropdown">
+            <a className="perfil-btn" href="#">Perfil ▾</a>
+              <ul className="perfil-menu">
+                <li><a href="/perfil">Perfil</a></li>
+                <li><a href="/configuracion">Configuración</a></li>
+                <li>
+                  <a href="#" onClick={handleCerrarSesion} className="cerrar-sesion-link">
+                    Cerrar sesión
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </nav>
-
         {/* ----------------------- */}
         {/*          Inicio         */}
         {/* ----------------------- */}
@@ -197,29 +216,24 @@ const handleNovedades = async () => {
                 Diseñada para funcionarios, instructores y coordinadores, esta plataforma agiliza procesos, 
                 mejora la organización documental y potencia la toma de decisiones educativas.
               </p>
-              
               <h3>
                 Únete a la transformación digital del aprendizaje con una experiencia intuitiva, rápida y confiable.
               </h3>
             </div>
-
             <div className="imagen">
               <img src="./ImagenSena.jpg" alt="Ilustración institucional del SENA" />
             </div>
           </div>
       </div>
       </header>
-
       {/* ----------------------- */}
       {/*   FORMULARIO DE SUBIDA */}
       {/* ----------------------- */}
-
       <section id="subirpdf">
         <h2 className="herramientas">Herramientas</h2>
           <form className="formulario" onSubmit={handleSubmit}>
             <h3>Organiza tus documentos PDF</h3>
             <h4>Renombra y organiza tus archivos PDF con la estructura (Cédula, nombre y apellido)</h4>
-
             <label>Nombre de la carpeta</label>
             <input
               type="text"
@@ -228,7 +242,6 @@ const handleNovedades = async () => {
               onChange={(e) => setCarpeta(e.target.value)}
               required
             />
-
             <label>Número de la ficha</label>
             <input
               type="text"
@@ -236,19 +249,16 @@ const handleNovedades = async () => {
               value={ficha}
               onChange={(e) => setFicha(e.target.value)}
             />
-
             <label>Selecciona los archivos PDF</label>
             <div {...getRootProps({ className: "dropzone" })}>
               <input {...getInputProps()} />
               <p>Arrastra tus archivos aquí o haz clic para seleccionarlos</p>
             </div>
-
             <ul>
               {archivos.map((file) => (
                 <li key={file.path || file.name}>{file.name}</li>
               ))}
             </ul>
-
             <div className="boton">
               <button type="submit">Enviar</button>
             </div>
@@ -260,13 +270,11 @@ const handleNovedades = async () => {
             <div className=" juicios">
                 <h2>Juicios Evaluativos</h2>
                 <p>Sube el archivo Excel con los resultados de los aprendices para calcular el porcentaje de aprobación.</p>
-
                 <input
                   type="file"
                   accept=".xlsx, .xls"
                   onChange={(e) => setExcelEvaluativo(e.target.files[0])}
                 />
-
                 {excelEvaluativo && (
                   <div className="archivo-info">
                     <p>Archivo seleccionado: <strong>{excelEvaluativo.name}</strong></p>
@@ -278,18 +286,15 @@ const handleNovedades = async () => {
           {/* ----------------------- */}
           {/*   Novedades Académicas */}
           {/* ----------------------- */}
-          
           <div className="novedades">
             <div className="academicas">
               <h2>Novedades Académicas</h2>
                 <p>Sube el archivo Excel con las novedades registradas por los aprendices para visualizar su distribución por categoría.</p>
-
                 <input
                   type="file"
                   accept=".xlsx, .xls"
                   onChange={(e) => setExcelNovedades(e.target.files[0])}
                 />
-
                 {excelNovedades && (
                   <div className="archivo-info">
                     <p>Archivo seleccionado: <strong>{excelNovedades.name}</strong></p>
@@ -300,14 +305,12 @@ const handleNovedades = async () => {
           </div>
         </div>
       </section>
-
       {/* ----------------------- */}
       {/*   MANUALES DE USO      */}
       {/* ----------------------- */}
       <section className="manuales">
         <h2>📘 Manuales disponibles</h2>
         <p>Consulta y descarga los manuales para usar correctamente la herramienta.</p>
-
         <div className="manuales-row">
           {/* Tarjeta 1 */}
           <div className="manual-box">
@@ -316,8 +319,7 @@ const handleNovedades = async () => {
             <a href="/Manuales/Manual organizar PDF.pdf" download className="manual-button">
               Descargar manual
             </a>
-        </div>
-
+          </div>
           {/* Tarjeta 2 */}
           <div className="manual-box">
             <h3>Juicios Evaluativos</h3>
@@ -326,7 +328,6 @@ const handleNovedades = async () => {
               Descargar manual
             </a>
           </div>
-
           {/* Tarjeta 3 */}
           <div className="manual-box">
               <h3>Novedades Académicas</h3>

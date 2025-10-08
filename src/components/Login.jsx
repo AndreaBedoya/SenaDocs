@@ -38,21 +38,18 @@ export default function Login() {
       const resultado = await respuesta.json();
 
       if (respuesta.ok) {
-        Swal.fire({
-          icon: "success",
-          title: "¡Bienvenido!",
-          text: `Hola ${resultado.usuario.nombre_completo}`,
-          confirmButtonText: "Continuar"
-        }).then(() => {
-          navigate("/vistaPrincipal");
-        });
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Error al iniciar sesión",
-          text: resultado.error || "Credenciales incorrectas"
-        });
-      }
+      localStorage.setItem("token", resultado.token);
+      localStorage.setItem("usuario", JSON.stringify(resultado.usuario));
+
+      Swal.fire({
+        icon: "success",
+        title: "¡Bienvenido!",
+        text: `Hola ${resultado.usuario.nombre_completo}`,
+        confirmButtonText: "Continuar"
+      }).then(() => {
+        navigate("/VistaPrincipal");
+      });
+    }
     } catch (error) {
       console.error("❌ Error de conexión:", error);
       Swal.fire({

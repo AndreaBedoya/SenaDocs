@@ -38,6 +38,7 @@ header {
 
 .logo {
   height: 60px;
+  border: none;
 }
 
 .site-header {
@@ -71,6 +72,79 @@ header {
 .nav-links li a:hover {
   color: #5eb319;
 }
+
+.perfil-dropdown {
+  position: relative;
+}
+
+.perfil-btn {
+  background: none;
+  border: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+  padding: 0;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.perfil-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  list-style: none;
+  padding: 0  -15px;
+  margin: 0;
+  display: none;
+  z-index: 1000;
+}
+
+.perfil-btn{
+  padding: 0;
+  margin: 0;
+}
+
+.perfil-btn:hover{
+  border: none;
+}
+
+.perfil-dropdown:hover{
+  color: #28a745;
+  border-radius: none;
+}
+
+.perfil-dropdown:hover .perfil-menu {
+  display: block;
+}
+
+.perfil-menu li {
+  padding: 8px 12px;
+}
+
+.perfil-menu li a,
+.cerrar-sesion-btn {
+  text-decoration: none;
+  color: black;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.perfil-btn:hover,
+.cerrar-sesion-btn:hover {
+  background-color: inherit;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
 
 /* ------------------------------------------------------------ */
 /* Sección de inicio */
