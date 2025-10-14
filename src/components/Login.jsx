@@ -37,19 +37,25 @@ export default function Login() {
 
       const resultado = await respuesta.json();
 
-      if (respuesta.ok) {
-      localStorage.setItem("token", resultado.token);
-      localStorage.setItem("usuario", JSON.stringify(resultado.usuario));
+      if (respuesta.ok && resultado.token) {
+        localStorage.setItem("token", resultado.token);
+        localStorage.setItem("usuario", JSON.stringify(resultado.usuario));
 
-      Swal.fire({
-        icon: "success",
-        title: "¡Bienvenido!",
-        text: `Hola ${resultado.usuario.nombre_completo}`,
-        confirmButtonText: "Continuar"
-      }).then(() => {
-        navigate("/VistaPrincipal");
-      });
-    }
+        Swal.fire({
+          icon: "success",
+          title: "¡Bienvenido!",
+          text: `Hola ${resultado.usuario.nombre_completo}`,
+          confirmButtonText: "Continuar"
+        }).then(() => {
+          navigate("/vistaPrincipal"); // ✅ corregido: ruta en minúscula
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Credenciales inválidas",
+          text: resultado.error || "Identificación o contraseña incorrecta"
+        });
+      }
     } catch (error) {
       console.error("❌ Error de conexión:", error);
       Swal.fire({

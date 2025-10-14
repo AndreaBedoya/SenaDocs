@@ -9,12 +9,13 @@ import Configuracion from "./components/Configuracion";
 import RutaProtegida from "./components/RutaProtegida";
 
 function App() {
-  const [autenticado, setAutenticado] = useState(!!localStorage.getItem("token"));
+  const [autenticado, setAutenticado] = useState(false);
 
   useEffect(() => {
     const verificarToken = () => {
       const token = localStorage.getItem("token");
-      setAutenticado(!!token);
+      const esValido = token && token !== "undefined" && token !== "null" && token.trim() !== "";
+      setAutenticado(esValido);
     };
 
     window.addEventListener("storage", verificarToken);
@@ -42,7 +43,7 @@ function App() {
           }
         />
 
-        {/* Recuperación de contraseña (cuando la implementes) */}
+        {/* Recuperación de contraseña solo si no hay sesión */}
         <Route
           path="/recuperar"
           element={
@@ -85,3 +86,4 @@ function App() {
 }
 
 export default App;
+

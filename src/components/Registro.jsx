@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./Registro.css";
 
 export default function Registro() {
   const navigate = useNavigate();
+
+  // Limpia cualquier sesión previa al entrar
+  useEffect(() => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("usuario");
+  }, []);
+
   const [Identificacion, setIdentificacion] = useState("");
   const [nombre, setNombre] = useState("");
   const [correo, setCorreo] = useState("");
@@ -48,7 +55,7 @@ export default function Registro() {
           text: "Tu cuenta ha sido creada correctamente",
           confirmButtonText: "Iniciar sesión"
         }).then(() => {
-          navigate("/Login");
+          navigate("/login"); //corregido
         });
       } else {
         Swal.fire({
@@ -122,7 +129,7 @@ export default function Registro() {
 
         <p className="login-link">
           ¿Ya tienes cuenta?{" "}
-          <span onClick={() => navigate("/Login")} className="link">
+          <span onClick={() => navigate("/login")} className="link">
             Inicia sesión
           </span>
         </p>
