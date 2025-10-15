@@ -7,6 +7,7 @@ import Recuperar from "./components/Recuperar";
 import Perfil from "./components/Perfil";
 import Configuracion from "./components/Configuracion";
 import RutaProtegida from "./components/RutaProtegida";
+import ActualizarDatos from "./components/ActualizarDatos"; 
 
 function App() {
   const [autenticado, setAutenticado] = useState(false);
@@ -80,10 +81,19 @@ function App() {
             </RutaProtegida>
           }
         />
+
+        {/* ✅ Nueva ruta protegida para actualizar datos */}
+        <Route
+          path="/actualizar"
+          element={
+            <RutaProtegida>
+              <ActualizarDatos />
+            </RutaProtegida>
+          }
+        />
       </Routes>
     </Router>
   );
 }
 
 export default App;
-
