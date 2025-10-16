@@ -97,10 +97,41 @@
 }
 
 /* Botón */
-.boton{
+.botones-acciones {
   display: flex;
   justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
 }
+
+.boton-actualizar,
+.boton-salir {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-actualizar {
+  background-color: #198754;
+  color: white;
+}
+
+.boton-actualizar:hover {
+  background-color: #157347;
+}
+
+.boton-volver {
+  background-color: #dc3545;
+  color: white;
+}
+
+.boton-volver:hover {
+  background-color: #bb2d3b;
+}
+
 .perfil-bottom button {
   margin-top: 1rem;
   padding: 12px;

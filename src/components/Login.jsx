@@ -11,7 +11,6 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Validación de campos
     if (!identificacion || !password) {
       Swal.fire({
         icon: "warning",
@@ -22,32 +21,31 @@ export default function Login() {
     }
 
     const datos = {
-      identificacion: identificacion,
+      identificacion,
       contrasena: password
     };
 
     try {
       const respuesta = await fetch("http://localhost:4000/api/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(datos)
       });
 
       const resultado = await respuesta.json();
+      console.log("📦 Respuesta del backend:", resultado);
 
-      if (respuesta.ok && resultado.token) {
+      if (respuesta.ok && resultado.token && resultado.usuario) {
         localStorage.setItem("token", resultado.token);
         localStorage.setItem("usuario", JSON.stringify(resultado.usuario));
 
         Swal.fire({
           icon: "success",
           title: "¡Bienvenido!",
-          text: `Hola ${resultado.usuario.nombre_completo}`,
+          text: `Hola ${resultado.usuario.nombre || resultado.usuario.nombre_completo}`,
           confirmButtonText: "Continuar"
         }).then(() => {
-          navigate("/vistaPrincipal"); // ✅ corregido: ruta en minúscula
+          navigate("/vistaPrincipal");
         });
       } else {
         Swal.fire({
