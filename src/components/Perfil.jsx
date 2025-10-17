@@ -1,63 +1,25 @@
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUsuarioStore } from "../Store/useUsuarioStore";
 import "./Perfil.css";
 
 export default function Perfil() {
   const navigate = useNavigate();
-  const [formulario, setFormulario] = useState({
-  nombre: "",
-  correo: "",
-  ciudad: "",
-  nacimiento: "",
-  funciones: "",
-  documento: "",
-  cargo: "",
-  sangre: "",
-  telefono: "",
-  nombre_emergencia: "",    
-  numero_emergencia: "",     
-  foto: ""
-});
+  const usuario = useUsuarioStore((state) => state.usuario);
 
-
-  useEffect(() => {
-    const datos = localStorage.getItem("usuario");
-    if (datos) {
-      const parsed = JSON.parse(datos);
-      setFormulario(prev => ({
-        ...prev,
-        ...parsed
-      }));
-
-      // ✅ Obtener datos actualizados desde el backend
-      if (parsed.documento) {
-        fetch(`/api/perfil/${parsed.documento}`)
-          .then(res => res.json())
-          .then(data => {
-            setFormulario(prev => ({
-              ...prev,
-              ...data
-            }));
-          })
-          .catch(err => console.error("Error al cargar perfil desde backend:", err));
-      }
-    }
-  }, []);
-
-  const handleActualizar = () => {
-    navigate("/actualizar");
-  };
-
-  if (!formulario) return null;
+  if (!usuario) return <p>Cargando perfil...</p>;
 
   // ✅ Formatear fecha de nacimiento
-  const fechaFormateada = formulario.nacimiento
-    ? new Date(formulario.nacimiento).toLocaleDateString("es-CO", {
+  const fechaFormateada = usuario.nacimiento
+    ? new Date(usuario.nacimiento).toLocaleDateString("es-CO", {
         year: "numeric",
         month: "long",
         day: "numeric"
       })
-    : "";
+    : "No registrada";
+
+  const handleActualizar = () => {
+    navigate("/actualizar");
+  };
 
   return (
     <div className="perfil-wrapper">
@@ -65,7 +27,7 @@ export default function Perfil() {
       <nav className="navbar-perfil">
         <div className="senadocs">
           <a href="#"><img src="/logoSena.png" alt="Logo SenaDocs" className="logo" /></a>
-          <p>{formulario.nombre || "NOMBRE"}</p>
+          <p>{usuario.nombre_completo || "NOMBRE"}</p>
         </div>
       </nav>
 
@@ -74,24 +36,28 @@ export default function Perfil() {
         {/* Bloque izquierdo: Foto + Nombre */}
         <div className="perfil-identidad">
           <img
-            src={formulario.foto || "https://via.placeholder.com/150"}
+            src={usuario.foto || "https://via.placeholder.com/150"}
             alt="Foto de perfil"
             className="perfil-avatar"
           />
-          <h2>{formulario.nombre || "Nombre no registrado"}</h2>
+          <h2>{usuario.nombre_completo || "Nombre no registrado"}</h2>
           <div className="form-group">
-            <label></label>
-            <p>{formulario.funciones}</p>
+            <p>{usuario.funciones || "Sin funciones registradas"}</p>
           </div>
         </div>
 
         {/* Bloque derecho: información básica */}
         <div className="perfil-left">
           <h3>Datos personales</h3>
+
           <div className="form-row">
             <div className="form-group">
-              <label>Correo</label>
-              <p>{formulario.correo}</p>
+              <label>Correo institucional</label>
+              <p>{usuario.correo || "No registrado"}</p>
+            </div>
+            <div className="form-group">
+              <label>Ciudad de residencia</label>
+              <p>{usuario.ciudad || "No registrado"}</p>
             </div>
           </div>
 
@@ -101,30 +67,26 @@ export default function Perfil() {
               <p>{fechaFormateada}</p>
             </div>
             <div className="form-group">
-              <label>Teléfono</label>
-              <p>{formulario.telefono}</p>
-            </div>
-          </div>
-
-          <div className="form-row">
-            <div className="form-group">
-              <label>Ciudad</label>
-              <p>{formulario.ciudad}</p>
-            </div>
-            <div className="form-group">
               <label>Tipo de sangre</label>
-              <p>{formulario.sangre}</p>
+              <p>{usuario.sangre || "No registrada"}</p>
             </div>
           </div>
 
           <div className="form-row">
+            <div className="form-group">
+              <label>Teléfono</label>
+              <p>{usuario.telefono || "No registrado"}</p>
+            </div>
             <div className="form-group">
               <label>Documento</label>
-              <p>{formulario.documento}</p>
+              <p>{usuario.identificacion || "No registrado"}</p>
             </div>
+          </div>
+
+          <div className="form-row">
             <div className="form-group">
               <label>Cargo</label>
-              <p>{formulario.cargo}</p>
+              <p>{usuario.cargo || "No registrado"}</p>
             </div>
           </div>
         </div>
@@ -136,26 +98,21 @@ export default function Perfil() {
         <div className="form-row">
           <div className="form-group">
             <label>Nombre del contacto</label>
-            <p>{formulario.nombre_emergencia || "No registrado"}</p>
+            <p>{usuario.nombre_emergencia || "No registrado"}</p>
           </div>
           <div className="form-group">
             <label>Teléfono del contacto</label>
-            <p>{formulario.numero_emergencia || "No registrado"}</p>
+            <p>{usuario.numero_emergencia || usuario.numero_emergencia || "No registrado"}</p>
           </div>
         </div>
+
         <div className="botones-acciones">
-          <button
-            className="boton-volver"
-            onClick={() => {
-              navigate("/vistaPrincipal"); 
-            }}
-          >
+          <button className="boton-volver" onClick={() => navigate("/vistaPrincipal")}>
             Volver
           </button>
           <button className="boton-actualizar" onClick={handleActualizar}>
             Actualizar datos
           </button>
-          
         </div>
       </div>
     </div>

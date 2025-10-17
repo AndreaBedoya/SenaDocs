@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useUsuarioStore } from "../Store/useUsuarioStore"; // ✅ Importa la store
 import "./Login.css";
 
 export default function Login() {
   const navigate = useNavigate();
   const [identificacion, setIdentificacion] = useState("");
   const [password, setPassword] = useState("");
+  const setUsuario = useUsuarioStore((state) => state.setUsuario); // ✅ Accede a la función para guardar el usuario
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -36,8 +38,11 @@ export default function Login() {
       console.log("📦 Respuesta del backend:", resultado);
 
       if (respuesta.ok && resultado.token && resultado.usuario) {
+        // ✅ Guarda el token en localStorage si lo necesitas para autenticación
         localStorage.setItem("token", resultado.token);
-        localStorage.setItem("usuario", JSON.stringify(resultado.usuario));
+
+        // ✅ Guarda el perfil completo en Zustand
+        setUsuario(resultado.usuario);
 
         Swal.fire({
           icon: "success",
@@ -45,7 +50,7 @@ export default function Login() {
           text: `Hola ${resultado.usuario.nombre || resultado.usuario.nombre_completo}`,
           confirmButtonText: "Continuar"
         }).then(() => {
-          navigate("/vistaPrincipal");
+          navigate("/vistaPrincipal"); // ✅ Redirige directamente al perfil
         });
       } else {
         Swal.fire({
@@ -70,7 +75,7 @@ export default function Login() {
         <h2>Iniciar Sesión</h2>
         <p>Accede a tu cuenta para continuar con <strong>SENA</strong>DOCS.</p>
 
-        <label>Numero de Identificación</label>
+        <label>Número de Identificación</label>
         <input
           type="text"
           value={identificacion}

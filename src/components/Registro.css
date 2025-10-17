@@ -23,11 +23,10 @@
 
 .registro-form {
   background-color: #ffffff;
-  padding: 30px;
+  padding:  20px 30px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 500px;
+  width: 35%;
   color: #333;
 }
 
@@ -36,6 +35,14 @@
   color: #000;
   margin-bottom: 10px;
   text-align: center;
+  padding-top: 20px ;
+}
+
+.registro-form h3{
+  text-align: center;
+  font-weight: 600;
+  color: #1b5e20;
+  padding-bottom: 3px;
 }
 
 .registro-form h2 strong {
@@ -47,7 +54,7 @@
 
 .registro-form p {
   font-size: 1rem;
-  margin-bottom: 20px;
+  padding: 10px 0px;
   text-align: center;
 }
 
@@ -61,7 +68,7 @@
 .registro-form input {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
   border: 2px solid #5eb319;
   border-radius: 8px;
   background-color: #f9f9f9;
@@ -74,8 +81,14 @@
   background-color: #e6ffe6;
 }
 
+.Registrarse{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .registro-form button {
-  width: 100%;
+  width: 40%;
   padding: 12px;
   background-color: #1b5e20;
   color: white;

@@ -6,22 +6,49 @@ import "./Registro.css";
 export default function Registro() {
   const navigate = useNavigate();
 
-  // Limpia cualquier sesión previa al entrar
   useEffect(() => {
     localStorage.removeItem("token");
     localStorage.removeItem("usuario");
   }, []);
 
-  const [Identificacion, setIdentificacion] = useState("");
-  const [nombre, setNombre] = useState("");
-  const [correo, setCorreo] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmar, setConfirmar] = useState("");
+  const [formulario, setFormulario] = useState({
+    identificacion: "",
+    nombre_completo: "",
+    correo: "",
+    contrasena: "",
+    confirmar: "",
+    ciudad: "",
+    nacimiento: "",
+    sangre: "",
+    telefono: "",
+    foto: "",
+    cargo: "",
+    funciones: "",
+    nombre_emergencia: "",
+    numero_emergencia: ""
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormulario((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleFotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormulario((prev) => ({ ...prev, foto: reader.result }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  console.log("Datos enviados:", formulario);
 
   const handleRegistro = async (e) => {
     e.preventDefault();
 
-    if (password !== confirmar) {
+    if (formulario.contrasena !== formulario.confirmar) {
       Swal.fire({
         icon: "error",
         title: "Las contraseñas no coinciden",
@@ -30,19 +57,13 @@ export default function Registro() {
       return;
     }
 
-    const datos = {
-      identificacion: Identificacion,
-      nombre_completo: nombre,
-      correo: correo,
-      contrasena: password
-    };
+    const datos = { ...formulario };
+    delete datos.confirmar; // ✅ No enviar campo innecesario
 
     try {
       const respuesta = await fetch("http://localhost:4000/api/registro", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(datos)
       });
 
@@ -54,9 +75,7 @@ export default function Registro() {
           title: "¡Registro exitoso!",
           text: "Tu cuenta ha sido creada correctamente",
           confirmButtonText: "Iniciar sesión"
-        }).then(() => {
-          navigate("/login"); //corregido
-        });
+        }).then(() => navigate("/login"));
       } else {
         Swal.fire({
           icon: "error",
@@ -75,57 +94,92 @@ export default function Registro() {
   };
 
   return (
-    <div className="registro-container">
+    <div className="form-wrapper">
       <form className="registro-form" onSubmit={handleRegistro}>
         <h2>Registro en <strong>SENA</strong>DOCS</h2>
-        <p>Crea tu cuenta para acceder a todas las funcionalidades.</p>
+        <p>Crea tu cuenta y tu perfil completo para comenzar.</p>
 
-        <label>Numero de identificación</label>
-        <input
-          type="text"
-          value={Identificacion}
-          onChange={(e) => setIdentificacion(e.target.value)}
-          placeholder="Ej: 15248769241"
-          required
-        />
+        <div className="form-row">
+          <div className="form-group">
+            <label>Número de identificación</label>
+            <input type="text" name="identificacion" value={formulario.identificacion} onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label>Nombre completo</label>
+            <input type="text" name="nombre_completo" value={formulario.nombre_completo} onChange={handleChange} required />
+          </div>
+        </div>
 
-        <label>Nombre completo</label>
-        <input
-          type="text"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-          placeholder="Ej: Andrea Bedoya"
-          required
-        />
+        <div className="form-row">
+          <div className="form-group">
+            <label>Correo institucional</label>
+            <input type="email" name="correo" value={formulario.correo} onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label>Ciudad de residencia</label>
+            <input type="text" name="ciudad" value={formulario.ciudad} onChange={handleChange} />
+          </div>
+        </div>
 
-        <label>Correo institucional</label>
-        <input
-          type="email"
-          value={correo}
-          onChange={(e) => setCorreo(e.target.value)}
-          placeholder="Ej: andrea@sena.edu.co"
-          required
-        />
+        <div className="form-row">
+          <div className="form-group">
+            <label>Fecha de nacimiento</label>
+            <input type="date" name="nacimiento" value={formulario.nacimiento} onChange={handleChange} />
+          </div>
+          <div className="form-group">
+            <label>Tipo de sangre</label>
+            <input type="text" name="sangre" value={formulario.sangre} onChange={handleChange} />
+          </div>
+        </div>
 
-        <label>Contraseña</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Mínimo 8 caracteres"
-          required
-        />
+        <div className="form-row">
+          <div className="form-group">
+            <label>Número de teléfono</label>
+            <input type="text" name="telefono" value={formulario.telefono} onChange={handleChange} />
+          </div>
+          <div className="form-group">
+            <label>Foto de perfil</label>
+            <input type="file" accept="image/*" onChange={handleFotoChange} />
+          </div>
+        </div>
 
-        <label>Confirmar contraseña</label>
-        <input
-          type="password"
-          value={confirmar}
-          onChange={(e) => setConfirmar(e.target.value)}
-          placeholder="Repite tu contraseña"
-          required
-        />
+        <div className="form-row">
+          <div className="form-group">
+            <label>Cargo</label>
+            <input type="text" name="cargo" value={formulario.cargo} onChange={handleChange} />
+          </div>
+          <div className="form-group">
+            <label>Funciones que desempeña</label>
+            <input type="text" name="funciones" value={formulario.funciones} onChange={handleChange} />
+          </div>
+        </div>
 
-        <button type="submit">Registrarse</button>
+        <h3 className="contacto">Contacto de Emergencia</h3>
+        <div className="form-row">
+          <div className="form-group">
+            <label>Nombre del contacto</label>
+            <input type="text" name="nombre_emergencia" value={formulario.nombre_emergencia} onChange={handleChange} />
+          </div>
+          <div className="form-group">
+            <label>Teléfono del contacto</label>
+            <input type="text" name="numero_emergencia" value={formulario.numero_emergencia} onChange={handleChange} />
+          </div>
+        </div>
+
+        <div className="form-row">
+          <div className="form-group">
+            <label>Contraseña</label>
+            <input type="password" name="contrasena" value={formulario.contrasena} onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label>Confirmar contraseña</label>
+            <input type="password" name="confirmar" value={formulario.confirmar} onChange={handleChange} required />
+          </div>
+        </div>
+
+        <div className="Registrarse">
+          <button type="submit">Registrarse</button>
+        </div>
 
         <p className="login-link">
           ¿Ya tienes cuenta?{" "}

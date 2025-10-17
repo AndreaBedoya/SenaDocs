@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUsuarioStore } from "../Store/useUsuarioStore";
 import "./ActualizarDatos.css";
 
 export default function ActualizarDatos() {
   const navigate = useNavigate();
-    const [formulario, setFormulario] = useState({
-    nombre: "",
+  const usuario = useUsuarioStore((state) => state.usuario);
+  const setUsuario = useUsuarioStore((state) => state.setUsuario);
+
+  const [formulario, setFormulario] = useState({
+    nombre_completo: "",
     ciudad: "",
     nacimiento: "",
     funciones: "",
@@ -14,25 +18,23 @@ export default function ActualizarDatos() {
     sangre: "",
     telefono: "",
     nombre_emergencia: "",
-    numero_emergencia: "",
+    telefono_emergencia: "",
     foto: "",
-    documento: ""
+    identificacion: ""
   });
 
   useEffect(() => {
-    const datos = localStorage.getItem("usuario");
-    if (datos) {
-      const parsed = JSON.parse(datos);
-      setFormulario(prev => ({
-        ...prev,
-        ...parsed
-      }));
+    if (usuario) {
+      setFormulario({
+        ...usuario,
+        identificacion: usuario.identificacion || ""
+      });
     }
-  }, []);
+  }, [usuario]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormulario({ ...formulario, [name]: value });
+    setFormulario((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleFotoChange = (e) => {
@@ -40,23 +42,21 @@ export default function ActualizarDatos() {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setFormulario({ ...formulario, foto: reader.result });
+        setFormulario((prev) => ({ ...prev, foto: reader.result }));
       };
       reader.readAsDataURL(file);
     }
   };
 
   const handleGuardar = () => {
-    const documento = formulario.documento?.toString().trim();
+    const identificacion = formulario.identificacion?.toString().trim();
 
-    if (!documento || isNaN(documento)) {
-      alert("❌ El campo 'documento' es obligatorio y debe ser numérico.");
+    if (!identificacion || isNaN(identificacion)) {
+      alert("❌ El campo 'identificación' es obligatorio y debe ser numérico.");
       return;
     }
 
-    console.log("📤 Enviando PUT a:", `/api/perfil/${documento}`);
-
-    fetch(`/api/perfil/${documento}`, {
+    fetch(`/api/perfil/${identificacion}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formulario)
@@ -70,8 +70,8 @@ export default function ActualizarDatos() {
         return text ? JSON.parse(text) : {};
       })
       .then(data => {
-        console.log("✅ Guardado en backend:", data);
-        localStorage.setItem("usuario", JSON.stringify(data));
+        console.log("✅ Perfil actualizado:", data);
+        setUsuario(data);
         alert("✅ Datos actualizados correctamente");
         navigate("/perfil");
       })
@@ -89,36 +89,36 @@ export default function ActualizarDatos() {
         <div className="form-row">
           <div className="form-group">
             <label>Nombre completo</label>
-            <input type="text" name="nombre" value={formulario.nombre} onChange={handleChange} />
+            <input type="text" name="nombre_completo" value={formulario.nombre_completo || ""} onChange={handleChange} />
           </div>
         </div>
 
         <div className="form-row">
           <div className="form-group">
-            <label>Correo SENA</label>
-            <input type="email" name="correo" value={formulario.correo} onChange={handleChange} />
+            <label>Correo institucional</label>
+            <input type="email" name="correo" value={formulario.correo || ""} onChange={handleChange} />
           </div>
           <div className="form-group">
             <label>Ciudad de residencia</label>
-            <input type="text" name="ciudad" value={formulario.ciudad} onChange={handleChange} />
+            <input type="text" name="ciudad" value={formulario.ciudad || ""} onChange={handleChange} />
           </div>
         </div>
 
         <div className="form-row">
           <div className="form-group">
             <label>Fecha de nacimiento</label>
-            <input type="date" name="nacimiento" value={formulario.nacimiento} onChange={handleChange} />
+            <input type="date" name="nacimiento" value={formulario.nacimiento || ""} onChange={handleChange} />
           </div>
           <div className="form-group">
             <label>Tipo de sangre</label>
-            <input type="text" name="sangre" value={formulario.sangre} onChange={handleChange} />
+            <input type="text" name="sangre" value={formulario.sangre || ""} onChange={handleChange} />
           </div>
         </div>
 
         <div className="form-row">
           <div className="form-group">
             <label>Número de teléfono</label>
-            <input type="text" name="telefono" value={formulario.telefono} onChange={handleChange} />
+            <input type="text" name="telefono" value={formulario.telefono || ""} onChange={handleChange} />
           </div>
           <div className="form-group">
             <label>Foto de perfil</label>
@@ -128,19 +128,19 @@ export default function ActualizarDatos() {
 
         <div className="form-row">
           <div className="form-group">
-            <label>Documento</label>
-            <input type="text" name="documento" value={formulario.documento} onChange={handleChange} />
+            <label>Identificación</label>
+            <input type="text" name="identificacion" value={formulario.identificacion || ""} disabled />
           </div>
           <div className="form-group">
             <label>Cargo</label>
-            <input type="text" name="cargo" value={formulario.cargo} onChange={handleChange} />
+            <input type="text" name="cargo" value={formulario.cargo || ""} onChange={handleChange} />
           </div>
         </div>
 
         <div className="form-row">
           <div className="form-group">
             <label>Funciones que desempeña</label>
-            <input type="text" name="funciones" value={formulario.funciones} onChange={handleChange} />
+            <input type="text" name="funciones" value={formulario.funciones || ""} onChange={handleChange} />
           </div>
         </div>
 
@@ -151,17 +151,17 @@ export default function ActualizarDatos() {
             <input
               type="text"
               name="nombre_emergencia"
-              value={formulario.nombre_emergencia}
+              value={formulario.nombre_emergencia || ""}
               onChange={handleChange}
               placeholder="Nombre del contacto de emergencia"
             />
           </div>
           <div className="form-group">
-            <label>Número del contacto</label>
+            <label>Teléfono del contacto</label>
             <input
               type="text"
-              name="numero_emergencia"
-              value={formulario.numero_emergencia}
+              name="telefono_emergencia"
+              value={formulario.telefono_emergencia || ""}
               onChange={handleChange}
               placeholder="Número del contacto de emergencia"
             />
