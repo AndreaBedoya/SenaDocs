@@ -105,7 +105,7 @@
 }
 
 .boton-actualizar,
-.boton-salir {
+.boton-volver {
   padding: 8px 16px;
   border: none;
   border-radius: 6px;
@@ -124,7 +124,7 @@
 }
 
 .boton-volver {
-  background-color: #dc3545;
+  background: gray;
   color: white;
 }
 
@@ -144,8 +144,23 @@
   transition: background-color 0.3s ease;
 }
 
+.perfil-bottom .boton-volver {
+  margin-top: 1rem;
+  padding: 12px;
+  background-color: rgba(128, 128, 128, 0.829);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 .perfil-bottom button:hover {
   background-color: #388e3c;
+}
+
+.perfil-bottom .boton-volver:hover {
+  background-color: gray;
 }
 
 /* Estructura tipo formulario */

@@ -1,0 +1,277 @@
+/* Contenedor principal */
+.configuracion {
+  min-width: 100dvw;
+  min-height: 100dvh;
+  padding: 30px;
+  background-color: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Barra superior */
+.navbar-configuracion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+}
+
+.cuenta{
+    display: flex;
+    gap: 50px;
+    margin: 30px 0px;
+}
+
+.nombre-cuenta h2{
+  color: black;
+  font-size: 28px;
+}
+
+.nombre-cuenta p{
+    color: black;
+    font-size: 24px;
+}
+
+.cuenta img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #4caf50;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+/* Contenedor de contenido principal */
+.informacion-configuracion {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+/* Panel izquierdo: datos + foto + contraseña */
+.foto-contrasena {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  min-height: 28dvw;
+}
+
+.foto-contrasena label{
+  font-size: 24px;
+}
+
+/* Subpanel: datos + foto */
+.configuracion-middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Datos personales */
+.configuracion-middle > div {
+  flex: 1;
+}
+
+.form-group{
+  padding: 20px 0px;
+}
+
+.form-group p{
+  font-size: 18px;
+}
+
+/* Foto de perfil */
+.foto-configuracion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.configuracion-avatar {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #4caf50;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contraseña */
+.Cambiar-contraseña {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  
+}
+.Cambiar-contraseña h2{
+    color: black;
+    text-align: center;
+}
+
+/* Panel derecho: preferencias */
+
+.preferencias{
+    background-color: #fff;
+    flex: 1;
+    border-radius: 12px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+    min-height: 28dvw;
+}
+.preferencias h2{
+    text-align: center;
+    font-size: 32px;
+    color: black;
+    margin-top: 60px ;
+    text-shadow: 2px 2px 4px gray;
+    font-weight: 600;
+}
+
+.idioma-tema {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  margin-top: 40px;
+  padding-top: 20px;
+  min-height: 500px;
+  gap: 100px;
+}
+
+/* Bloques de idioma y tema */
+.idiomas,
+.tema {
+  margin-bottom: 30px;
+  border: 2px solid gray;
+  padding: 20px;
+  border-radius: 25px ;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.idiomas h3,
+.tema h3 {
+  font-size: 28px;
+  margin: 10px 0px;
+  color: black;
+}
+
+.idiomas p,
+.tema p {
+  margin-bottom: 10px;
+  color: #666;
+  font-size: 24px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #4caf50;
+  font-size: 24px;
+  background-color: #fff;
+  color: black;
+  margin: 20px 0px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #3085d6;
+  box-shadow: 0 0 4px rgba(48, 133, 214, 0.4);
+}
+
+/* Campos */
+.Cambiar-contraseña h2{
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    margin: 30px 0px;
+}
+
+.contrasena{
+    display: flex;
+    justify-content: space-around;
+}
+
+.nueva-contrasena {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nueva-contrasena label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #444;
+  width: 20dvw;
+}
+
+.nueva-contrasena p {
+  margin: 0;
+  color: #555;
+  padding: 10px;
+  background-color: #f9f9f9;  
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  color: #000;
+  margin: 0;
+}
+
+/* Botones finales */
+.botones-acciones {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.boton-volver,
+.boton-actualizar {
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 40px;
+}
+
+.boton-volver:hover,
+.boton-actualizar:hover {
+  background-color: #4caf50;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .informacion-configuracion {
+    flex-direction: column;
+  }
+
+  .configuracion-middle {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .botones-acciones {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .boton-volver,
+  .boton-actualizar {
+    width: 100%;
+  }
+}
+

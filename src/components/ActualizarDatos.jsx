@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUsuarioStore } from "../Store/useUsuarioStore";
+import Swal from "sweetalert2";
 import "./ActualizarDatos.css";
 
 export default function ActualizarDatos() {
@@ -52,7 +53,11 @@ export default function ActualizarDatos() {
     const identificacion = formulario.identificacion?.toString().trim();
 
     if (!identificacion || isNaN(identificacion)) {
-      alert("❌ El campo 'identificación' es obligatorio y debe ser numérico.");
+      Swal.fire({
+        icon: "error",
+        title: "Identificación inválida",
+        text: "El campo 'identificación' es obligatorio y debe ser numérico."
+      });
       return;
     }
 
@@ -72,12 +77,23 @@ export default function ActualizarDatos() {
       .then(data => {
         console.log("✅ Perfil actualizado:", data);
         setUsuario(data);
-        alert("✅ Datos actualizados correctamente");
-        navigate("/perfil");
+        Swal.fire({
+          icon: "success",
+          title: "¡Datos actualizados!",
+          text: "Los cambios se guardaron correctamente.",
+          confirmButtonText: "Aceptar",
+          confirmButtonColor: "#3085d6"
+        }).then(() => {
+          navigate("/perfil");
+        });
       })
       .catch(err => {
         console.error("❌ Error al guardar en backend:", err);
-        alert("Error al guardar los datos. Revisa la consola para más detalles.");
+        Swal.fire({
+          icon: "error",
+          title: "Error al guardar",
+          text: "No se pudo actualizar el perfil. Revisa la consola para más detalles."
+        });
       });
   };
 
