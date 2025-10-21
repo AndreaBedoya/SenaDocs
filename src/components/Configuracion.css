@@ -2,7 +2,7 @@
 .configuracion {
   min-width: 100dvw;
   min-height: 100dvh;
-  padding: 30px;
+  padding: 10px 30px;
   background-color: #fdfdfd;
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
@@ -16,6 +16,27 @@
   justify-content: space-between;
   margin-bottom: 30px;
 }
+.foto-pequeña {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+  height: auto;
+}
+
+.foto-pequeña img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4caf50;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  
+}
+
+.navbar-configuracion p {
+  font-size: 24px;
+  font-weight: 500;
+}
 
 .logo {
   width: 50px;
@@ -24,23 +45,23 @@
 
 .cuenta{
     display: flex;
-    gap: 50px;
+    gap: 20px;
     margin: 30px 0px;
 }
 
 .nombre-cuenta h2{
   color: black;
-  font-size: 28px;
+  font-size: 18px;
 }
 
 .nombre-cuenta p{
     color: black;
-    font-size: 24px;
+    font-size: 16px;
 }
 
 .cuenta img{
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #4caf50;
@@ -49,7 +70,7 @@
 /* Contenedor de contenido principal */
 .informacion-configuracion {
   display: flex;
-  gap: 30px;
+  gap: 20px;
   align-items: flex-start;
 }
 
@@ -63,11 +84,11 @@
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
-  min-height: 28dvw;
+  min-height: 25dvw;
 }
 
 .foto-contrasena label{
-  font-size: 24px;
+  font-size: 18px;
 }
 
 /* Subpanel: datos + foto */
@@ -84,7 +105,7 @@
 }
 
 .form-group{
-  padding: 20px 0px;
+  padding: 10px 0px;
 }
 
 .form-group p{
@@ -99,8 +120,8 @@
 }
 
 .configuracion-avatar {
-  width: 320px;
-  height: 320px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #4caf50;
@@ -109,93 +130,16 @@
 
 /* Contraseña */
 .Cambiar-contraseña {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
-  
-}
-.Cambiar-contraseña h2{
-    color: black;
-    text-align: center;
-}
-
-/* Panel derecho: preferencias */
-
-.preferencias{
-    background-color: #fff;
-    flex: 1;
-    border-radius: 12px;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
-    min-height: 28dvw;
-}
-.preferencias h2{
-    text-align: center;
-    font-size: 32px;
-    color: black;
-    margin-top: 60px ;
-    text-shadow: 2px 2px 4px gray;
-    font-weight: 600;
-}
-
-.idioma-tema {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  background-color: #fff;
-  margin-top: 40px;
-  padding-top: 20px;
-  min-height: 500px;
-  gap: 100px;
-}
-
-/* Bloques de idioma y tema */
-.idiomas,
-.tema {
-  margin-bottom: 30px;
-  border: 2px solid gray;
-  padding: 20px;
-  border-radius: 25px ;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-}
-
-.idiomas h3,
-.tema h3 {
-  font-size: 28px;
-  margin: 10px 0px;
-  color: black;
-}
-
-.idiomas p,
-.tema p {
-  margin-bottom: 10px;
-  color: #666;
-  font-size: 24px;
-}
-
-select {
-  width: 100%;
+  margin-top: 15px;
   padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #4caf50;
-  font-size: 24px;
-  background-color: #fff;
-  color: black;
-  margin: 20px 0px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);  
 }
-
-select:focus {
-  outline: none;
-  border-color: #3085d6;
-  box-shadow: 0 0 4px rgba(48, 133, 214, 0.4);
-}
-
-/* Campos */
 .Cambiar-contraseña h2{
     text-align: center;
-    font-size: 32px;
+    font-size: 20px;
     font-weight: 600;
-    margin: 30px 0px;
+    margin: 20px 0px;
 }
 
 .contrasena{
@@ -227,18 +171,90 @@ select:focus {
   margin: 0;
 }
 
+/* Panel derecho: preferencias */
+.preferencias{
+    background-color: #fff;
+    flex: 1;
+    border-radius: 12px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+    min-height: 25dvw;
+}
+.preferencias h2{
+    text-align: center;
+    font-size: 26px;
+    color: black;
+    margin-top: 40px ;
+    text-shadow: 2px 2px 4px gray;
+    font-weight: 500;
+}
+
+.idioma-tema {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  margin: 30px 0px;
+  padding-top: 30px 20px;
+  min-height: 420px;
+  gap: 50px;
+}
+
+/* Bloques de idioma y tema */
+.idiomas,
+.tema {
+  border: 2px solid gray;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 25px ;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.idiomas h3,
+.tema h3 {
+  font-size: 28px;
+  margin: 10px 0px;
+  color: black;
+}
+
+.idiomas p,
+.tema p {
+  margin-bottom: 10px;
+  color: #666;
+  font-size: 18px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #4caf50;
+  font-size: 24px;
+  background-color: #fff;
+  color: black;
+  margin: 20px 0px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #3085d6;
+  box-shadow: 0 0 4px rgba(48, 133, 214, 0.4);
+}
+
+
+
 /* Botones finales */
 .botones-acciones {
   display: flex;
   justify-content: center;
   margin-top: 40px;
+  gap: 40px;
 }
 
 .boton-volver,
 .boton-actualizar {
   padding: 12px 20px;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 18px;
   border: none;
   border-radius: 8px;
   background-color: #4caf50;

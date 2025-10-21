@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useUsuarioStore } from "../Store/useUsuarioStore";
+import { useState } from "react";
+import  IconBell from '../Icons/IconBell.jsx';
 import "./Configuracion.css";
 
 export default function Perfil() {
@@ -7,6 +9,9 @@ export default function Perfil() {
   const usuario = useUsuarioStore((state) => state.usuario);
 
   if (!usuario) return <p>Cargando perfil...</p>;
+
+  const [contraseñaAnterior, setContraseñaAnterior] = useState("");
+  const [nuevaContraseña, setNuevaContraseña] = useState("");
 
   // ✅ Formatear fecha de nacimiento
   const fechaFormateada = usuario.nacimiento
@@ -28,6 +33,12 @@ export default function Perfil() {
         <div className="senadocs">
           <a href="#"><img src="/logoSena.png" alt="Logo SenaDocs" className="logo" /></a>
           <p> Configuración</p>
+        </div>
+        <div className="foto-pequeña">
+          <IconBell />
+          <img
+          src={usuario.foto || "https://via.placeholder.com/150"}
+        />
         </div>
       </nav>
       {/* --------------------------- */}
