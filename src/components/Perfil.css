@@ -7,13 +7,16 @@
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
 }
+body{
+  overflow-x: hidden;
+}
 
 /* Fondo y contenedor principal */
 .perfil-wrapper {
   min-width: 100dvw;
   min-height: 100vh;
   background: linear-gradient(to bottom right, #f5f5f5, #e8f5e9);
-  padding: 40px;
+  padding: 20px 50px;
 }
 
 /* Barra de navegación superior */
@@ -35,18 +38,18 @@
 }
 
 .navbar-perfil p {
-  font-size: 1.2rem;
+  font-size: 18px;
   font-weight: bold;
   margin: 0;
   color: #1b5e20;
 }
 
 /* Panel intermedio */
-.perfil-middle {
+.perfil {
   display: flex;
   flex-direction: row;
   gap: 2rem;
-  margin: 2rem 0;
+  margin: 1rem 0;
   flex-wrap: wrap;
 }
 
@@ -70,10 +73,10 @@
 }
 
 /* Datos personales */
-.perfil-left {
+.DatosPersonales {
   flex: 2;
   background-color: #ffffff;
-  padding: 1.5rem;
+  padding: 10px 20px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
 }
@@ -81,45 +84,46 @@
 /* Panel inferior */
 .perfil-bottom {
   background-color: #ffffff;
-  padding: 1.5rem;
+  padding: 20px 50px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
   margin-top: 2rem;
 }
 
 /* Títulos */
-.perfil-left h3,
+.DatosPersonales h3,
 .perfil-bottom h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
   color: #1b5e20;
-  font-size: 1.4rem;
+  font-size: 22px;
   text-align: center;
 }
 
-/* Botón */
-.botones-acciones {
+.botones-perfil {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-top: 16px;
+  gap: 40px;
 }
 
-.boton-actualizar,
-.boton-volver {
-  padding: 8px 16px;
+.actualizarPerfil,
+.volverPerfil {
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 18px;
   border: none;
-  border-radius: 6px;
-  font-weight: bold;
+  border-radius: 8px;
+  background-color: #4caf50;
+  color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.boton-actualizar {
+.actualizarPerfil {
   background-color: #198754;
   color: white;
 }
 
-.boton-actualizar:hover {
+.actualizarPerfil:hover {
   background-color: #157347;
 }
 
@@ -128,13 +132,11 @@
   color: white;
 }
 
-.boton-volver:hover {
+.volverPerfil:hover {
   background-color: #bb2d3b;
 }
 
 .perfil-bottom button {
-  margin-top: 1rem;
-  padding: 12px;
   background-color: #4caf50;
   color: white;
   border: none;
@@ -144,14 +146,12 @@
   transition: background-color 0.3s ease;
 }
 
-.perfil-bottom .boton-volver {
-  margin-top: 1rem;
-  padding: 12px;
+.perfil-bottom .volverPerfil {
   background-color: rgba(128, 128, 128, 0.829);
   color: white;
   border: none;
   border-radius: 8px;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -159,30 +159,43 @@
   background-color: #388e3c;
 }
 
-.perfil-bottom .boton-volver:hover {
+.perfil-bottom .volverPerfil:hover {
   background-color: gray;
 }
 
 /* Estructura tipo formulario */
-.form-row {
+.filas-perfil {
   gap: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   flex-wrap: wrap;
 }
+.filas-perfil {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
 
-.form-group {
+.columnas-perfil{
+  padding: 10px 0px;
+}
+
+.columnas-perfil p{
+  font-size: 18px;
+}
+
+.columnas-perfil {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.form-group label {
+.columnas-perfil label {
   font-weight: bold;
   margin-bottom: 5px;
   color: #000;
 }
 
-.form-group p {
+.columnas-perfil p {
   padding: 10px;
   background-color: #f9f9f9;
   border: 2px solid #ccc;

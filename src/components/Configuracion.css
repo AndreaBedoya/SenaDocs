@@ -103,16 +103,36 @@
 .configuracion-middle > div {
   flex: 1;
 }
-
-.form-group{
+.columnas-configuracion{
   padding: 10px 0px;
 }
 
-.form-group p{
+.columnas-configuracion p{
   font-size: 18px;
 }
 
-/* Foto de perfil */
+.columnas-configuracion {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.columnas-configuracion label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #000;
+}
+
+.columnas-configuracion p {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  color: #000;
+  margin: 0;
+}
+
+/* Foto de configuracion */
 .foto-configuracion {
   display: flex;
   justify-content: center;
@@ -243,7 +263,7 @@ select:focus {
 
 
 /* Botones finales */
-.botones-acciones {
+.botones-configuracion {
   display: flex;
   justify-content: center;
   margin-top: 40px;

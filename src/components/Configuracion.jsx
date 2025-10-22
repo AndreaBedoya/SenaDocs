@@ -60,15 +60,15 @@ export default function Perfil() {
           <div className="configuracion-middle">
             {/* Bloque izquierdo: Foto + Nombre */}
             <div>
-              <div className="form-group">
+              <div className="columnas-configuracion">
                   <label>Documento</label>
                   <p>{usuario.identificacion || "No registrado"}</p>
               </div>
-              <div className="form-group">
+              <div className="columnas-configuracion">
                   <label>Correo institucional</label>
                   <p>{usuario.correo || "No registrado"}</p>
               </div>
-              <div className="form-group">
+              <div className="columnas-configuracion">
                   <label>Teléfono</label>
                   <p>{usuario.telefono || "No registrado"}</p>
               </div>
@@ -76,7 +76,6 @@ export default function Perfil() {
             <div className="foto-configuracion">
               <img
                 src={usuario.foto || "https://via.placeholder.com/150"}
-                alt="Foto de perfil"
                 className="configuracion-avatar"
               />
             </div>
@@ -124,7 +123,7 @@ export default function Perfil() {
         </div>
       </div>
       
-      <div className="botones-acciones">
+      <div className="botones-configuracion">
         <button className="boton-volver" onClick={() => navigate("/vistaPrincipal")}>
           Volver
         </button>

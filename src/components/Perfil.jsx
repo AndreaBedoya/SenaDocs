@@ -32,7 +32,7 @@ export default function Perfil() {
       </nav>
 
       {/* Panel intermedio */}
-      <div className="perfil-middle">
+      <div className="perfil">
         {/* Bloque izquierdo: Foto + Nombre */}
         <div className="perfil-identidad">
           <img
@@ -41,50 +41,50 @@ export default function Perfil() {
             className="perfil-avatar"
           />
           <h2>{usuario.nombre_completo || "Nombre no registrado"}</h2>
-          <div className="form-group">
+          <div className="columnas-perfil">
             <p>{usuario.funciones || "Sin funciones registradas"}</p>
           </div>
         </div>
 
         {/* Bloque derecho: información básica */}
-        <div className="perfil-left">
+        <div className="DatosPersonales">
           <h3>Datos personales</h3>
 
-          <div className="form-row">
-            <div className="form-group">
+          <div className="filas-perfil">
+            <div className="columnas-perfil">
               <label>Correo institucional</label>
               <p>{usuario.correo || "No registrado"}</p>
             </div>
-            <div className="form-group">
+            <div className="columnas-perfil">
               <label>Ciudad de residencia</label>
               <p>{usuario.ciudad || "No registrado"}</p>
             </div>
           </div>
 
-          <div className="form-row">
-            <div className="form-group">
+          <div className="filas-perfil">
+            <div className="columnas-perfil">
               <label>Fecha de nacimiento</label>
               <p>{fechaFormateada}</p>
             </div>
-            <div className="form-group">
+            <div className="columnas-perfil">
               <label>Tipo de sangre</label>
               <p>{usuario.sangre || "No registrada"}</p>
             </div>
           </div>
 
-          <div className="form-row">
-            <div className="form-group">
+          <div className="filas-perfil">
+            <div className="columnas-perfil">
               <label>Teléfono</label>
               <p>{usuario.telefono || "No registrado"}</p>
             </div>
-            <div className="form-group">
+            <div className="columnas-perfil">
               <label>Documento</label>
               <p>{usuario.identificacion || "No registrado"}</p>
             </div>
           </div>
 
-          <div className="form-row">
-            <div className="form-group">
+          <div className="filas-perfil">
+            <div className="columnas-perfil">
               <label>Cargo</label>
               <p>{usuario.cargo || "No registrado"}</p>
             </div>
@@ -95,22 +95,22 @@ export default function Perfil() {
       {/* Panel inferior */}
       <div className="perfil-bottom">
         <h3>Contacto de emergencia</h3>
-        <div className="form-row">
-          <div className="form-group">
+        <div className="filas-perfil">
+          <div className="columnas-perfil">
             <label>Nombre del contacto</label>
             <p>{usuario.nombre_emergencia || "No registrado"}</p>
           </div>
-          <div className="form-group">
+          <div className="columnas-perfil">
             <label>Teléfono del contacto</label>
             <p>{usuario.numero_emergencia || usuario.numero_emergencia || "No registrado"}</p>
           </div>
         </div>
 
-        <div className="botones-acciones">
-          <button className="boton-volver" onClick={() => navigate("/vistaPrincipal")}>
+        <div className="botones-perfil">
+          <button className="volverPerfil" onClick={() => navigate("/vistaPrincipal")}>
             Volver
           </button>
-          <button className="boton-actualizar" onClick={handleActualizar}>
+          <button className="actualizarPerfil" onClick={handleActualizar}>
             Actualizar datos
           </button>
         </div>
