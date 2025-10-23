@@ -22,9 +22,34 @@ export default function Perfil() {
       })
     : "No registrada";
 
-  const handleActualizar = () => {
-    navigate("/actualizar");
-  };
+  const handleActualizar = async () => {
+  try {
+    const response = await fetch(`http://localhost:4000/api/perfil/contrasena/${usuario.identificacion}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        contraseñaAnterior,
+        nuevaContraseña
+      })
+    });
+
+    const resultado = await response.json();
+
+    if (response.ok) {
+      alert("Contraseña actualizada correctamente");
+      setContraseñaAnterior("");
+      setNuevaContraseña("");
+      navigate("/vistaPrincipal");
+    } else {
+      alert(resultado.mensaje || "Error al actualizar la contraseña");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Hubo un problema al conectar con el servidor");
+  }
+};
 
   return (
     <div className="configuracion">
@@ -82,17 +107,26 @@ export default function Perfil() {
           </div>  
           <div className="Cambiar-contraseña">
             <h2>Cambiar Contraseña</h2>
-            <div className="contrasena">
-              <div className="nueva-contrasena">
-                <label>Contraseña Anterior</label>
-                <p>{usuario.nombre_emergencia || "No registrado"}</p>
-              </div>
-              <div className="nueva-contrasena">
-                <label>Nueva Contraseña</label>
-                <p>{usuario.numero_emergencia || usuario.numero_emergencia || "No registrado"}</p>
-              </div> 
-              </div>
-            
+            <div className="form-group">
+              <label>Contraseña actual</label>
+              <input
+                type="password"
+                value={contraseñaAnterior}
+                onChange={(e) => setContraseñaAnterior(e.target.value)}
+                placeholder="Ingrese su contraseña actual"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>Nueva contraseña</label>
+              <input
+                type="password"
+                value={nuevaContraseña}
+                onChange={(e) => setNuevaContraseña(e.target.value)}
+                placeholder="Ingrese su nueva contraseña"
+                required
+              />
+            </div>
           </div>
         </div>
         
