@@ -1,0 +1,13 @@
+.cerrar-sesion-btn {
+  background: none;
+  border: none;
+  color: black;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+.cerrar-sesion-btn:hover {
+  color: #5eb319;
+}

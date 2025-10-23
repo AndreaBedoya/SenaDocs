@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Swal from "sweetalert2";
+import BotonCerrarSesion from "../components/BotonCerrarSesion";
 import "./VistaPrincipal.css";
-import { useNavigate } from "react-router-dom";
 
 export default function VistaPrincipal() {
   const [carpeta, setCarpeta] = useState("");
@@ -158,23 +158,7 @@ const handleNovedades = async () => {
   }
 };
 
-const navigate = useNavigate();
-const handleCerrarSesion = () => {
-  Swal.fire({
-    title: "¿Cerrar sesión?",
-    text: "¿Estás seguro de que quieres cerrar sesión?",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonText: "Sí, cerrar sesión",
-    cancelButtonText: "Cancelar"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      localStorage.removeItem("token");
-      localStorage.removeItem("usuario");
-      navigate("/login");
-    }
-  });
-};
+
   return (
     <div className="upload-container">
       {/* ----------------------- */}
@@ -196,10 +180,9 @@ const handleCerrarSesion = () => {
                 <li><a href="/perfil">Perfil</a></li>
                 <li><a href="/configuracion">Configuración</a></li>
                 <li>
-                  <a href="#" onClick={handleCerrarSesion} className="cerrar-sesion-link">
-                    Cerrar sesión
-                  </a>
+                  <BotonCerrarSesion />
                 </li>
+
               </ul>
             </li>
           </ul>
