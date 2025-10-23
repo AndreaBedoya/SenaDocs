@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useUsuarioStore } from "../Store/useUsuarioStore";
+import BotonVolver from "../Botones/BotonVolver.jsx";
 import "./Perfil.css";
 
 export default function Perfil() {
@@ -107,9 +108,7 @@ export default function Perfil() {
         </div>
 
         <div className="botones-perfil">
-          <button className="volverPerfil" onClick={() => navigate("/vistaPrincipal")}>
-            Volver
-          </button>
+          < BotonVolver/>
           <button className="actualizarPerfil" onClick={handleActualizar}>
             Actualizar datos
           </button>

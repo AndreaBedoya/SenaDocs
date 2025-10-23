@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Swal from "sweetalert2";
-import BotonCerrarSesion from "../components/BotonCerrarSesion";
+import BotonCerrarSesion from "../Botones/BotonCerrarSesion";
 import "./VistaPrincipal.css";
 
 export default function VistaPrincipal() {

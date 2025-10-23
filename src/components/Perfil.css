@@ -105,8 +105,7 @@ body{
   gap: 40px;
 }
 
-.actualizarPerfil,
-.volverPerfil {
+.actualizarPerfil {
   padding: 12px 20px;
   font-weight: 600;
   font-size: 18px;
@@ -127,16 +126,8 @@ body{
   background-color: #157347;
 }
 
-.boton-volver {
-  background: gray;
-  color: white;
-}
 
-.volverPerfil:hover {
-  background-color: #bb2d3b;
-}
-
-.perfil-bottom button {
+.perfil-bottom .actualizarPerfil {
   background-color: #4caf50;
   color: white;
   border: none;
@@ -146,21 +137,8 @@ body{
   transition: background-color 0.3s ease;
 }
 
-.perfil-bottom .volverPerfil {
-  background-color: rgba(128, 128, 128, 0.829);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.perfil-bottom button:hover {
+.perfil-bottom .actualizarPerfil:hover {
   background-color: #388e3c;
-}
-
-.perfil-bottom .volverPerfil:hover {
-  background-color: gray;
 }
 
 /* Estructura tipo formulario */
