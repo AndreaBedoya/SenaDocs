@@ -179,6 +179,7 @@ const handleNovedades = async () => {
               <ul className="perfil-menu">
                 <li><a href="/perfil">Perfil</a></li>
                 <li><a href="/configuracion">Configuración</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
                 <li>
                   <BotonCerrarSesion />
                 </li>

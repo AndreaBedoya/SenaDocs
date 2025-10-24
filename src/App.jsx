@@ -8,6 +8,7 @@ import Perfil from "./components/Perfil";
 import Configuracion from "./components/Configuracion";
 import RutaProtegida from "./components/RutaProtegida";
 import ActualizarDatos from "./components/ActualizarDatos"; 
+import Dashboard from "./components/Dashboard";
 
 function App() {
   const [autenticado, setAutenticado] = useState(false);
@@ -43,6 +44,10 @@ function App() {
             autenticado ? <Navigate to="/vistaPrincipal" replace /> : <Login />
           }
         />
+
+
+        <Route path="/dashboard" element={<Dashboard />} />
+
 
         {/* Recuperación de contraseña solo si no hay sesión */}
         <Route
