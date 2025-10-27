@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import "./BotonCerrarSesion.css";
 
-export default function BotonCerrarSesion() {
+export default function BotonCerrarSesion({ texto = "Cerrar sesión", Icon, className = "" }) {
   const navigate = useNavigate();
 
   const cerrarSesion = () => {
@@ -14,11 +15,8 @@ export default function BotonCerrarSesion() {
       cancelButtonText: "Cancelar"
     }).then((result) => {
       if (result.isConfirmed) {
-        // 🧹 Limpiar sesión
         localStorage.removeItem("token");
         localStorage.removeItem("usuario");
-
-        // 🔄 Forzar reevaluación del estado autenticado en App.jsx
         navigate("/login");
         window.location.reload();
       }
@@ -26,8 +24,9 @@ export default function BotonCerrarSesion() {
   };
 
   return (
-    <button onClick={cerrarSesion} className="cerrar-sesion-btn">
-      Cerrar sesión
+    <button onClick={cerrarSesion} className={`.cerrar-sesion-btn ${className}`}>
+      {Icon && <Icon />}
+      <span>{texto}</span>
     </button>
   );
 }

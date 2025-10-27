@@ -1,0 +1,37 @@
+.barra-busqueda {
+  display: flex;
+  align-items: center;
+  width: 84vw;
+  gap: 10px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.barra-busqueda input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.barra-busqueda button {
+  padding: 8px 16px;
+  background-color: var(--color-primario);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.barra-busqueda button:hover {
+  background-color: var(--color-primario-claro);
+  color: black;
+}
+
+.busqueda-colapsada {
+  width: 95vw;
+}

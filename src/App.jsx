@@ -9,6 +9,7 @@ import Configuracion from "./components/Configuracion";
 import RutaProtegida from "./components/RutaProtegida";
 import ActualizarDatos from "./components/ActualizarDatos"; 
 import Dashboard from "./components/Dashboard";
+import RenombrarPDF from "./Views/RenombrarPDF";
 
 function App() {
   const [autenticado, setAutenticado] = useState(false);
@@ -86,6 +87,9 @@ function App() {
             </RutaProtegida>
           }
         />
+        <Route 
+        path="/renombrar-pdf" 
+        element={<RenombrarPDF />} />
 
         {/* ✅ Nueva ruta protegida para actualizar datos */}
         <Route

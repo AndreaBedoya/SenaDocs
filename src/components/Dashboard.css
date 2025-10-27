@@ -1,15 +1,10 @@
+/* COLORES DEL COMPONENTE DASHBOARD */
 :root {
   --color-primario: #248232;
   --color-primario-claro: #CFEFB5;
   --color-secundario: #2C497F;
   --color-acento: #B4CDED;
   --color-gris: #919191;
-}
-
-/* SVG global */
-svg {
-  height: 1.2rem;
-  width: auto;
 }
 
 /* CONTENEDOR PRINCIPAL */
@@ -22,42 +17,29 @@ svg {
 
 /* SIDEBAR */
 .sidebar {
-  width: 100%;
-  max-width: 16vw;
-  height: 100%;
-  border: 2px solid rgba(128, 128, 128, 0.20);
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  padding: 10px;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  background-color: white;
-}
-
-/* SIDEBAR COLAPSADA */
-.colapsada {
-  max-width: 5vw;
-  background: var(--color-secundario);
-}
-
-/* TEXTO */
-span {
-  margin: 0;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: .25s all;
-}
-
-/* CONTENIDO DEL SIDEBAR */
-.sidebarContent {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
+  max-width: 16vw;
   height: 100%;
+  padding: 10px;
+  background-color: white;
+  border: 2px solid rgba(128, 128, 128, 0.2);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
-/* LOGO Y BOTÓN */
-.logo {
+/* SIDEBAR COLAPSADA */
+.sidebar.sidebar-collapsed {
+  max-width: 5vw;
+  background-color: var(--color-secundario);
+}
+
+/* LOGO Y BOTÓN DE COLAPSAR */
+.logoDashboard {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -65,13 +47,27 @@ span {
   width: 100%;
 }
 
-.logo img {
+.ocultar-logo img {
+  display: none;
+}
+
+
+.logoDashboard img {
   width: 60%;
 }
 
+.ocultar-logo img {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.logoDashboard button {
+  background: #fff;
+}
+
 .toggleBarra {
+  color: black;
   border: none;
-  background: transparent;
   outline: none;
   cursor: pointer;
 }
@@ -89,7 +85,13 @@ span {
   justify-content: center;
   align-items: center;
   gap: 40px;
+  margin-top: 60px;
 }
+.sidebar-collapsed .toggleBarra {
+  background: transparent;
+}
+
+
 
 .menu {
   display: flex;
@@ -99,27 +101,27 @@ span {
 }
 
 .sidebarLink {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
   display: flex;
   align-items: center;
   gap: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
   font-size: 1.1rem;
   text-decoration: none;
-  transition: .25s all;
   color: black;
   background-color: transparent;
-}
-
-.sidebarLink svg path {
-  stroke-width: 1.3px;
+  transition: 0.25s all;
 }
 
 .sidebarLink svg {
   width: 32px !important;
   height: 32px !important;
   stroke-width: 1;
+}
+
+.sidebarLink svg path {
+  stroke-width: 1.3px;
 }
 
 .menu a:hover {
@@ -130,40 +132,76 @@ span {
 .botones {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 10px;
   width: 100%;
+  align-items: center;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: 0.25s all;
+  color: black;
 }
 
-.botones a,
-.botones button {
-  background: var(--color-secundario);
+/* BOTÓN PERSONALIZADO */
+.boton-dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: var(--color-secundario);
   color: white;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-dashboard:hover {
+  background-color: var(--color-primario-claro);
+  color: black;
+}
+
+/* TEXTO */
+span {
+  margin: 0;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: 0.25s all;
 }
 
 /* ESTILOS PARA LA BARRA COLAPSADA */
-.colapsada a {
-  justify-content: center;
-  color: #FAFAF9;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
-
-.colapsada .logo {
+.sidebar.sidebar-collapsed .logoDashboard {
   justify-content: center;
   padding: 20% 0;
 }
 
-.colapsada .toggleBarra svg {
+.sidebar.sidebar-collapsed .toggleBarra svg {
+  color: white;
+}
+
+.sidebar.sidebar-collapsed .sidebarLink {
+  justify-content: center;
+  padding: 10px;
   color: #FAFAF9;
 }
 
-.colapsada .botones .sidebarLink:hover {
+.sidebar.sidebar-collapsed .sidebarLink span,
+.sidebar.sidebar-collapsed .boton-dashboard span {
+  display: none;
+}
+
+.sidebar.sidebar-collapsed .botones {
+  align-items: center;
+}
+
+.sidebar.sidebar-collapsed .botones .sidebarLink:hover {
   background-color: var(--color-primario-claro);
 }
 
-.colapsada .botones .sidebarLink svg {
+.sidebar.sidebar-collapsed .botones .sidebarLink svg {
   width: 32px !important;
   height: 32px !important;
   min-width: 32px !important;
@@ -172,14 +210,9 @@ span {
   max-height: 32px !important;
 }
 
-.colapsada .botones {
-  align-items: center;
-}
-
 /* CONTENIDO PRINCIPAL */
 .main-content {
-  padding: 30px;
-  background-color: var(--color-primario-claro);
+  background-color: var(--color-acento);
 }
 
 .dashboard-header h1 {

@@ -1,8 +1,8 @@
-.cerrar-sesion-btn {
-  display: flex !important;
+.boton-perfil-base {
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
+  display: flex;
   align-items: center;
   gap: 15px;
   font-size: 1.1rem;
@@ -12,6 +12,6 @@
   background-color: var(--color-secundario);
 }
 
-.cerrar-sesion-btn:hover {
+.boton-perfil-base:hover {
   background-color: var(--color-primario);
 }

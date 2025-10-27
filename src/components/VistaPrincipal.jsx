@@ -211,7 +211,7 @@ const handleNovedades = async () => {
       </div>
       </header>
       {/* ----------------------- */}
-      {/*   FORMULARIO DE SUBIDA */}
+      {/*   FORMULARIO DE SUBIDA PDF */}
       {/* ----------------------- */}
       <section id="subirpdf">
         <h2 className="herramientas">Herramientas</h2>
@@ -234,7 +234,7 @@ const handleNovedades = async () => {
               onChange={(e) => setFicha(e.target.value)}
             />
             <label>Selecciona los archivos PDF</label>
-            <div {...getRootProps({ className: "dropzone" })}>
+            <div {...getRootProps({ className: "zona-carga" })}>
               <input {...getInputProps()} />
               <p>Arrastra tus archivos aquí o haz clic para seleccionarlos</p>
             </div>
