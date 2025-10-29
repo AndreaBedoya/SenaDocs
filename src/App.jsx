@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Registro from "./components/Registro";
 import Login from "./components/Login";
@@ -7,9 +7,11 @@ import Recuperar from "./components/Recuperar";
 import Perfil from "./components/Perfil";
 import Configuracion from "./components/Configuracion";
 import RutaProtegida from "./components/RutaProtegida";
-import ActualizarDatos from "./components/ActualizarDatos"; 
-import Dashboard from "./components/Dashboard";
+import ActualizarDatos from "./components/ActualizarDatos";
+import Dashboard from "./Views/Dashboard";
 import RenombrarPDF from "./Views/RenombrarPDF";
+import NovedadesAcademicas from "./Views/NovedadesAcademicas";
+import JuiciosEvaluativos from "./Views/JuiciosEvaluativos";
 
 function App() {
   const [autenticado, setAutenticado] = useState(false);
@@ -30,7 +32,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
         {/* Página inicial: Registro */}
         <Route path="/" element={<Navigate to="/registro" />} />
@@ -45,10 +47,6 @@ function App() {
             autenticado ? <Navigate to="/vistaPrincipal" replace /> : <Login />
           }
         />
-
-
-        <Route path="/dashboard" element={<Dashboard />} />
-
 
         {/* Recuperación de contraseña solo si no hay sesión */}
         <Route
@@ -87,9 +85,6 @@ function App() {
             </RutaProtegida>
           }
         />
-        <Route 
-        path="/renombrar-pdf" 
-        element={<RenombrarPDF />} />
 
         {/* ✅ Nueva ruta protegida para actualizar datos */}
         <Route
@@ -100,8 +95,15 @@ function App() {
             </RutaProtegida>
           }
         />
+
+        {/* Dashboard con rutas anidadas */}
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="renombrar-pdf" element={<RenombrarPDF />} />
+          <Route path="juicios-evaluativos" element={<JuiciosEvaluativos />} />
+          <Route path="novedades-academicas" element={<NovedadesAcademicas />} />
+        </Route>
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 

@@ -1,4 +1,7 @@
 import { useSidebarStore } from "../Store/useSidebarStore"; 
+import { Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 // ACA SE IMPORTAN LOS ICONOS
 import IconColapsar from "../Icons/IconColapsar.jsx";
 import IconInicio from "../Icons/IconInicio.jsx";
@@ -39,22 +42,25 @@ export default function Dashboard() {
           {/* MENÚ PRINCIPAL */}
           <div className="upperSidebar">
             <nav className="menu">
-              <a href="/dashboard" className="sidebarLink">
+              <Link to="/dashboard" className="sidebarLink">
                 <IconInicio />
                 {!isCollapsed && <span>Inicio</span>}
-              </a>
-              <a href="/renombrar-pdf" className="sidebarLink">
+              </Link>
+
+              <Link to="/dashboard/renombrar-pdf" className="sidebarLink">
                 <IconPDF />
                 {!isCollapsed && <span>Renombrar PDF</span>}
-              </a>
-              <a href="/juicios-evaluativos" className="sidebarLink">
+              </Link>
+
+              <Link to="/dashboard/juicios-evaluativos" className="sidebarLink">
                 <IconPorcentaje />
                 {!isCollapsed && <span>Juicios evaluativos</span>}
-              </a>
-              <a href="/novedades-academicas" className="sidebarLink">
+              </Link>
+
+              <Link to="/dashboard/novedades-academicas" className="sidebarLink">
                 <IconNovedades />
                 {!isCollapsed && <span>Novedades académicas</span>}
-              </a>
+              </Link>
             </nav>
           </div>
         </div>
@@ -79,8 +85,8 @@ export default function Dashboard() {
           onBuscar={handleBusqueda}
           className={`barra-busqueda ${isCollapsed ? "busqueda-colapsada" : ""}`}
         />
-        {/* Resto del contenido */}
-        <p>aca van graficas y atajos de la pagina</p>
+        <Outlet /> {/* Aquí se renderiza la vista funcional */}
+        
       </main>
     </div>
   );

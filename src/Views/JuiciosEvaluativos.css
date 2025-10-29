@@ -1,0 +1,75 @@
+.evaluativos {
+  padding: 40px;
+  background: #f5f5f5;
+  width: 100%;
+}
+
+.juicios {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: #000;
+  max-width: 68%;
+  min-height: 30vh;
+  margin: 0 auto;
+  border: 2px solid #28a745;
+}
+
+.juicios h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #000000;
+  text-align: center;
+  text-shadow: 2px 2px 4px #5eb319;
+}
+
+.juicios p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.juicios input[type="file"] {
+  display: flex;
+  margin: 0 auto 20px auto;
+  padding: 10px;
+  border: 2px solid #5cb359;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.juicios input[type="file"]:hover {
+  border-color: #2e7d32;
+}
+
+.archivo-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e8f5e9;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.archivo-info p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.archivo-info button {
+  background-color: #1b5e20;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.archivo-info button:hover {
+  background-color: #2e7d32;
+}
