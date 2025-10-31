@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
+import Swal from "sweetalert2";
 import "./RenombrarPDF.css";
 
 export default function RenombrarPDF() {
@@ -14,12 +15,73 @@ export default function RenombrarPDF() {
     },
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Carpeta:", carpeta);
-    console.log("Ficha:", ficha);
-    console.log("Archivos:", archivos);
-    // Aquí puedes agregar lógica para enviar los archivos
+
+    if (!carpeta || archivos.length === 0) {
+      Swal.fire({
+        title: "⚠️ Campos incompletos",
+        text: "Debes ingresar la carpeta y seleccionar al menos un archivo.",
+        icon: "warning",
+        confirmButtonText: "Entendido"
+      });
+      return;
+    }
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      Swal.fire({
+        title: "🔒 Sesión no iniciada",
+        text: "Debes iniciar sesión para usar esta funcionalidad.",
+        icon: "error",
+        confirmButtonText: "Ir al login"
+      });
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("carpeta", carpeta);
+    formData.append("ficha", ficha);
+    archivos.forEach((file) => {
+      formData.append("archivos", file);
+    });
+
+    try {
+      const response = await fetch("http://localhost:4000/api/upload", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        Swal.fire({
+          title: "✅ Subida completada",
+          text: `Archivos procesados: ${data.cantidad || archivos.length}`,
+          icon: "success",
+          confirmButtonText: "Aceptar"
+        });
+        setArchivos([]);
+      } else {
+        Swal.fire({
+          title: "❌ Error",
+          text: data.error || "No se pudo procesar los archivos.",
+          icon: "error",
+          confirmButtonText: "Cerrar"
+        });
+      }
+    } catch (error) {
+      console.error("Error al subir archivos:", error);
+      Swal.fire({
+        title: "❌ Error de conexión",
+        text: "No se pudo conectar con el servidor.",
+        icon: "error",
+        confirmButtonText: "Cerrar"
+      });
+    }
   };
 
   return (
