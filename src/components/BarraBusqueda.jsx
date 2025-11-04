@@ -1,4 +1,8 @@
 import { useState } from "react";
+import MenuPerfil from "../components/MenuPerfil";
+import BotonBuscar from "../Botones/BotonBuscar";
+import IconPerfil from "../Icons/IconPerfil";
+import IconBuscar from "../Icons/IconBuscar";
 import "./BarraBusqueda.css";
 
 export default function BarraBusqueda({ onBuscar, className = "" }) {
@@ -17,7 +21,21 @@ export default function BarraBusqueda({ onBuscar, className = "" }) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button type="submit">Buscar</button>
+
+      <div className="acciones-barra">
+        <BotonBuscar
+        texto={""}
+        Icon={IconBuscar}
+        type="submit" 
+        className="btn-buscar"
+        />
+
+        <MenuPerfil
+          texto={""}
+          Icon={IconPerfil}
+          className="Perfil-busqueda"
+        />
+      </div>
     </form>
   );
 }

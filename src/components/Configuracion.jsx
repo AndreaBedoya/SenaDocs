@@ -42,7 +42,7 @@ export default function Perfil() {
       alert("Contraseña actualizada correctamente");
       setContraseñaAnterior("");
       setNuevaContraseña("");
-      navigate("/vistaPrincipal");
+      navigate("/dashboard");
     } else {
       alert(resultado.mensaje || "Error al actualizar la contraseña");
     }

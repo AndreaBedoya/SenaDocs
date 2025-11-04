@@ -85,7 +85,7 @@ export default function Dashboard() {
           onBuscar={handleBusqueda}
           className={`barra-busqueda ${isCollapsed ? "busqueda-colapsada" : ""}`}
         />
-        <Outlet /> {/* Aquí se renderiza la vista funcional */}
+        <Outlet /> {/* Aquí se renderiza el dashboard funcional */}
         
       </main>
     </div>

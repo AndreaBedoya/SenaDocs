@@ -1,37 +1,89 @@
+/* Contenedor principal */
 .barra-busqueda {
   display: flex;
   align-items: center;
   width: 84vw;
   gap: 10px;
-  padding: 10px;
-  background-color: white;
+  padding: 10px 16px;
+  background-color: #FFFFFF;
   border-radius: 10px;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  font-family: "Segoe UI", sans-serif;
 }
 
+/* Input de búsqueda */
 .barra-busqueda input {
   flex: 1;
   padding: 8px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #CCCCCC;
   border-radius: 8px;
   font-size: 1rem;
+  color: #1A1A1A;
 }
 
-.barra-busqueda button {
-  padding: 8px 16px;
-  background-color: var(--color-primario);
-  color: white;
+.barra-busqueda div{
+  width: auto;
+}
+
+.acciones-barra{
+  display: flex;
+  width: 300px;
+}
+
+
+/* Botón de búsqueda */
+.btn-buscar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #fff;
+  color: #248232;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
+  
+}
+.btn-buscar:hover{
+  background: #fff;
+}
+
+/* Estilos del boton perfil de la barra busqueda */
+.Perfil-busqueda{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #fff;
+  color:#2C497F ;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.Perfil-busqueda:hover{
+  background: #fff;
+}
+
+/* Contenedor del menú de perfil */
+.menu-perfil-wrapper {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo del botón perfil */
+.menu-perfil-wrapper .perfil-btn {
+  background-color: transparent;
+  color: #007A33;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
   transition: background-color 0.3s ease;
 }
 
-.barra-busqueda button:hover {
-  background-color: var(--color-primario-claro);
-  color: black;
+.menu-perfil-wrapper .perfil-btn:hover {
+  background-color: #F4F4F4;
 }
 
-.busqueda-colapsada {
-  width: 95vw;
-}

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./BotonVolver.css";
 
-export default function BotonVolver({ destino = "/vistaPrincipal", texto = "Volver" }) {
+export default function BotonVolver({ destino = "/dashboard", texto = "Volver" }) {
   const navigate = useNavigate();
 
   return (

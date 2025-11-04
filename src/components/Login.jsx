@@ -50,7 +50,7 @@ export default function Login() {
           text: `Hola ${resultado.usuario.nombre || resultado.usuario.nombre_completo}`,
           confirmButtonText: "Continuar"
         }).then(() => {
-          navigate("/vistaPrincipal"); // ✅ Redirige directamente al perfil
+          navigate("/dashboard"); // ✅ Redirige directamente al perfil
         });
       } else {
         Swal.fire({

@@ -1,0 +1,16 @@
+.boton-buscar {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: 0.25s all;
+  color: white;
+  background-color: var(--color-secundario);
+}
+
+.boton-buscar:hover {
+  background-color: var(--color-primario);
+}

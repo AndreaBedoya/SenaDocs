@@ -2,12 +2,12 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Registro from "./components/Registro";
 import Login from "./components/Login";
-import VistaPrincipal from "./components/VistaPrincipal";
 import Recuperar from "./components/Recuperar";
 import Perfil from "./components/Perfil";
 import Configuracion from "./components/Configuracion";
 import RutaProtegida from "./components/RutaProtegida";
 import ActualizarDatos from "./components/ActualizarDatos";
+import LandingPage from "./Views/LandingPage";
 import Dashboard from "./Views/Dashboard";
 import RenombrarPDF from "./Views/RenombrarPDF";
 import NovedadesAcademicas from "./Views/NovedadesAcademicas";
@@ -44,7 +44,7 @@ function App() {
         <Route
           path="/login"
           element={
-            autenticado ? <Navigate to="/vistaPrincipal" replace /> : <Login />
+            autenticado ? <Navigate to="/dashboard" replace /> : <Login />
           }
         />
 
@@ -56,12 +56,12 @@ function App() {
           }
         />
 
-        {/* Vista principal protegida */}
+        {/*landing principal protegida */}
         <Route
-          path="/vistaPrincipal"
+          path="/Landing"
           element={
             <RutaProtegida>
-              <VistaPrincipal />
+              <LandingPage />
             </RutaProtegida>
           }
         />
