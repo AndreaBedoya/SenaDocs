@@ -10,20 +10,38 @@ export default function LandingPage() {
 
   const preguntas = [
     {
-      pregunta: "¿Cómo funciona SENADOCS?",
+      pregunta: "¿Cómo reportar un error dentro del sistema?",
       respuesta: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
     },
     {
-      pregunta: "¿Es compatible con otros sistemas?",
+      pregunta: "¿Qué hacer si el sistema se congela o no responde?",
       respuesta: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
     },
     {
-      pregunta: "¿Hay aplicaciones móviles?",
+      pregunta: "¿Qué hacer si el sistema no renombra el PDF?",
+      respuesta: "Esto puede pasar si el archivo tiene bloqueo de permisos o está abierto en otro programa. Cierra el documento, vuelve a intentarlo o renómbralo manualmente desde el sistema. El sistema mostrará una notificación si no logra completar el proceso."
+    },
+    {
+      pregunta: "¿Por qué no se cargan mis documentos PDF?",
+      respuesta: "Puede deberse a que los archivos superan la cantidad máxima permitida o tiene un nombre con caracteres no válidos. Verifica que el documento esté en formato .pdf o excel y no exceda el límite establecido."
+    },
+
+    {
+      pregunta: "¿Por qué no se generan las gráficas desde Excel?",
       respuesta: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
     },
     {
-      pregunta: "¿Cuál es el costo del servicio?",
+      pregunta: "¿Qué hago si los porcentajes evaluativos no se calculan correctamente?",
       respuesta: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+    },
+    {
+      pregunta: "¿Qué pasa si olvido mi contraseña y no recibo el enlace de recuperación?",
+      respuesta: "Esto puede pasar si el archivo tiene bloqueo de permisos o está abierto en otro programa. Cierra el documento, vuelve a intentarlo o renómbralo manualmente desde el sistema. El sistema mostrará una notificación si no logra completar el proceso."
+    },
+    {
+      pregunta: "¿Por qué el sistema no guarda mis cambios en el perfil?",
+      respuesta: "Puede deberse a que los archivos superan la cantidad máxima permitida o tiene un nombre con caracteres no válidos. Verifica que el documento esté en formato .pdf o excel y no exceda el límite establecido."
+
     }
   ];
 
@@ -75,7 +93,28 @@ export default function LandingPage() {
       {/* Equipo */}
       <section id="equipo" className="Equipo">
         <h2>Equipo de Trabajo</h2>
-        <p>Conoce a las personas detrás del proyecto. Profesionales comprometidos con la permanencia educativa.</p>
+        <p>Conoce a las personas detrás de SenaDocs, un equipo comprometido con la innovación <br/> tecnológica  y la mejora continua de la gestión documental, trabajando para <br/> fortalecer la eficiencia y permanencia educativa en el SENA.</p>
+
+        <div className="equipo-grid">
+          <div className="miembro">
+            <img src="../../public/FotoMauricio.jpeg" alt="Mauricio" />
+            <h3>Mauricio Villanueva</h3>
+            <p className="rol">Analista de Datos</p>
+            <p>Desarrolla modelos predictivos para detectar riesgos de deserción y mejora continua del sistema.</p>
+          </div>
+          <div className="miembro">
+            <img src="../../public/FotoAndrea.jpg" alt="Andrea Niño" />
+            <h3>Andrea Niño</h3>
+            <p className="rol">Full Stack Developer</p>
+            <p>Encargada de la arquitectura modular, seguridad y experiencia de usuario en la plataforma SENADOCS.</p>
+          </div>
+          <div className="miembro">
+            <img src="../../public/FotoDylan.jpeg" alt="Dylan Sanchez" />
+            <h3>Dylan Sanchez</h3>
+            <p className="rol">Diseñadora UX/UI</p>
+            <p>Diseña interfaces intuitivas y accesibles para mejorar la interacción de los usuarios con la plataforma.</p>
+          </div>
+        </div>
       </section>
 
       {/* FAQ */}
@@ -83,15 +122,18 @@ export default function LandingPage() {
         <h2>Preguntas Frecuentes</h2>
         <ul className="faq-list">
           {preguntas.map((item, index) => (
-            <li key={index} className="faq-item">
+            <ol key={index} className="faq-item">
               <button className="faq-question" onClick={() => toggleFAQ(index)}>
                 {item.pregunta}
                 <span>{activo === index ? "−" : "+"}</span>
               </button>
               {activo === index && <div className="faq-answer">{item.respuesta}</div>}
-            </li>
+            </ol>
           ))}
         </ul>
+        <p>Estas son solo algunas de las preguntas más frecuentes.
+            Recuerda que dentro de la página web encontrarás una sección de ayuda con guías y respuestas detalladas.
+            Si aún tienes inconvenientes al realizar alguna función, no dudes en comunicarte a los números disponibles en la sección de contacto.</p>
       </section>
 
       {/* Contacto */}

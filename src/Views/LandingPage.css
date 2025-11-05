@@ -7,7 +7,10 @@ body {
   scroll-behavior: smooth;
 }
 
+/* ------------------------------------------------------------------------- */
 /* Navbar */
+/* ------------------------------------------------------------------------- */
+
 .navbar {
   width: 100dvw;
   display: flex;
@@ -59,7 +62,10 @@ body {
   cursor: pointer;
 }
 
+/* ------------------------------------------------------------------------- */
 /* Hero */
+/* ------------------------------------------------------------------------- */
+
 .hero {
   background-color: #007A33;
   height: 92vh;
@@ -90,14 +96,17 @@ body {
   font-weight: 500;
 }
 
+/* ------------------------------------------------------------------------- */
 /* Seccion ¿Por que se creo?*/
+/* ------------------------------------------------------------------------- */
+
 .PorqueSeCreo {
   min-width: 100vw;
   min-height: 100vh;
   padding: 60px 30px;
   max-width: 900px;
   margin: auto;
-  background: blue;
+  background: var(--color-secundario);
 }
 
 .PorqueSeCreo h2 {
@@ -110,7 +119,10 @@ body {
   padding-left: 20px;
 }
 
+/* ------------------------------------------------------------------------- */
 /* Seccion QueEsSena */
+/* ------------------------------------------------------------------------- */
+
 .QueEsSenaDocs {
   min-width: 100vw;
   min-height: 100vh;
@@ -129,17 +141,89 @@ body {
   padding-left: 20px;
 }
 
+/* ------------------------------------------------------------------------- */
+/* Seccion del equipo de trabajo*/
+/* ------------------------------------------------------------------------- */
+.Equipo {
+  min-width: 100vw;
+  min-height: 100vh;
+  padding: 60px 30px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.Equipo h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.Equipo p {
+ color: #000;
+ text-align: center;
+}
+
+.equipo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.miembro {
+  background-color: #F4F4F4;
+  border-radius: 12px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 2px 2px 6px #919191;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.miembro:hover {
+  transform: translateY(-5px);
+}
+
+.miembro img {
+  width: 12.5vw;
+  height: 30vh;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  object-fit: cover;
+}
+
+.miembro h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--color-primario);
+}
+
+.rol {
+  font-weight: 600;
+  color: #555;
+  margin: 6px 0;
+}
+
+.miembro p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* ------------------------------------------------------------------------- */
 /* Seccion de preguntas frecuentes */
+/* ------------------------------------------------------------------------- */
+
 .PreguntasFrecuentes {
   min-width: 100vw;
   min-height: 100vh;
   padding: 60px 30px;
   max-width: 900px;
   margin: auto;
-  background: #007A33;
 }
 
 .PreguntasFrecuentes h2 {
+  color: #000;
   font-size: 2rem;
   margin-bottom: 20px;
 }
@@ -149,21 +233,33 @@ body {
   padding-left: 20px;
 }
 
+.PreguntasFrecuentes p{
+  color: #000;
+  font-size: 1.1rem;
+  width: 60vw;
+  padding: 20px 30px;
+  background: var(--color-acento);
+  border-radius: 20px;
+
+}
+
+/* ------------------------------------------------------------------------- */
 /* FAQ */
+/* ------------------------------------------------------------------------- */
 .faq-list {
   list-style: none;
   padding: 0;
 }
 
 .faq-item {
-  margin-bottom: 12px;
+  margin-bottom: 2%;
 }
 
 .faq-question {
   min-width: 60vw;
   text-align: left;
   background-color: #F4F4F4;
-  border: none;
+  border: 1.5px solid var(--color-primario);
   color: #000;
   padding: 12px;
   font-weight: 600;
@@ -173,11 +269,33 @@ body {
   justify-content: space-between;
 }
 
+.faq-question:hover {
+  margin-bottom: 12px;
+  background: var(--color-secundario);
+  color: #fff;
+}
+
 .faq-answer {
+  max-width: 60vw;
   background-color: #FFFFFF;
   padding: 10px 14px;
   border-left: 4px solid #007A33;
   margin-top: 6px;
   border-radius: 6px;
   color:#000;
+}
+
+/* ------------------------------------------------------------------------- */
+/* Contacto*/
+/* ------------------------------------------------------------------------- */
+.Contacto{
+  background: var(--color-primario);
+}
+
+.Contacto h2{
+  color: #000;
+}
+
+.Contacto p{
+  color: #000;
 }
