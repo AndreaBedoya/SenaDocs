@@ -10,20 +10,20 @@ export default function LandingPage() {
 
   const preguntas = [
     {
-      pregunta: "¿Cómo funcionan las Alertas Tempranas?",
-      respuesta: "Analizan datos académicos y de comportamiento para detectar riesgos de deserción."
+      pregunta: "¿Cómo funciona SENADOCS?",
+      respuesta: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
     },
     {
       pregunta: "¿Es compatible con otros sistemas?",
-      respuesta: "Sí, se integra fácilmente con plataformas educativas existentes."
+      respuesta: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
     },
     {
       pregunta: "¿Hay aplicaciones móviles?",
-      respuesta: "Sí, disponibles para Android y iOS."
+      respuesta: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
     },
     {
       pregunta: "¿Cuál es el costo del servicio?",
-      respuesta: "Ofrecemos planes gratuitos y premium según el tamaño de la institución."
+      respuesta: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
     }
   ];
 
@@ -40,46 +40,46 @@ export default function LandingPage() {
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
-        <button className="btn-login">🚪 Iniciar Sesión</button>
+        <button className="btn-login"> Iniciar Sesión</button>
       </nav>
 
       {/* Hero */}
       <section id="inicio" className="hero">
-        <h1>Previene la Deserción de Aprendices con SENADOCS</h1>
-        <p>Identifica riesgos a tiempo y asegura el éxito de tus estudiantes con nuestras herramientas de monitoreo y análisis inteligente.</p>
+        <h1>Automatiza tareas con SENADOCS</h1>
+        <p>Conoce las funcionalidades que SENADOCS tiene para ti</p>
         <ul>
-          <li>✔ Detección temprana de riesgos</li>
-          <li>✔ Análisis predictivo avanzado</li>
-          <li>✔ Acceso móvil 24/7</li>
+          <li>✔ Renombra y organiza PDF</li>
+          <li>✔ Calcula el porcentaje de los juicios evaluativos</li>
+          <li>✔ Genera graficas apartir de novedades academicas</li>
         </ul>
         <button className="btn-cta">Empieza Ahora ➜</button>
       </section>
 
-      {/* Motivos */}
-      <section id="motivos" className="section">
-        <h2>Motivos de deserción temprana</h2>
+      {/* ¿Por que se creo? */}
+      <section id="motivos" className="PorqueSeCreo">
+        <h2>¿Por que se creo SENADOCS?</h2>
         <ul>
-          <li>Dificultades académicas persistentes</li>
-          <li>Falta de apoyo y orientación educativa</li>
-          <li>Problemas financieros y necesidad de trabajar</li>
-          <li>Baja autoestima y desmotivación</li>
+          <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+          <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+          <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+          <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
         </ul>
       </section>
 
       {/* ¿Qué son? */}
-      <section id="que-son" className="section">
-        <h2>¿Qué son las Alertas Tempranas?</h2>
-        <p>Son un sistema de monitoreo y análisis que identifica estudiantes en riesgo de abandono, permitiendo intervenir con soporte adecuado y recursos personalizados.</p>
+      <section id="que-son" className="QueEsSenaDocs">
+        <h2>¿Qué es SENADOCS?</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
       </section>
 
       {/* Equipo */}
-      <section id="equipo" className="section">
+      <section id="equipo" className="Equipo">
         <h2>Equipo de Trabajo</h2>
         <p>Conoce a las personas detrás del proyecto. Profesionales comprometidos con la permanencia educativa.</p>
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="section">
+      <section id="faq" className="PreguntasFrecuentes">
         <h2>Preguntas Frecuentes</h2>
         <ul className="faq-list">
           {preguntas.map((item, index) => (
@@ -95,7 +95,7 @@ export default function LandingPage() {
       </section>
 
       {/* Contacto */}
-      <section id="contacto" className="section">
+      <section id="contacto" className="Contacto">
         <h2>Contacto</h2>
         <p>📧 contacto@senadocs.edu.co</p>
         <p>📞 +57 123 456 7890</p>

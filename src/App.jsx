@@ -35,7 +35,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Página inicial: Registro */}
-        <Route path="/" element={<Navigate to="/registro" />} />
+        <Route path="/" element={<Navigate to="/landing" />} />
 
         {/* Registro siempre accesible */}
         <Route path="/registro" element={<Registro />} />
@@ -58,7 +58,7 @@ function App() {
 
         {/*landing principal protegida */}
         <Route
-          path="/Landing"
+          path="/landing"
           element={
             <RutaProtegida>
               <LandingPage />
