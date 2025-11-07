@@ -67,78 +67,215 @@ body {
 /* ------------------------------------------------------------------------- */
 
 .hero {
-  background-color: #007A33;
-  height: 92vh;
-  color: white;
+  background-color: #F4F4F4;
   padding: 60px 30px;
-  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.hero h1 {
-  font-size: 2.5rem;
+.hero-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-texto {
+  flex: 1;
+  min-width: 300px;
+}
+
+.hero-texto h1 {
+  font-size: 2.8rem;
+  color: #007A33;
   margin-bottom: 20px;
-  color: #fff;
 }
 
-.hero p {
+.hero-texto p {
   font-size: 1.2rem;
+  color: #333;
   margin-bottom: 20px;
 }
 
-.hero ul {
+.hero-texto ul {
   list-style: none;
   padding: 0;
   margin-bottom: 20px;
 }
 
-.hero li {
-  margin-bottom: 8px;
+.hero-texto li {
+  margin-bottom: 10px;
   font-weight: 500;
+  color: #007A33;
+}
+
+.hero-botones {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-cta {
+  background-color: #00A859;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-secundario {
+  background-color: white;
+  color: #007A33;
+  padding: 12px 24px;
+  border: 2px solid #007A33;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hero-imagen {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.hero-imagen svg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
 }
 
 /* ------------------------------------------------------------------------- */
 /* Seccion ¿Por que se creo?*/
 /* ------------------------------------------------------------------------- */
-
 .PorqueSeCreo {
-  min-width: 100vw;
+  background: linear-gradient(135deg, #E6F4F1, #F9FCFB);
+  color: #333;
+  padding: 80px 30px;
   min-height: 100vh;
-  padding: 60px 30px;
-  max-width: 900px;
-  margin: auto;
-  background: var(--color-secundario);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.PorqueSeCreo h2 {
-  font-size: 2rem;
+.motivos-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.motivos-texto {
+  flex: 1;
+  min-width: 300px;
+}
+
+.motivos-texto h2 {
+  font-size: 2.4rem;
   margin-bottom: 20px;
+  color: #007A33;
 }
 
-.PorqueSeCreo ul {
-  list-style: disc;
-  padding-left: 20px;
+.motivos-texto p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.motivos-texto ul {
+  list-style: none;
+  padding: 0;
+}
+
+.motivos-texto li {
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #00A859;
+}
+
+.motivos-imagen {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.motivos-imagen svg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  border: 1px solid #007A33;
 }
 
 /* ------------------------------------------------------------------------- */
-/* Seccion QueEsSena */
+/* Seccion funcionalidades */
 /* ------------------------------------------------------------------------- */
 
-.QueEsSenaDocs {
-  min-width: 100vw;
+.Funcionalidades {
+  background-color: #F9FCFB;
+  padding: 80px 30px;
   min-height: 100vh;
-  padding: 60px 30px;
-  max-width: 900px;
-  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.QueEsSenaDocs h2 {
-  font-size: 2rem;
+.funcionalidades-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.funcionalidades-texto {
+  flex: 1;
+  min-width: 300px;
+}
+
+.funcionalidades-texto h2 {
+  font-size: 2.4rem;
   margin-bottom: 20px;
+  color: #007A33;
 }
 
-.QueEsSenaDocs ul {
-  list-style: disc;
-  padding-left: 20px;
+.funcionalidades-texto p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.funcionalidades-texto ul {
+  list-style: none;
+  padding: 0;
+}
+
+.funcionalidades-texto li {
+  margin-bottom: 12px;
+  font-weight: 500;
+  color: #007A33;
+  font-size: 1rem;
+}
+
+.funcionalidades-imagen {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.funcionalidades-imagen svg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 /* ------------------------------------------------------------------------- */

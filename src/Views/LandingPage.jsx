@@ -1,5 +1,8 @@
 import { useState } from "react";
 import "./LandingPage.css";
+import IlustracionHero from "../Icons/IlustracionHero.jsx";
+import IlustracionMotivos from "../Icons/IlustracionMotivos.jsx";
+import IlustracionFuncionalidades from "../Icons/IlustracionFuncionalidades.jsx";
 
 export default function LandingPage() {
   const [activo, setActivo] = useState(null);
@@ -41,7 +44,6 @@ export default function LandingPage() {
     {
       pregunta: "¿Por qué el sistema no guarda mis cambios en el perfil?",
       respuesta: "Puede deberse a que los archivos superan la cantidad máxima permitida o tiene un nombre con caracteres no válidos. Verifica que el documento esté en formato .pdf o excel y no exceda el límite establecido."
-
     }
   ];
 
@@ -52,10 +54,10 @@ export default function LandingPage() {
         <div className="logo">SENADOCS</div>
         <ul className="nav-links">
           <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#motivos">Motivos</a></li>
-          <li><a href="#que-son">¿Qué son?</a></li>
+          <li><a href="#motivos">¿Por que se creo?</a></li>
+          <li><a href="#que-son">Funcionalidades</a></li>
           <li><a href="#equipo">Equipo</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
         <button className="btn-login"> Iniciar Sesión</button>
@@ -63,32 +65,72 @@ export default function LandingPage() {
 
       {/* Hero */}
       <section id="inicio" className="hero">
-        <h1>Automatiza tareas con SENADOCS</h1>
-        <p>Conoce las funcionalidades que SENADOCS tiene para ti</p>
-        <ul>
-          <li>✔ Renombra y organiza PDF</li>
-          <li>✔ Calcula el porcentaje de los juicios evaluativos</li>
-          <li>✔ Genera graficas apartir de novedades academicas</li>
-        </ul>
-        <button className="btn-cta">Empieza Ahora ➜</button>
-      </section>
+        <div className="hero-content">
+          <div className="hero-texto">
+            <h1>Automatiza tareas con SENADOCS</h1>
+            <p>Impulsa la eficiencia en tus procesos con herramientas avanzadas de automatización educativa.</p>
+            <ul>
+              <li>✔ Renombra y organiza PDF</li>
+              <li>✔ Calcula el porcentaje de los juicios evaluativos</li>
+              <li>✔ Genera gráficas a partir de novedades académicas</li>
+            </ul>
+            <div className="hero-botones">
+              <button className="btn-cta">Empieza Ahora ➜</button>
+              <button className="btn-secundario">Registrarse</button>
+            </div>
+          </div>
 
+          <div className="hero-imagen">
+            <IlustracionHero/>
+          </div>
+        </div>
+      </section>
+      
       {/* ¿Por que se creo? */}
       <section id="motivos" className="PorqueSeCreo">
-        <h2>¿Por que se creo SENADOCS?</h2>
-        <ul>
-          <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
-          <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
-          <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
-          <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
-        </ul>
+        <div className="motivos-content">
+          <div className="motivos-imagen">
+            <IlustracionMotivos/>
+          </div>
+          
+          <div className="motivos-texto">
+            <h2>¿Por qué se creó SENADOCS?</h2>
+            <p>
+              SENADOCS surge como una solución a los desafíos administrativos en entornos educativos. Su propósito es automatizar tareas repetitivas, reducir errores humanos y liberar tiempo para lo que realmente importa: el aprendizaje.
+            </p>
+            <ul>
+              <li>✔ Optimiza la gestión documental</li>
+              <li>✔ Automatiza cálculos y reportes académicos</li>
+              <li>✔ Facilita el seguimiento de novedades</li>
+              <li>✔ Mejora la experiencia de instructores y aprendices</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
-      {/* ¿Qué son? */}
-      <section id="que-son" className="QueEsSenaDocs">
-        <h2>¿Qué es SENADOCS?</h2>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+      {/* Funcionalidades */}
+      <section id="funcionalidades" className="Funcionalidades">
+        <div className="funcionalidades-content">
+          <div className="funcionalidades-texto">
+            <h2>Funcionalidades</h2>
+            <p>
+              SENADOCS automatiza procesos clave en la gestión educativa, permitiendo ahorrar tiempo y reducir errores. Estas son algunas de sus capacidades:
+            </p>
+            <ul>
+              <li>📁 Renombrado inteligente de archivos PDF</li>
+              <li>📊 Cálculo automático de juicios evaluativos</li>
+              <li>📈 Generación de gráficas a partir de novedades académicas</li>
+              <li>🔔 Exportación de documentos PDF</li>
+              <li>📂 Organización de documentos por ficha.</li>
+            </ul>
+          </div>
+
+          <div className="funcionalidades-imagen">
+            <IlustracionFuncionalidades/>
+          </div>
+        </div>
       </section>
+
 
       {/* Equipo */}
       <section id="equipo" className="Equipo">
