@@ -352,74 +352,95 @@ body {
 /* ------------------------------------------------------------------------- */
 
 .PreguntasFrecuentes {
-  min-width: 100vw;
+  background-color: #F9FCFB;
+  padding: 80px 30px;
   min-height: 100vh;
-  padding: 60px 30px;
-  max-width: 900px;
-  margin: auto;
-}
-
-.PreguntasFrecuentes h2 {
-  color: #000;
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.PreguntasFrecuentes ul {
-  list-style: disc;
-  padding-left: 20px;
-}
-
-.PreguntasFrecuentes p{
-  color: #000;
-  font-size: 1.1rem;
-  width: 60vw;
-  padding: 20px 30px;
-  background: var(--color-acento);
-  border-radius: 20px;
-
-}
-
-/* ------------------------------------------------------------------------- */
-/* FAQ */
-/* ------------------------------------------------------------------------- */
-.faq-list {
-  list-style: none;
-  padding: 0;
-}
-
-.faq-item {
-  margin-bottom: 2%;
-}
-
-.faq-question {
-  min-width: 60vw;
-  text-align: left;
-  background-color: #F4F4F4;
-  border: 1.5px solid var(--color-primario);
-  color: #000;
-  padding: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  border-radius: 8px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
 }
 
-.faq-question:hover {
+.faq-content {
+  display: flex;
+  gap: 40px;
+  max-width: 100dvw;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 6%;
+}
+
+.faq-texto {
+  flex: 1;
+  min-width: 300px;
+}
+
+.faq-texto h2 {
+  font-size: 2.4rem;
+  color: #007A33;
+  margin-bottom: 10px;
+}
+
+.faq-texto p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.faq-bloque {
+  width: 60vw;
+  margin-bottom: 30px;
+}
+
+.faq-bloque h3 {
+  font-size: 1.2rem;
+  color: #00A859;
+  margin-bottom: 10px;
+}
+
+details {
+  background-color: #fff;
+  border: 2px solid #E0E0E0;
+  border-radius: 8px;
+  padding: 12px 16px;
   margin-bottom: 12px;
-  background: var(--color-secundario);
-  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.faq-answer {
-  max-width: 60vw;
-  background-color: #FFFFFF;
-  padding: 10px 14px;
-  border-left: 4px solid #007A33;
-  margin-top: 6px;
-  border-radius: 6px;
-  color:#000;
+summary {
+  font-weight: 600;
+  color: #007A33;
+  font-size: 1rem;
+}
+
+details[open] {
+  border-color: #00A859;
+  background-color: #F0FFF5;
+}
+
+details p {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.faq-footer {
+  margin-top: 40px;
+  font-size: 0.95rem;
+  color: #666;
+  background-color: #E6F4F1;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.faq-ilustracion {
+  min-width: auto;
+  text-align: center;
+}
+
+.faq-ilustracion svg {
+  max-width: 100%;
+  height: auto;
 }
 
 /* ------------------------------------------------------------------------- */

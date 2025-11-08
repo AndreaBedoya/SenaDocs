@@ -3,7 +3,7 @@ import "./LandingPage.css";
 import IlustracionHero from "../Icons/IlustracionHero.jsx";
 import IlustracionMotivos from "../Icons/IlustracionMotivos.jsx";
 import IlustracionFuncionalidades from "../Icons/IlustracionFuncionalidades.jsx";
-
+import IlustracionPreguntas from "../Icons/IlustracionPreguntas.jsx";
 export default function LandingPage() {
   const [activo, setActivo] = useState(null);
 
@@ -161,21 +161,44 @@ export default function LandingPage() {
 
       {/* FAQ */}
       <section id="faq" className="PreguntasFrecuentes">
-        <h2>Preguntas Frecuentes</h2>
-        <ul className="faq-list">
-          {preguntas.map((item, index) => (
-            <ol key={index} className="faq-item">
-              <button className="faq-question" onClick={() => toggleFAQ(index)}>
-                {item.pregunta}
-                <span>{activo === index ? "−" : "+"}</span>
-              </button>
-              {activo === index && <div className="faq-answer">{item.respuesta}</div>}
-            </ol>
-          ))}
-        </ul>
-        <p>Estas son solo algunas de las preguntas más frecuentes.
-            Recuerda que dentro de la página web encontrarás una sección de ayuda con guías y respuestas detalladas.
-            Si aún tienes inconvenientes al realizar alguna función, no dudes en comunicarte a los números disponibles en la sección de contacto.</p>
+        <div className="faq-content">
+          <div className="faq-texto">
+            <h2>Preguntas Frecuentes</h2>
+            <p>Respuestas rápidas a los problemas más comunes dentro de SENADOCS.</p>
+            
+            <div className="faq-bloque">
+              <h3>📁 Carga de Archivos</h3>
+              <details>
+                <summary>¿Qué hacer si el sistema no renombra el PDF?</summary>
+                <p>Esto puede pasar si el archivo tiene bloqueo de permisos o está abierto en otro programa...</p>
+              </details>
+              <details>
+                <summary>¿Por qué no se cargan mis documentos PDF?</summary>
+                <p>Puede deberse a que los archivos superan la cantidad máxima permitida o tienen caracteres no válidos...</p>
+              </details>
+              <details>
+                <summary>¿Por qué no se generan las gráficas desde Excel?</summary>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              </details>
+            </div>
+
+            <div className="faq-bloque">
+              <h3>🔐 Gestión de Cuenta</h3>
+              <details>
+                <summary>¿Qué pasa si olvido mi contraseña y no recibo el enlace?</summary>
+                <p>Verifica tu correo, revisa la carpeta de spam o comunícate con soporte técnico.</p>
+              </details>
+              <details>
+                <summary>¿Por qué el sistema no guarda mis cambios en el perfil?</summary>
+                <p>Puede deberse a errores de conexión o campos incompletos. Intenta nuevamente y asegúrate de guardar correctamente.</p>
+              </details>
+            </div>
+          </div>
+
+          <div className="faq-ilustracion">
+            <IlustracionPreguntas/>
+          </div>
+        </div>
       </section>
 
       {/* Contacto */}
