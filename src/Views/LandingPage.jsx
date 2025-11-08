@@ -1,15 +1,20 @@
 import { useState } from "react";
 import "./LandingPage.css";
+import IconLlamada from "../Icons/IconLlamada.jsx";
+import IconCorreo from "../Icons/IconCorreo.jsx";
 import IlustracionHero from "../Icons/IlustracionHero.jsx";
 import IlustracionMotivos from "../Icons/IlustracionMotivos.jsx";
 import IlustracionFuncionalidades from "../Icons/IlustracionFuncionalidades.jsx";
 import IlustracionPreguntas from "../Icons/IlustracionPreguntas.jsx";
+import Registro from '../components/Registro.jsx';
 export default function LandingPage() {
   const [activo, setActivo] = useState(null);
 
   const toggleFAQ = (index) => {
     setActivo(activo === index ? null : index);
   };
+  const [mostrarModal, setMostrarModal] = useState(false);
+
 
   const preguntas = [
     {
@@ -76,7 +81,8 @@ export default function LandingPage() {
             </ul>
             <div className="hero-botones">
               <button className="btn-cta">Empieza Ahora ➜</button>
-              <button className="btn-secundario">Registrarse</button>
+              <button className="btn-secundario" onClick={() => setMostrarModal(true)}>Registrarse</button>
+
             </div>
           </div>
 
@@ -203,10 +209,57 @@ export default function LandingPage() {
 
       {/* Contacto */}
       <section id="contacto" className="Contacto">
-        <h2>Contacto</h2>
-        <p>📧 contacto@senadocs.edu.co</p>
-        <p>📞 +57 123 456 7890</p>
+        <div className="contacto-contenedor">
+          <h2>Contacto</h2>
+          <p className="contacto-intro">
+            Si tienes alguna duda, no dudes en contactarnos:
+          </p>
+
+          <div className="contacto-numeros">
+            <div className="contacto-item">
+              <span className="icono"><IconLlamada/></span>
+              <div>
+                <strong>Mauricio Villanueva</strong><br />
+                321 000 0000
+              </div>
+            </div>
+
+            <div className="contacto-item">
+              <span className="icono"><IconLlamada/></span>
+              <div>
+                <strong>Andrea Niño</strong><br />
+                3188106387
+              </div>
+            </div>
+
+            <div className="contacto-item">
+              <span className="icono"><IconLlamada/></span>
+              <div>
+                <strong>Dylan Sánchez</strong><br />
+                350 000 0000
+              </div>
+            </div>
+          </div>
+
+          <div className="contacto-correo">
+            <span className="icono"><IconCorreo/></span>
+            <div>
+              <strong>Correo institucional:</strong><br />
+              contacto@senadocs.com
+            </div>
+          </div>
+        </div>
       </section>
+      {mostrarModal && (
+      <div className="modal-overlay" onClick={() => setMostrarModal(false)}>
+        <div className="modal-contenido" onClick={(e) => e.stopPropagation()}>
+          <Registro />
+          <button className="btn-cerrar" onClick={() => setMostrarModal(false)}>Cerrar</button>
+        </div>
+      </div>
+    )}
+
     </div>
+    
   );
 }

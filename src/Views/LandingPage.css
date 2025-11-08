@@ -446,14 +446,89 @@ details p {
 /* ------------------------------------------------------------------------- */
 /* Contacto*/
 /* ------------------------------------------------------------------------- */
-.Contacto{
-  background: var(--color-primario);
+.Contacto {
+  background-color: #007A33;
+  padding: 10px 30px;
+  color: #FFFFFF;
+  text-align: center;
 }
 
-.Contacto h2{
-  color: #000;
+.contacto-contenedor {
+  max-width: 1200px;
+  margin: 5px;
 }
 
-.Contacto p{
-  color: #000;
+.Contacto h2 {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.contacto-intro {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.contacto-numeros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.contacto-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 1rem;
+  text-align: left;
+  min-width: 220px;
+}
+
+.contacto-correo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.icono {
+  font-size: 1.5rem;
+}
+
+/* css modal */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-contenido {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.btn-cerrar {
+  margin-top: 20px;
+  background-color: #ccc;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
 }
