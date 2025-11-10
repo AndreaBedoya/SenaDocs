@@ -6,51 +6,12 @@ import IlustracionHero from "../Icons/IlustracionHero.jsx";
 import IlustracionMotivos from "../Icons/IlustracionMotivos.jsx";
 import IlustracionFuncionalidades from "../Icons/IlustracionFuncionalidades.jsx";
 import IlustracionPreguntas from "../Icons/IlustracionPreguntas.jsx";
-import Registro from '../components/Registro.jsx';
+import RegistroModal from "../components/Registro";
 export default function LandingPage() {
-  const [activo, setActivo] = useState(null);
 
-  const toggleFAQ = (index) => {
-    setActivo(activo === index ? null : index);
-  };
+  const [mostrarRegistro, setMostrarRegistro] = useState(false);
+
   const [mostrarModal, setMostrarModal] = useState(false);
-
-
-  const preguntas = [
-    {
-      pregunta: "¿Cómo reportar un error dentro del sistema?",
-      respuesta: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-    },
-    {
-      pregunta: "¿Qué hacer si el sistema se congela o no responde?",
-      respuesta: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-    },
-    {
-      pregunta: "¿Qué hacer si el sistema no renombra el PDF?",
-      respuesta: "Esto puede pasar si el archivo tiene bloqueo de permisos o está abierto en otro programa. Cierra el documento, vuelve a intentarlo o renómbralo manualmente desde el sistema. El sistema mostrará una notificación si no logra completar el proceso."
-    },
-    {
-      pregunta: "¿Por qué no se cargan mis documentos PDF?",
-      respuesta: "Puede deberse a que los archivos superan la cantidad máxima permitida o tiene un nombre con caracteres no válidos. Verifica que el documento esté en formato .pdf o excel y no exceda el límite establecido."
-    },
-
-    {
-      pregunta: "¿Por qué no se generan las gráficas desde Excel?",
-      respuesta: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-    },
-    {
-      pregunta: "¿Qué hago si los porcentajes evaluativos no se calculan correctamente?",
-      respuesta: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-    },
-    {
-      pregunta: "¿Qué pasa si olvido mi contraseña y no recibo el enlace de recuperación?",
-      respuesta: "Esto puede pasar si el archivo tiene bloqueo de permisos o está abierto en otro programa. Cierra el documento, vuelve a intentarlo o renómbralo manualmente desde el sistema. El sistema mostrará una notificación si no logra completar el proceso."
-    },
-    {
-      pregunta: "¿Por qué el sistema no guarda mis cambios en el perfil?",
-      respuesta: "Puede deberse a que los archivos superan la cantidad máxima permitida o tiene un nombre con caracteres no válidos. Verifica que el documento esté en formato .pdf o excel y no exceda el límite establecido."
-    }
-  ];
 
   return (
     <div className="landing-page">
@@ -80,10 +41,16 @@ export default function LandingPage() {
               <li>✔ Genera gráficas a partir de novedades académicas</li>
             </ul>
             <div className="hero-botones">
-              <button className="btn-cta">Empieza Ahora ➜</button>
+              <button className="btn-cita">Empieza Ahora</button>
               <button className="btn-secundario" onClick={() => setMostrarModal(true)}>Registrarse</button>
-
             </div>
+
+            {mostrarModal && (
+              <RegistroModal
+                visible={mostrarModal}
+                onClose={() => setMostrarModal(false)}
+                />
+            )}
           </div>
 
           <div className="hero-imagen">
@@ -147,20 +114,23 @@ export default function LandingPage() {
           <div className="miembro">
             <img src="../../public/FotoMauricio.jpeg" alt="Mauricio" />
             <h3>Mauricio Villanueva</h3>
-            <p className="rol">Analista de Datos</p>
-            <p>Desarrolla modelos predictivos para detectar riesgos de deserción y mejora continua del sistema.</p>
+            <p className="rol">Desarrollador Backend</p>
+            <p>Encargado del desarrollo de la lógica central del sistema y la implementación de las funcionalidades principales CRUDs.
+                Gestiona la seguridad avanzada de la aplicación, integrando mecanismos de autenticación segura con JWT.</p>
           </div>
           <div className="miembro">
             <img src="../../public/FotoAndrea.jpg" alt="Andrea Niño" />
             <h3>Andrea Niño</h3>
-            <p className="rol">Full Stack Developer</p>
-            <p>Encargada de la arquitectura modular, seguridad y experiencia de usuario en la plataforma SENADOCS.</p>
+            <p className="rol">Full Stack Developer / Líder del Proyecto SenaDocs</p>
+            <p>Creadora y líder de SenaDocs, desarrollo del frontend, documentación, diseño y supervisión del proyecto.
+                Implementó la estructura base y los repositorios frontend y backend, facilitando el trabajo colaborativo del equipo y asegurando la usabilidad.</p>
           </div>
           <div className="miembro">
             <img src="../../public/FotoDylan.jpeg" alt="Dylan Sanchez" />
             <h3>Dylan Sanchez</h3>
-            <p className="rol">Diseñadora UX/UI</p>
-            <p>Diseña interfaces intuitivas y accesibles para mejorar la interacción de los usuarios con la plataforma.</p>
+            <p className="rol">Especialista en Base de Datos</p>
+            <p>Responsable de la gestión de la base de datos y la infraestructura técnica del sistema.
+              Su labor se centra en la instalación, configuración y mantenimiento de los entornos de la Base de Datos, asegurando la conectividad.</p>
           </div>
         </div>
       </section>
@@ -250,15 +220,6 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
-      {mostrarModal && (
-      <div className="modal-overlay" onClick={() => setMostrarModal(false)}>
-        <div className="modal-contenido" onClick={(e) => e.stopPropagation()}>
-          <Registro />
-          <button className="btn-cerrar" onClick={() => setMostrarModal(false)}>Cerrar</button>
-        </div>
-      </div>
-    )}
-
     </div>
     
   );

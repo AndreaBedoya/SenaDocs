@@ -11,8 +11,10 @@
   font-weight: 400;
 }
 
-.registro-container {
-  min-width: 100dvw;
+/* ------------------------------------------------------------ */
+/* Contenedor adaptable: página o modal */
+/* ------------------------------------------------------------ */
+.registro-container.pagina {
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -21,13 +23,24 @@
   padding: 60px;
 }
 
+.registro-container.modal {
+  padding: 0;
+  background: none;
+  display: block;
+}
+
+/* ------------------------------------------------------------ */
+/* Formulario principal */
+/* ------------------------------------------------------------ */
 .registro-form {
   background-color: #ffffff;
-  padding:  20px 30px;
+  padding: 20px 30px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  width: 35%;
+  width: 100%;
+  max-width: 600px;
   color: #333;
+  margin: auto;
 }
 
 .registro-form h2 {
@@ -35,27 +48,39 @@
   color: #000;
   margin-bottom: 10px;
   text-align: center;
-  padding-top: 20px ;
-}
-
-.registro-form h3{
-  text-align: center;
-  font-weight: 600;
-  color: #1b5e20;
-  padding-bottom: 3px;
+  padding-top: 10px;
 }
 
 .registro-form h2 strong {
-  font-size: 2rem;
   color: #5eb319;
-  margin-bottom: 10px;
+}
+
+.registro-form h3 {
   text-align: center;
+  font-weight: 600;
+  color: #1b5e20;
+  padding-bottom: 10px;
 }
 
 .registro-form p {
   font-size: 1rem;
   padding: 10px 0px;
   text-align: center;
+}
+
+/* ------------------------------------------------------------ */
+/* Campos y filas */
+/* ------------------------------------------------------------ */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 240px;
 }
 
 .registro-form label {
@@ -68,7 +93,6 @@
 .registro-form input {
   width: 100%;
   padding: 10px;
-  margin-bottom: 0px;
   border: 2px solid #5eb319;
   border-radius: 8px;
   background-color: #f9f9f9;
@@ -81,14 +105,17 @@
   background-color: #e6ffe6;
 }
 
-.Registrarse{
+/* ------------------------------------------------------------ */
+/* Navegación entre pasos */
+/* ------------------------------------------------------------ */
+.pasos-navegacion {
   display: flex;
-  align-items: center;
   justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
 }
 
-.registro-form button {
-  width: 40%;
+.pasos-navegacion button {
   padding: 12px;
   background-color: #1b5e20;
   color: white;
@@ -99,8 +126,96 @@
   transition: background-color 0.3s ease;
 }
 
-.registro-form button:hover {
+.pasos-navegacion button:hover {
   background-color: #2e7d32;
+}
+
+.pasos-navegacion button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pasos-navegacion .ButtonAtras {
+  padding: 12px;
+  background-color: white;
+  color: black;
+  border: 2px solid var(--color-primario);
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pasos-navegacion .ButtonAtras:hover {
+  background-color: white;
+}
+ 
+.pasos-navegacion .ButtonSiguiente {
+  height: auto;
+  padding: 12px;
+  background-color: #1b5e20;
+  color: white;
+  border: 2px solid var(--color-primario);
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pasos-navegacion .ButtonSiguiente:hover {
+  background-color: white;
+  color: #1b5e20;
+  border: 2px solid var(--color-primario);
+}
+/* ------------------------------------------------------------ */
+/* Barra de progreso por pasos */
+/* ------------------------------------------------------------ */
+.barra-progreso {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 30px 0 20px;
+}
+
+.paso {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.paso.activo {
+  background-color: #5eb319;
+  box-shadow: 0 0 0 4px #e6ffe6;
+}
+
+/* ------------------------------------------------------------ */
+/* Animación entre pasos (opcional) */
+/* ------------------------------------------------------------ */
+.paso-activo {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ------------------------------------------------------------ */
+/* Botón final y enlace de login */
+/* ------------------------------------------------------------ */
+.Registrarse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .login-link {
@@ -114,4 +229,57 @@
   text-decoration: none;
   font-weight: bold;
   cursor: pointer;
+}
+
+/* ------------------------------------------------------------ */
+/* Estilos para el modal completo */
+/* ------------------------------------------------------------ */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  padding: 20px;
+}
+
+.modal-contenido {
+  background-color: #fff;
+  border-radius: 12px;
+  max-width: 800px;
+  width: auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+button.modal-cerrar{
+  width: auto;
+  height: auto;
+  padding: 0px;
+}
+
+.modal-cerrar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.modal-cerrar:hover{
+  background: none;
+}
+
+.modal-cerrar svg{
+  padding: none;
+  width: 40px;
+  height: 40px;
+  stroke-width: 1;
 }

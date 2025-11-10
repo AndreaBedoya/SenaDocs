@@ -51,6 +51,12 @@ body {
   cursor: pointer;
 }
 
+.btn-login:hover {
+  background-color: white;
+  color: #2C497F;
+  border: 2px solid #2C497F;
+}
+
 .btn-cta {
   min-width:15vw;
   background-color: #00A859;
@@ -78,7 +84,7 @@ body {
 .hero-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 50px;
   max-width: 1200px;
   align-items: center;
   justify-content: space-between;
@@ -139,6 +145,12 @@ body {
   cursor: pointer;
 }
 
+.btn-secundario:hover{
+  background-color: white;
+  color: #2C497F;
+  border: 2px solid #2C497F;
+}
+
 .hero-imagen {
   flex: 1;
   min-width: 300px;
@@ -167,7 +179,7 @@ body {
 .motivos-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 60px;
   max-width: 1200px;
   align-items: center;
   justify-content: space-between;
@@ -312,7 +324,7 @@ body {
   background-color: #F4F4F4;
   border-radius: 12px;
   padding: 20px;
-  width: 280px;
+  width: 340px;
   box-shadow: 2px 2px 6px #919191;
   transition: transform 0.3s ease;
   text-align: center;
@@ -324,7 +336,7 @@ body {
 
 .miembro img {
   width: 12.5vw;
-  height: 30vh;
+  height: 32vh;
   border-radius: 8px;
   margin-bottom: 12px;
   object-fit: cover;
@@ -499,36 +511,3 @@ details p {
   font-size: 1.5rem;
 }
 
-/* css modal */
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.modal-contenido {
-  background-color: #fff;
-  padding: 40px;
-  border-radius: 12px;
-  max-width: 600px;
-  width: 90%;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  position: relative;
-}
-
-.btn-cerrar {
-  margin-top: 20px;
-  background-color: #ccc;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-}

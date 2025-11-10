@@ -60,9 +60,7 @@ function App() {
         <Route
           path="/landing"
           element={
-            <RutaProtegida>
-              <LandingPage />
-            </RutaProtegida>
+            <LandingPage />
           }
         />
 
