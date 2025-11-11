@@ -24,14 +24,6 @@ export default function Perfil() {
 
   return (
     <div className="perfil-wrapper">
-      {/* Barra superior */}
-      <nav className="navbar-perfil">
-        <div className="senadocs">
-          <a href="#"><img src="/logoSena.png" alt="Logo SenaDocs" className="logo" /></a>
-          <p>{usuario.nombre_completo || "NOMBRE"}</p>
-        </div>
-      </nav>
-
       {/* Panel intermedio */}
       <div className="perfil">
         {/* Bloque izquierdo: Foto + Nombre */}

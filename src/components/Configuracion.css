@@ -1,7 +1,7 @@
 /* Contenedor principal */
 .configuracion {
-  min-width: 100dvw;
-  min-height: 100dvh;
+  min-width: 70dvw;
+  min-height: 80dvh;
   padding: 10px 30px;
   background-color: #fdfdfd;
   border-radius: 12px;

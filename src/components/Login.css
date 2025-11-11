@@ -103,3 +103,59 @@
   font-weight: bold;
   cursor: pointer;
 }
+
+/* ----------------------------------------- */
+/* Estilos del Modal */
+/* ----------------------------------------- */
+
+.modal-Login {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  padding: 20px;
+}
+
+.contenidoLogin {
+  background-color: #fff;
+  border-radius: 12px;
+  max-width: 800px;
+  width: auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+button.cerrarLogin{
+  width: auto;
+  height: auto;
+  padding: 0px;
+}
+
+.cerrarLogin {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.cerrarLogin:hover{
+  background: none;
+}
+
+.cerrarLogin svg{
+  padding: none;
+  width: 40px;
+  height: 40px;
+  stroke-width: 1;
+}
+

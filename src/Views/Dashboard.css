@@ -1,7 +1,7 @@
 /* COLORES DEL COMPONENTE DASHBOARD */
 :root {
-  --color-primario: #248232;
-  --color-primario-claro: #CFEFB5;
+  --color-primario: #007A33;
+  --color-primario-claro: #5eb319;
   --color-secundario: #2C497F;
   --color-acento: #B4CDED;
   --color-gris: #919191;
@@ -114,6 +114,11 @@
   transition: 0.25s all;
 }
 
+.sidebarLink:hover{
+  color: white;
+  background: none;
+}
+
 .sidebarLink svg {
   width: 32px !important;
   height: 32px !important;
@@ -147,11 +152,10 @@
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
-
   width: 100%;
   padding: 10px 20px;
   border-radius: 10px;
-  background-color: var(--color-secundario);
+  background-color: var(--color-primario);
   color: white;
   border: none;
   font-size: 1.1rem;
@@ -160,7 +164,8 @@
 }
 
 .boton-dashboard:hover {
-  background-color: var(--color-primario-claro);
+  background:none;
+  border: 2px solid var(--color-primario-claro);
   color: black;
 }
 
@@ -212,7 +217,7 @@ span {
 
 /* CONTENIDO PRINCIPAL */
 .main-content {
-  background-color: var(--color-acento);
+  background-color: var(--color-primario-claro);
 }
 
 .dashboard-header h1 {

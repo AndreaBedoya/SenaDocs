@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useUsuarioStore } from "../Store/useUsuarioStore"; // ✅ Importa la store
+import { useUsuarioStore } from "../Store/useUsuarioStore";
+import IconCerrar from "../Icons/IconCerrar.jsx"; 
 import "./Login.css";
 
-export default function Login() {
+export default function LoginModal({ visible, onClose, onRegistroClick }) {
   const navigate = useNavigate();
   const [identificacion, setIdentificacion] = useState("");
   const [password, setPassword] = useState("");
-  const setUsuario = useUsuarioStore((state) => state.setUsuario); // ✅ Accede a la función para guardar el usuario
+  const setUsuario = useUsuarioStore((state) => state.setUsuario);
+
+  useEffect(() => {
+    if (!visible) return;
+    localStorage.removeItem("token");
+    localStorage.removeItem("usuario");
+  }, [visible]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -22,10 +29,7 @@ export default function Login() {
       return;
     }
 
-    const datos = {
-      identificacion,
-      contrasena: password
-    };
+    const datos = { identificacion, contrasena: password };
 
     try {
       const respuesta = await fetch("http://localhost:4000/api/login", {
@@ -35,13 +39,9 @@ export default function Login() {
       });
 
       const resultado = await respuesta.json();
-      console.log("📦 Respuesta del backend:", resultado);
 
       if (respuesta.ok && resultado.token && resultado.usuario) {
-        // ✅ Guarda el token en localStorage si lo necesitas para autenticación
         localStorage.setItem("token", resultado.token);
-
-        // ✅ Guarda el perfil completo en Zustand
         setUsuario(resultado.usuario);
 
         Swal.fire({
@@ -50,7 +50,7 @@ export default function Login() {
           text: `Hola ${resultado.usuario.nombre || resultado.usuario.nombre_completo}`,
           confirmButtonText: "Continuar"
         }).then(() => {
-          navigate("/dashboard"); // ✅ Redirige directamente al perfil
+          navigate("/dashboard");
         });
       } else {
         Swal.fire({
@@ -60,7 +60,6 @@ export default function Login() {
         });
       }
     } catch (error) {
-      console.error("❌ Error de conexión:", error);
       Swal.fire({
         icon: "error",
         title: "Error de conexión",
@@ -69,39 +68,45 @@ export default function Login() {
     }
   };
 
+  if (!visible) return null;
+
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleLogin}>
-        <h2>Iniciar Sesión</h2>
-        <p>Accede a tu cuenta para continuar con <strong>SENA</strong>DOCS.</p>
+    <div className="modal-Login" onClick={onClose}>
+      <div className="contenidoLogin" onClick={(e) => e.stopPropagation()}>
+        <button className="cerrarLogin" onClick={onClose}><IconCerrar /></button>
 
-        <label>Número de Identificación</label>
-        <input
-          type="text"
-          value={identificacion}
-          onChange={(e) => setIdentificacion(e.target.value)}
-          placeholder="Ej: 1055688999"
-          required
-        />
+        <form className="login-form" onSubmit={handleLogin}>
+          <h2>Iniciar Sesión</h2>
+          <p>Accede a tu cuenta para continuar con <strong>SENA</strong>DOCS.</p>
 
-        <label>Contraseña</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Tu contraseña"
-          required
-        />
+          <label>Número de Identificación</label>
+          <input
+            type="text"
+            value={identificacion}
+            onChange={(e) => setIdentificacion(e.target.value)}
+            placeholder="Ej: 1055688999"
+            required
+          />
 
-        <button type="submit">Ingresar</button>
+          <label>Contraseña</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Tu contraseña"
+            required
+          />
 
-        <p className="registro-link">
-          ¿No tienes cuenta?{" "}
-          <span onClick={() => navigate("/registro")} className="link">
-            Regístrate aquí
-          </span>
-        </p>
-      </form>
+          <button type="submit">Ingresar</button>
+
+          <p className="registro-link">
+            ¿No tienes cuenta?{" "}
+            <span onClick={onRegistroClick} className="link">
+              Regístrate aquí
+            </span>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }

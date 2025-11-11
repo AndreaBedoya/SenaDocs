@@ -3,14 +3,19 @@ import BotonCerrarSesion from "../Botones/BotonCerrarSesion";
 import IconPerfil from "../Icons/IconPerfil.jsx";
 import "./MenuPerfil.css";
 
-export default function MenuPerfil({ texto = "Perfil", Icon = IconPerfil, className = "", onClick }) {
+export default function MenuPerfil({
+  texto = "Perfil",
+  Icon = IconPerfil,
+  className = "",
+  onClick
+}) {
   const navigate = useNavigate();
 
   const handleClick = () => {
     if (onClick) {
       onClick();
     } else {
-      navigate("/perfil");
+      navigate("/dashboard/perfil"); // ✅ Redirige al perfil dentro del dashboard
     }
   };
 
@@ -24,9 +29,19 @@ export default function MenuPerfil({ texto = "Perfil", Icon = IconPerfil, classN
 
       {/* Menú desplegable */}
       <ul className="perfil-menu">
-        <li><button onClick={() => navigate("/perfil")}>Perfil</button></li>
-        <li><button onClick={() => navigate("/configuracion")}>Configuración</button></li>
-        <li><BotonCerrarSesion /></li>
+        <li>
+          <button onClick={() => navigate("/dashboard/perfil")}>
+            Perfil
+          </button>
+        </li>
+        <li>
+          <button onClick={() => navigate("/dashboard/configuracion")}>
+            Configuración
+          </button>
+        </li>
+        <li>
+          <BotonCerrarSesion />
+        </li>
       </ul>
     </div>
   );

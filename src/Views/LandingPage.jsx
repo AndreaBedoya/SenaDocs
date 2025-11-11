@@ -7,11 +7,22 @@ import IlustracionMotivos from "../Icons/IlustracionMotivos.jsx";
 import IlustracionFuncionalidades from "../Icons/IlustracionFuncionalidades.jsx";
 import IlustracionPreguntas from "../Icons/IlustracionPreguntas.jsx";
 import RegistroModal from "../components/Registro";
+import LoginModal from "../components/Login";
 export default function LandingPage() {
-
+  
   const [mostrarRegistro, setMostrarRegistro] = useState(false);
+  const [mostrarLogin, setMostrarLogin] = useState(false);
 
-  const [mostrarModal, setMostrarModal] = useState(false);
+  // Funciones para alternar entre modales
+  const abrirLogin = () => {
+    setMostrarRegistro(false);
+    setMostrarLogin(true);
+  };
+
+  const abrirRegistro = () => {
+    setMostrarLogin(false);
+    setMostrarRegistro(true);
+  };
 
   return (
     <div className="landing-page">
@@ -26,7 +37,7 @@ export default function LandingPage() {
           <li><a href="#faq">Preguntas frecuentes</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
-        <button className="btn-login"> Iniciar Sesión</button>
+        <button className="btn-login" onClick={() => setMostrarLogin(true)}>Iniciar Sesion</button>
       </nav>
 
       {/* Hero */}
@@ -41,16 +52,22 @@ export default function LandingPage() {
               <li>✔ Genera gráficas a partir de novedades académicas</li>
             </ul>
             <div className="hero-botones">
-              <button className="btn-cita">Empieza Ahora</button>
-              <button className="btn-secundario" onClick={() => setMostrarModal(true)}>Registrarse</button>
+              <button onClick={() => setMostrarLogin(true)}>Iniciar Sesion</button>
+              <button className="btn-secundario" onClick={() => setMostrarRegistro(true)}>Registrarse</button>
             </div>
 
-            {mostrarModal && (
-              <RegistroModal
-                visible={mostrarModal}
-                onClose={() => setMostrarModal(false)}
-                />
-            )}
+            {/* Modales de Registro e Inicio de Sesion */}
+            <RegistroModal
+              visible={mostrarRegistro}
+              onClose={() => setMostrarRegistro(false)}
+              onLoginClick={abrirLogin} 
+            />
+
+            <LoginModal
+              visible={mostrarLogin}
+              onClose={() => setMostrarLogin(false)}
+              onRegistroClick={abrirRegistro} 
+            />
           </div>
 
           <div className="hero-imagen">
@@ -146,15 +163,22 @@ export default function LandingPage() {
               <h3>📁 Carga de Archivos</h3>
               <details>
                 <summary>¿Qué hacer si el sistema no renombra el PDF?</summary>
-                <p>Esto puede pasar si el archivo tiene bloqueo de permisos o está abierto en otro programa...</p>
+                <p>Esto puede deberse a que el archivo está abierto en otro programa o tiene restricciones de permisos.
+                  Cierra el documento y vuelve a intentarlo.
+                  Si el problema persiste, verifica que el nombre del archivo no contenga caracteres especiales.
+                  SenaDocs también te mostrará una alerta si el proceso no se completa correctamente.</p>
               </details>
               <details>
                 <summary>¿Por qué no se cargan mis documentos PDF?</summary>
-                <p>Puede deberse a que los archivos superan la cantidad máxima permitida o tienen caracteres no válidos...</p>
+                <p>Puede suceder si el archivo supera el tamaño máximo permitido, tiene un nombre inválido o no está en formato PDF.
+                  Actualmente, SenaDocs solo admite archivos con extensión .pdf para garantizar compatibilidad y seguridad.
+                  Asegúrate de que el documento cumpla con estos requisitos antes de subirlo.</p>
               </details>
               <details>
                 <summary>¿Por qué no se generan las gráficas desde Excel?</summary>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <p>Esto ocurre cuando el archivo Excel no tiene encabezados o datos numéricos válidos.
+                  Verifica que las columnas estén correctamente nombradas y contengan valores numéricos.
+                  SenaDocs solo genera gráficas a partir de archivos estructurados correctamente.</p>
               </details>
             </div>
 
@@ -162,11 +186,16 @@ export default function LandingPage() {
               <h3>🔐 Gestión de Cuenta</h3>
               <details>
                 <summary>¿Qué pasa si olvido mi contraseña y no recibo el enlace?</summary>
-                <p>Verifica tu correo, revisa la carpeta de spam o comunícate con soporte técnico.</p>
+                <p>Asegúrate de ingresar el correo institucional registrado en tu cuenta.
+                  En algunos casos, el mensaje puede llegar a la carpeta de Spam o correo no deseado.
+                  Si aún no lo recibes, contacta al equipo de soporte a través de soporte.senadocs@gmail.com
+                  para restablecer tu acceso.</p>
               </details>
               <details>
                 <summary>¿Por qué el sistema no guarda mis cambios en el perfil?</summary>
-                <p>Puede deberse a errores de conexión o campos incompletos. Intenta nuevamente y asegúrate de guardar correctamente.</p>
+                <p>Esto puede deberse a errores de validación en los campos (por ejemplo, dejar uno vacío o usar un formato incorrecto).
+                  SenaDocs valida los datos antes de guardarlos para evitar inconsistencias.
+                  Revisa los campos resaltados y vuelve a intentarlo.</p>
               </details>
             </div>
           </div>
@@ -190,7 +219,7 @@ export default function LandingPage() {
               <span className="icono"><IconLlamada/></span>
               <div>
                 <strong>Mauricio Villanueva</strong><br />
-                321 000 0000
+                320 9493878
               </div>
             </div>
 
@@ -206,7 +235,7 @@ export default function LandingPage() {
               <span className="icono"><IconLlamada/></span>
               <div>
                 <strong>Dylan Sánchez</strong><br />
-                350 000 0000
+                300 7277594
               </div>
             </div>
           </div>
@@ -215,7 +244,7 @@ export default function LandingPage() {
             <span className="icono"><IconCorreo/></span>
             <div>
               <strong>Correo institucional:</strong><br />
-              contacto@senadocs.com
+              soporte.senadocs@gmail.com
             </div>
           </div>
         </div>

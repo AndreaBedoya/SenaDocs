@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import IconCerrar from "../Icons/IconCerrar.jsx";
 import "./Registro.css";
 
-export default function RegistroModal({ visible, onClose }) {
+export default function RegistroModal({ visible, onClose, onLoginClick }) {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
 
@@ -211,7 +211,7 @@ export default function RegistroModal({ visible, onClose }) {
 
           <p className="login-link">
             ¿Ya tienes cuenta?{" "}
-            <span onClick={() => navigate("/login")} className="link">
+            <span onClick={onLoginClick} className="link">
               Inicia sesión
             </span>
           </p>

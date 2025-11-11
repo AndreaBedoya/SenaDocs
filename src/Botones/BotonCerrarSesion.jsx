@@ -17,7 +17,7 @@ export default function BotonCerrarSesion({ texto = "Cerrar sesión", Icon, clas
       if (result.isConfirmed) {
         localStorage.removeItem("token");
         localStorage.removeItem("usuario");
-        navigate("/login");
+        navigate("/landing");
         window.location.reload();
       }
     });
