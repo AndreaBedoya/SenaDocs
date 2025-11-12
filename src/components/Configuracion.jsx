@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { useUsuarioStore } from "../Store/useUsuarioStore";
-import { useState } from "react";
 import  IconBell from '../Icons/IconBell.jsx';
 import BotonVolver from "../Botones/BotonVolver.jsx";
 import "./Configuracion.css";
@@ -10,9 +9,6 @@ export default function Perfil() {
   const usuario = useUsuarioStore((state) => state.usuario);
 
   if (!usuario) return <p>Cargando perfil...</p>;
-
-  const [contraseñaAnterior, setContraseñaAnterior] = useState("");
-  const [nuevaContraseña, setNuevaContraseña] = useState("");
 
   // ✅ Formatear fecha de nacimiento
   const fechaFormateada = usuario.nacimiento
@@ -105,29 +101,6 @@ export default function Perfil() {
               />
             </div>
           </div>  
-          <div className="Cambiar-contraseña">
-            <h2>Cambiar Contraseña</h2>
-            <div className="form-group">
-              <label>Contraseña actual</label>
-              <input
-                type="password"
-                value={contraseñaAnterior}
-                onChange={(e) => setContraseñaAnterior(e.target.value)}
-                placeholder="Ingrese su contraseña actual"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label>Nueva contraseña</label>
-              <input
-                type="password"
-                value={nuevaContraseña}
-                onChange={(e) => setNuevaContraseña(e.target.value)}
-                placeholder="Ingrese su nueva contraseña"
-                required
-              />
-            </div>
-          </div>
         </div>
         
         {/* ------------------------------------- */}

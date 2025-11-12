@@ -9,6 +9,9 @@ export default function ActualizarDatos() {
   const usuario = useUsuarioStore((state) => state.usuario);
   const setUsuario = useUsuarioStore((state) => state.setUsuario);
 
+  const [contraseñaAnterior, setContraseñaAnterior] = useState("");
+  const [nuevaContraseña, setNuevaContraseña] = useState("");
+
   const [formulario, setFormulario] = useState({
     nombre_completo: "",
     ciudad: "",
@@ -181,6 +184,29 @@ export default function ActualizarDatos() {
               onChange={handleChange}
               placeholder="Número del contacto de emergencia"
             />
+          </div>
+          <div className="Cambiar-contraseña">
+            <h2>Cambiar Contraseña</h2>
+            <div className="form-group">
+              <label>Contraseña actual</label>
+              <input
+                type="password"
+                value={contraseñaAnterior}
+                onChange={(e) => setContraseñaAnterior(e.target.value)}
+                placeholder="Ingrese su contraseña actual"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>Nueva contraseña</label>
+              <input
+                type="password"
+                value={nuevaContraseña}
+                onChange={(e) => setNuevaContraseña(e.target.value)}
+                placeholder="Ingrese su nueva contraseña"
+                required
+              />
+            </div>
           </div>
         </div>
 

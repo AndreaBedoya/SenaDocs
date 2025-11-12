@@ -8,7 +8,6 @@
     background: linear-gradient(to bottom right, #f5f5f5, #e8f5e9);
 }
 
-
 .actualizar-form {
     background-color: #ffffff;
     padding: 40px;
@@ -67,6 +66,48 @@
     background-color: #e6ffe6;
 }
 
+/* Contraseña */
+.Cambiar-contraseña {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);  
+}
+.Cambiar-contraseña h2{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 20px 0px;
+}
+
+.contrasena{
+    display: flex;
+    justify-content: space-around;
+}
+
+.nueva-contrasena {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nueva-contrasena label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #444;
+  width: 20dvw;
+}
+
+.nueva-contrasena p {
+  margin: 0;
+  color: #555;
+  padding: 10px;
+  background-color: #f9f9f9;  
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  color: #000;
+  margin: 0;
+}
 
 /* Botón */
 .actualizar-form button {

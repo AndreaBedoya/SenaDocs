@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { useUsuarioStore } from "../Store/useUsuarioStore";
 import BotonVolver from "../Botones/BotonVolver.jsx";
+import { useState } from "react";
 import "./Perfil.css";
 
 export default function Perfil() {
   const navigate = useNavigate();
   const usuario = useUsuarioStore((state) => state.usuario);
+
+  const [contraseñaAnterior, setContraseñaAnterior] = useState("");
+  const [nuevaContraseña, setNuevaContraseña] = useState("");
 
   if (!usuario) return <p>Cargando perfil...</p>;
 
@@ -35,6 +39,7 @@ export default function Perfil() {
           />
           <h2>{usuario.nombre_completo || "Nombre no registrado"}</h2>
           <div className="columnas-perfil">
+            <p>{usuario.cargo || "No registrado"}</p>
             <p>{usuario.funciones || "Sin funciones registradas"}</p>
           </div>
         </div>
@@ -75,37 +80,29 @@ export default function Perfil() {
               <p>{usuario.identificacion || "No registrado"}</p>
             </div>
           </div>
-
+          
           <div className="filas-perfil">
             <div className="columnas-perfil">
-              <label>Cargo</label>
-              <p>{usuario.cargo || "No registrado"}</p>
+              <label>Nombre del contacto</label>
+              <p>{usuario.nombre_emergencia || "No registrado"}</p>
+            </div>
+            <div className="columnas-perfil">
+              <label>Teléfono del contacto</label>
+              <p>{usuario.numero_emergencia || usuario.numero_emergencia || "No registrado"}</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Panel inferior */}
-      <div className="perfil-bottom">
-        <h3>Contacto de emergencia</h3>
-        <div className="filas-perfil">
-          <div className="columnas-perfil">
-            <label>Nombre del contacto</label>
-            <p>{usuario.nombre_emergencia || "No registrado"}</p>
-          </div>
-          <div className="columnas-perfil">
-            <label>Teléfono del contacto</label>
-            <p>{usuario.numero_emergencia || usuario.numero_emergencia || "No registrado"}</p>
-          </div>
-        </div>
-
-        <div className="botones-perfil">
-          < BotonVolver/>
-          <button className="actualizarPerfil" onClick={handleActualizar}>
-            Actualizar datos
-          </button>
-        </div>
+    
+      <div className="botones-perfil">
+        < BotonVolver/>
+        <button className="actualizarPerfil" onClick={handleActualizar}>
+          Actualizar datos
+        </button>
       </div>
     </div>
+
   );
 }
