@@ -185,28 +185,29 @@ export default function ActualizarDatos() {
               placeholder="Número del contacto de emergencia"
             />
           </div>
-          <div className="Cambiar-contraseña">
-            <h2>Cambiar Contraseña</h2>
-            <div className="form-group">
-              <label>Contraseña actual</label>
-              <input
-                type="password"
-                value={contraseñaAnterior}
-                onChange={(e) => setContraseñaAnterior(e.target.value)}
-                placeholder="Ingrese su contraseña actual"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label>Nueva contraseña</label>
-              <input
-                type="password"
-                value={nuevaContraseña}
-                onChange={(e) => setNuevaContraseña(e.target.value)}
-                placeholder="Ingrese su nueva contraseña"
-                required
-              />
-            </div>
+        </div>
+        
+        <h3>Cambiar Contraseña</h3>
+        <div className="form-row">
+          <div className="form-group">
+            <label>Contraseña actual</label>
+            <input
+              type="password"
+              value={contraseñaAnterior}
+              onChange={(e) => setContraseñaAnterior(e.target.value)}
+              placeholder="Ingrese su contraseña actual"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Nueva contraseña</label>
+            <input
+              type="password"
+              value={nuevaContraseña}
+              onChange={(e) => setNuevaContraseña(e.target.value)}
+              placeholder="Ingrese su nueva contraseña"
+              required
+            />
           </div>
         </div>
 

@@ -217,7 +217,7 @@ span {
 
 /* CONTENIDO PRINCIPAL */
 .main-content {
-  background-color: var(--color-primario-claro);
+  background:#fff;
 }
 
 .dashboard-header h1 {
