@@ -57,7 +57,6 @@ export default function Perfil() {
       {/* Barra superior */}
       <nav className="navbar-configuracion">
         <div className="senadocs">
-          <a href="#"><img src="/logoSena.png" alt="Logo SenaDocs" className="logo" /></a>
           <p> Configuración</p>
         </div>
         <div className="foto-pequeña">
@@ -159,7 +158,7 @@ export default function Perfil() {
       </div>
       
       <div className="botones-configuracion">
-        <BotonVolver/>
+        <button className="volverConfiguracion"><BotonVolver/></button>
         <button className="boton-actualizar" onClick={handleActualizar}>
           Actualizar datos
         </button>
