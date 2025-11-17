@@ -5,7 +5,7 @@ import { useUsuarioStore } from "../Store/useUsuarioStore";
 import IconCerrar from "../Icons/IconCerrar.jsx"; 
 import "./Login.css";
 
-export default function LoginModal({ visible, onClose, onRegistroClick }) {
+export default function LoginModal({ visible, onClose, onRegistroClick, onRecuperarClick }) {
   const navigate = useNavigate();
   const [identificacion, setIdentificacion] = useState("");
   const [password, setPassword] = useState("");
@@ -105,6 +105,13 @@ export default function LoginModal({ visible, onClose, onRegistroClick }) {
               Regístrate aquí
             </span>
           </p>
+          <p className="recuperar-link">
+            ¿Olvidaste tu contraseña?{" "}
+            <span onClick={onRecuperarClick} className="link">
+              Recupérala aquí
+            </span>
+          </p>
+
         </form>
       </div>
     </div>

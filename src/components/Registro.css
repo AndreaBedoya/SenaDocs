@@ -104,6 +104,11 @@
   background-color: #e6ffe6;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: brightness(0) saturate(100%);
+  cursor: pointer;
+}
+
 /* ------------------------------------------------------------ */
 /* Navegación entre pasos */
 /* ------------------------------------------------------------ */
