@@ -48,7 +48,7 @@
   color: #000;
   margin-bottom: 10px;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 8px;
 }
 
 .registro-form h2 strong {
@@ -64,7 +64,6 @@
 
 .registro-form p {
   font-size: 1rem;
-  padding: 10px 0px;
   text-align: center;
 }
 
@@ -112,7 +111,7 @@
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .pasos-navegacion button {
@@ -174,7 +173,7 @@
   display: flex;
   justify-content: center;
   gap: 40px;
-  margin: 30px 0 20px;
+  margin: 20px 0 20px;
 }
 
 .paso {

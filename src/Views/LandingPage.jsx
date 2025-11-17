@@ -32,7 +32,7 @@ export default function LandingPage() {
         <ul className="nav-links">
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#motivos">¿Por que se creo?</a></li>
-          <li><a href="#que-son">Funcionalidades</a></li>
+          <li><a href="#funcionalidades">Funcionalidades</a></li>
           <li><a href="#equipo">Equipo</a></li>
           <li><a href="#faq">Preguntas frecuentes</a></li>
           <li><a href="#contacto">Contacto</a></li>
