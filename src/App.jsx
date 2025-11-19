@@ -1,13 +1,11 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-// Componentes públicos
+//vistas
 import Registro from "./components/Registro";
 import Login from "./components/Login";
-import Recuperar from "./components/Recuperar";
+import Recuperar from "./components/Recuperar"
 import LandingPage from "./Views/LandingPage";
-
-// Componentes protegidos
 import RutaProtegida from "./components/RutaProtegida";
 import Dashboard from "./Views/Dashboard";
 import RenombrarPDF from "./Views/RenombrarPDF";
@@ -42,15 +40,23 @@ function App() {
         <Route path="/" element={<Navigate to="/landing" />} />
 
         {/* Rutas públicas */}
-        <Route path="/landing" element={<LandingPage />} />
-        <Route path="/registro" element={<Registro />} />
+        <Route 
+        path="/landing" 
+        element={<LandingPage />} 
+        />
+
+        <Route 
+        path="/registro" 
+        element={<Registro />} 
+        />
+        
         <Route
           path="/login"
           element={autenticado ? <Navigate to="/dashboard" replace /> : <Login />}
         />
         <Route
           path="/recuperar"
-          element={autenticado ? <Navigate to="/dashboard" replace /> : <Recuperar />}
+          element={autenticado ? <Navigate to="/dashboard" replace /> : <Recuperar/>}
         />
 
         {/* Rutas protegidas */}

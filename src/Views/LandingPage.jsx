@@ -8,20 +8,30 @@ import IlustracionFuncionalidades from "../Icons/IlustracionFuncionalidades.jsx"
 import IlustracionPreguntas from "../Icons/IlustracionPreguntas.jsx";
 import RegistroModal from "../components/Registro";
 import LoginModal from "../components/Login";
+import RecuperarModal from "../components/Recuperar"
 export default function LandingPage() {
   
   const [mostrarRegistro, setMostrarRegistro] = useState(false);
   const [mostrarLogin, setMostrarLogin] = useState(false);
+  const [mostrarRecuperar, setMostrarRecuperar] = useState(false);
 
   // Funciones para alternar entre modales
   const abrirLogin = () => {
-    setMostrarRegistro(false);
-    setMostrarLogin(true);
+  setMostrarRegistro(false);
+  setMostrarRecuperar(false);
+  setMostrarLogin(true);
   };
 
   const abrirRegistro = () => {
     setMostrarLogin(false);
+    setMostrarRecuperar(false);
     setMostrarRegistro(true);
+  };
+
+  const abrirRecuperar = () => {
+    setMostrarLogin(false);
+    setMostrarRegistro(false);
+    setMostrarRecuperar(true); // 👈 abre recuperar contraseña
   };
 
   return (
@@ -57,16 +67,22 @@ export default function LandingPage() {
             </div>
 
             {/* Modales de Registro e Inicio de Sesion */}
-            <RegistroModal
+           <RegistroModal
               visible={mostrarRegistro}
               onClose={() => setMostrarRegistro(false)}
-              onLoginClick={abrirLogin} 
+              onLoginClick={abrirLogin}
             />
 
             <LoginModal
               visible={mostrarLogin}
               onClose={() => setMostrarLogin(false)}
-              onRegistroClick={abrirRegistro} 
+              onRegistroClick={abrirRegistro}
+              onRecuperarClick={abrirRecuperar} // 👈 conecta el link de recuperar
+            />
+
+            <RecuperarModal
+              visible={mostrarRecuperar}
+              onClose={() => setMostrarRecuperar(false)}
             />
           </div>
 

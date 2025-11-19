@@ -99,7 +99,8 @@
 
 .recuperar-link {
   text-align: center;
-  margin-top: 5px;
+  margin-top: 
+  5px;
   font-size: 0.5rem;
 }
 
@@ -136,6 +137,9 @@
   overflow-y: auto;
   max-height: 80vh;
 }
+/* ---------------------------------------------- */
+/* Estilos del boton para cerrar el modal*/
+/* -----------------------------------------------*/
 
 button.cerrarLogin{
   width: auto;
