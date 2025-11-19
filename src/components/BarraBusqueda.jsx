@@ -17,7 +17,7 @@ export default function BarraBusqueda({ onBuscar, className = "" }) {
     <form className={`barra-busqueda ${className}`} onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="🔍 Buscar..."
+        placeholder="Buscar..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
