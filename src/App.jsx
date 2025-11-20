@@ -1,19 +1,15 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-//vistas
-import Registro from "./components/Registro";
-import Login from "./components/Login";
-import Recuperar from "./components/Recuperar"
+// Vistas
 import LandingPage from "./Views/LandingPage";
-import RutaProtegida from "./components/RutaProtegida";
 import Dashboard from "./Views/Dashboard";
 import RenombrarPDF from "./Views/RenombrarPDF";
 import NovedadesAcademicas from "./Views/NovedadesAcademicas";
 import JuiciosEvaluativos from "./Views/JuiciosEvaluativos";
 import Perfil from "./components/Perfil";
 import Configuracion from "./components/Configuracion";
-import ActualizarDatos from "./components/ActualizarDatos";
+import RutaProtegida from "./components/RutaProtegida";
 
 function App() {
   const [autenticado, setAutenticado] = useState(false);
@@ -39,28 +35,18 @@ function App() {
         {/* Redirección inicial */}
         <Route path="/" element={<Navigate to="/landing" />} />
 
-        {/* Rutas públicas */}
-        <Route 
-        path="/landing" 
-        element={<LandingPage />} 
-        />
+        {/* Ruta pública principal */}
+        <Route path="/landing" element={<LandingPage />} />
 
-        <Route 
-        path="/registro" 
-        element={<Registro />} 
-        />
-        
+        {/* Rutas protegidas dentro del dashboard */}
         <Route
-          path="/login"
-          element={autenticado ? <Navigate to="/dashboard" replace /> : <Login />}
-        />
-        <Route
-          path="/recuperar"
-          element={autenticado ? <Navigate to="/dashboard" replace /> : <Recuperar/>}
-        />
-
-        {/* Rutas protegidas */}
-        <Route path="/dashboard" element={<RutaProtegida autenticado={autenticado}><Dashboard /></RutaProtegida>}>
+          path="/dashboard"
+          element={
+            <RutaProtegida autenticado={autenticado}>
+              <Dashboard />
+            </RutaProtegida>
+          }
+        >
           <Route path="renombrar-pdf" element={<RenombrarPDF />} />
           <Route path="juicios-evaluativos" element={<JuiciosEvaluativos />} />
           <Route path="novedades-academicas" element={<NovedadesAcademicas />} />
@@ -68,15 +54,11 @@ function App() {
           <Route path="configuracion" element={<Configuracion />} />
         </Route>
 
-        {/* Ruta protegida fuera del layout del dashboard */}
-        <Route
-          path="/actualizar"
-          element={
-            <RutaProtegida autenticado={autenticado}>
-              <ActualizarDatos />
-            </RutaProtegida>
-          }
-        />
+        {/* Redirecciones opcionales para rutas eliminadas */}
+        <Route path="/login" element={<Navigate to="/landing" />} />
+        <Route path="/registro" element={<Navigate to="/landing" />} />
+        <Route path="/recuperar" element={<Navigate to="/landing" />} />
+        <Route path="/actualizar" element={<Navigate to="/dashboard/perfil" />} />
       </Routes>
     </BrowserRouter>
   );

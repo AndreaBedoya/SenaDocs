@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useUsuarioStore } from "../Store/useUsuarioStore";
 import Swal from "sweetalert2";
+import IconCerrar from "../Icons/IconCerrar.jsx";
 import "./ActualizarDatos.css";
 
-export default function ActualizarDatos() {
-  const navigate = useNavigate();
+export default function ActualizarDatosModal({ visible, onClose }) {
   const usuario = useUsuarioStore((state) => state.usuario);
   const setUsuario = useUsuarioStore((state) => state.setUsuario);
 
   const [paso, setPaso] = useState(1);
   const [contraseñaAnterior, setContraseñaAnterior] = useState("");
-  const [nuevaContraseña, setNuevaContraseña] = useState("");
+  const [nuevaContrasena, setNuevaContrasena] = useState("");
 
   const [formulario, setFormulario] = useState({
     nombre_completo: "",
@@ -53,13 +52,8 @@ export default function ActualizarDatos() {
     }
   };
 
-  const avanzarPaso = () => {
-    setPaso((prev) => Math.min(prev + 1, 4));
-  };
-
-  const retrocederPaso = () => {
-    setPaso((prev) => Math.max(prev - 1, 1));
-  };
+  const avanzarPaso = () => setPaso((prev) => Math.min(prev + 1, 4));
+  const retrocederPaso = () => setPaso((prev) => Math.max(prev - 1, 1));
 
   const handleGuardar = () => {
     const identificacion = formulario.identificacion?.toString().trim();
@@ -95,73 +89,71 @@ export default function ActualizarDatos() {
           confirmButtonText: "Aceptar",
           confirmButtonColor: "#3085d6"
         }).then(() => {
-          navigate("/perfil");
+          onClose();
         });
       })
-      .catch(err => {
+      .catch(() => {
         Swal.fire({
           icon: "error",
           title: "Error al guardar",
-          text: "No se pudo actualizar el perfil. Revisa la consola para más detalles."
+          text: "No se pudo actualizar el perfil."
         });
       });
   };
 
+  if (!visible) return null;
+
   return (
-    <div className="form-wrapper">
-      <div className="actualizar-form paso-activo">
+    <div className="modal-Actualizar" onClick={onClose}>
+      <div className="contenidoActualizar" onClick={(e) => e.stopPropagation()}>
+        <button className="cerrarActualizar" onClick={onClose}><IconCerrar /></button>
+
         <h2>Actualizar datos del perfil</h2>
 
-        {/* Barra de progreso */}
         <div className="barra-progreso">
-          <div className={`paso ${paso >= 1 ? "activo" : ""}`}>1</div>
-          <div className={`paso ${paso >= 2 ? "activo" : ""}`}>2</div>
-          <div className={`paso ${paso >= 3 ? "activo" : ""}`}>3</div>
-          <div className={`paso ${paso === 4 ? "activo" : ""}`}>4</div>
+          {[1, 2, 3, 4].map(n => (
+            <div key={n} className={`paso ${paso >= n ? "activo" : ""}`}>{n}</div>
+          ))}
         </div>
 
         <form onSubmit={(e) => e.preventDefault()}>
-          {/* Paso 1: Datos personales */}
           {paso === 1 && (
             <>
               <div className="form-row">
                 <div className="form-group">
                   <label>Nombre completo</label>
-                  <input type="text" name="nombre_completo" value={formulario.nombre_completo || ""} onChange={handleChange} />
+                  <input type="text" name="nombre_completo" value={formulario.nombre_completo} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                   <label>Correo institucional</label>
-                  <input type="email" name="correo" value={formulario.correo || ""} onChange={handleChange} />
+                  <input type="email" name="correo" value={formulario.correo} onChange={handleChange} />
                 </div>
               </div>
-
               <div className="form-row">
                 <div className="form-group">
                   <label>Ciudad de residencia</label>
-                  <input type="text" name="ciudad" value={formulario.ciudad || ""} onChange={handleChange} />
+                  <input type="text" name="ciudad" value={formulario.ciudad} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                   <label>Fecha de nacimiento</label>
-                  <input type="date" name="nacimiento" value={formulario.nacimiento || ""} onChange={handleChange} />
+                  <input type="date" name="nacimiento" value={formulario.nacimiento} onChange={handleChange} />
                 </div>
               </div>
             </>
           )}
 
-          {/* Paso 2: Información laboral */}
           {paso === 2 && (
             <>
               <div className="form-row">
                 <div className="form-group">
                   <label>Tipo de sangre</label>
-                  <input type="text" name="sangre" value={formulario.sangre || ""} onChange={handleChange} />
+                  <input type="text" name="sangre" value={formulario.sangre} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                   <label>Número de teléfono</label>
-                  <input type="text" name="telefono" value={formulario.telefono || ""} onChange={handleChange} />
+                  <input type="text" name="telefono" value={formulario.telefono} onChange={handleChange} />
                 </div>
               </div>
-
               <div className="form-row">
                 <div className="form-group">
                   <label>Foto de perfil</label>
@@ -169,44 +161,41 @@ export default function ActualizarDatos() {
                 </div>
                 <div className="form-group">
                   <label>Identificación</label>
-                  <input type="text" name="identificacion" value={formulario.identificacion || ""} disabled />
-                </div>
-              </div>
-
-              <div className="form-row">
-                <div className="form-group">
-                  <label>Cargo</label>
-                  <input type="text" name="cargo" value={formulario.cargo || ""} onChange={handleChange} />
-                </div>
-                <div className="form-group">
-                  <label>Funciones que desempeña</label>
-                  <input type="text" name="funciones" value={formulario.funciones || ""} onChange={handleChange} />
+                  <input type="text" name="identificacion" value={formulario.identificacion} disabled />
                 </div>
               </div>
             </>
           )}
 
-          {/* Paso 3: Contacto de emergencia */}
           {paso === 3 && (
             <>
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Cargo</label>
+                  <input type="text" name="cargo" value={formulario.cargo} onChange={handleChange} />
+                </div>
+                <div className="form-group">
+                  <label>Funciones que desempeña</label>
+                  <input type="text" name="funciones" value={formulario.funciones} onChange={handleChange} />
+                </div>
+              </div>
               <h3 className="contacto">Contacto de Emergencia</h3>
               <div className="form-row">
                 <div className="form-group">
                   <label>Nombre del contacto</label>
-                  <input type="text" name="nombre_emergencia" value={formulario.nombre_emergencia || ""} onChange={handleChange} />
+                  <input type="text" name="nombre_emergencia" value={formulario.nombre_emergencia} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                   <label>Teléfono del contacto</label>
-                  <input type="text" name="telefono_emergencia" value={formulario.telefono_emergencia || ""} onChange={handleChange} />
+                  <input type="text" name="telefono_emergencia" value={formulario.telefono_emergencia} onChange={handleChange} />
                 </div>
               </div>
             </>
           )}
 
-          {/* Paso 4: Contraseña */}
           {paso === 4 && (
             <>
-              <h3>Cambiar Contraseña</h3>
+              <h3 className="contrasena">Cambiar Contraseña</h3>
               <div className="form-row">
                 <div className="form-group">
                   <label>Contraseña actual</label>
@@ -214,19 +203,18 @@ export default function ActualizarDatos() {
                 </div>
                 <div className="form-group">
                   <label>Nueva contraseña</label>
-                  <input type="password" value={nuevaContraseña} onChange={(e) => setNuevaContraseña(e.target.value)} />
+                  <input type="password" value={nuevaContrasena} onChange={(e) => setNuevaContrasena(e.target.value)} />
                 </div>
               </div>
             </>
           )}
 
-          {/* Navegación entre pasos */}
           <div className="pasos-navegacion">
-            {paso > 1 && <button className="ButtonAtras" onClick={retrocederPaso}>Atrás</button>}
+            {paso > 1 && <button className="ButtonAtras" type="button" onClick={retrocederPaso}>Atrás</button>}
             {paso < 4 ? (
-              <button className="ButtonSiguiente" onClick={avanzarPaso}>Siguiente</button>
+              <button className="ButtonSiguiente" type="button" onClick={avanzarPaso}>Siguiente</button>
             ) : (
-              <button className="ButtonSiguiente" onClick={handleGuardar}>Guardar cambios</button>
+              <button className="ButtonSiguiente" type="button" onClick={handleGuardar}>Guardar cambios</button>
             )}
           </div>
         </form>

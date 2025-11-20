@@ -11,12 +11,26 @@ body{
   overflow-x: hidden;
 }
 
+/* Contenedor padre para centrar */
+.perfil-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 93vh; 
+  background-color: #ffffff; /* opcional: fondo suave */
+  padding: 20px;
+}
+
 /* Fondo y contenedor principal */
 .perfil-wrapper {
-  min-width: 70dvw;
+  display: inline-block;
+  max-width: 70dvw;
   min-height: 80vh;
-  background: white;
+  background: #fff;
   padding: 20px 50px;
+  border-radius: 25px;
+  border: 1px solid gray;
+  box-shadow: 2px 2px 4px gray;
 }
 
 /* Panel intermedio */
@@ -36,12 +50,18 @@ body{
   padding: 1.5rem;
 }
 
+.perfil-identidad h2{
+  color: #000;
+  font-weight: 600;
+}
+
 .perfil-avatar {
   width: 300px;
   height: 300px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #4caf50;
+  border: 2px solid gray;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   margin-bottom: 1rem;
 }
 
@@ -62,18 +82,19 @@ body{
 }
 
 /* Títulos */
-.DatosPersonales h3,
-.perfil-bottom h3 {
+.DatosPersonales h3 {
   margin-bottom: 10px;
-  color: #1b5e20;
-  font-size: 22px;
+  color: #000;
+  font-size: 30px;
+  font-weight: 600;
   text-align: center;
 }
 
 .botones-perfil {
+  margin-top: 40px;
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 50px;
 }
 
 .actualizarPerfil {
@@ -124,6 +145,21 @@ body{
   margin-bottom: 20px;
 }
 
+.columnasIdentidad p.cargo{
+  font-size: 1.5rem;
+  padding-bottom: 5px;
+}
+
+.columnasIdentidad {
+  padding: 10px 5px;
+  margin: 20px 0 ;
+  border: 1px solid gray;
+  border-radius: 8px;
+  color: #000;
+  box-shadow: 0 4px 15px #388e3c;
+  font-size: 1rem;
+}
+
 .columnas-perfil{
   padding: 10px 0px;
 }
@@ -153,46 +189,4 @@ body{
   margin: 0;
 }
 
-/* Contraseña */
-.Cambiar-contraseña {
-  margin-top: 15px;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);  
-}
-.Cambiar-contraseña h2{
-    text-align: center;
-    font-size: 20px;
-    font-weight: 600;
-    margin: 20px 0px;
-}
-
-.contrasena{
-    display: flex;
-    justify-content: space-around;
-}
-
-.nueva-contrasena {
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-.nueva-contrasena label {
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #444;
-  width: 20dvw;
-}
-
-.nueva-contrasena p {
-  margin: 0;
-  color: #555;
-  padding: 10px;
-  background-color: #f9f9f9;  
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  color: #000;
-  margin: 0;
-}
 

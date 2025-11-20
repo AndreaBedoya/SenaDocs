@@ -1,6 +1,7 @@
 import { useSidebarStore } from "../Store/useSidebarStore"; 
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // ACA SE IMPORTAN LOS ICONOS
 import IconColapsar from "../Icons/IconColapsar.jsx";
@@ -20,6 +21,8 @@ import "./Dashboard.css";
 
 export default function Dashboard() {
   const { isCollapsed, toggleSidebar } = useSidebarStore();
+
+  const navigate = useNavigate();
 
   const handleBusqueda = (query) => {
     console.log("Buscando:", query);
@@ -71,7 +74,9 @@ export default function Dashboard() {
             texto={!isCollapsed ? "Perfil" : ""}
             Icon={IconPerfil}
             className="boton-dashboard"
+            onClick={() => navigate("/dashboard/perfil")}
           />
+
           <BotonCerrarSesion
             texto={!isCollapsed ? "Salir" : ""}
             Icon={IconLogout}
