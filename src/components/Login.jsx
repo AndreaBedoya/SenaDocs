@@ -7,7 +7,7 @@ import "./Login.css";
 
 export default function LoginModal({ visible, onClose, onRegistroClick, onRecuperarClick }) {
   const navigate = useNavigate();
-  const [identificacion, setIdentificacion] = useState("");
+  const [documento, setDocumento] = useState("");
   const [password, setPassword] = useState("");
   const setUsuario = useUsuarioStore((state) => state.setUsuario);
 
@@ -20,7 +20,7 @@ export default function LoginModal({ visible, onClose, onRegistroClick, onRecupe
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!identificacion || !password) {
+    if (!documento || !password) {
       Swal.fire({
         icon: "warning",
         title: "Campos incompletos",
@@ -29,25 +29,27 @@ export default function LoginModal({ visible, onClose, onRegistroClick, onRecupe
       return;
     }
 
-    const datos = { identificacion, contrasena: password };
+    const datos = { documento, password };
+    console.log("Documento: ", documento, " Contraseña: ", password);
 
     try {
-      const respuesta = await fetch("http://localhost:4000/api/login", {
+      const respuesta = await fetch("http://localhost:4000/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(datos)
       });
 
       const resultado = await respuesta.json();
+      console.log("Respuesta backend:", resultado);
 
-      if (respuesta.ok && resultado.token && resultado.usuario) {
+      if (respuesta.ok && resultado.token && resultado.user) {
         localStorage.setItem("token", resultado.token);
-        setUsuario(resultado.usuario);
+        setUsuario(resultado.user);
 
         Swal.fire({
           icon: "success",
           title: "¡Bienvenido!",
-          text: `Hola ${resultado.usuario.nombre || resultado.usuario.nombre_completo}`,
+          text: `Hola ${resultado.user.nombre}`,
           confirmButtonText: "Continuar"
         }).then(() => {
           navigate("/dashboard");
@@ -56,9 +58,10 @@ export default function LoginModal({ visible, onClose, onRegistroClick, onRecupe
         Swal.fire({
           icon: "error",
           title: "Credenciales inválidas",
-          text: resultado.error || "Identificación o contraseña incorrecta"
+          text: resultado.message || "Identificación o contraseña incorrecta"
         });
       }
+
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -82,8 +85,8 @@ export default function LoginModal({ visible, onClose, onRegistroClick, onRecupe
           <label>Número de Identificación</label>
           <input
             type="text"
-            value={identificacion}
-            onChange={(e) => setIdentificacion(e.target.value)}
+            value={documento}
+            onChange={(e) => setDocumento(e.target.value)}
             placeholder="Ej: 1055688999"
             required
           />
@@ -111,7 +114,6 @@ export default function LoginModal({ visible, onClose, onRegistroClick, onRecupe
               Recupérala aquí
             </span>
           </p>
-
         </form>
       </div>
     </div>
