@@ -15,20 +15,21 @@ export default function RegistroModal({ visible, onClose, onLoginClick }) {
   }, [visible]);
 
   const [formulario, setFormulario] = useState({
-    identificacion: "",
-    nombre_completo: "",
-    correo: "",
-    contrasena: "",
-    confirmar: "",
+    nombre: "",
+    apellido: "",
+    email: "",
+    password: "",
+    documento: "",
     ciudad: "",
-    nacimiento: "",
-    sangre: "",
     telefono: "",
-    foto: "",
+    contacto_emergencia: "",
+    nombre_contacto: "",
+    tipo_sangre: "",
+    fecha_nacimiento: "",
     cargo: "",
-    funciones: "",
-    nombre_emergencia: "",
-    numero_emergencia: ""
+    funciones_trabajo: "",
+    rol_id: 1,
+    confirmar: ""
   });
 
   const handleChange = (e) => {
@@ -50,7 +51,7 @@ export default function RegistroModal({ visible, onClose, onLoginClick }) {
   const handleRegistro = async (e) => {
     e.preventDefault();
 
-    if (formulario.contrasena !== formulario.confirmar) {
+    if (formulario.password !== formulario.confirmar) {
       Swal.fire({
         icon: "error",
         title: "Las contraseñas no coinciden",
@@ -63,7 +64,7 @@ export default function RegistroModal({ visible, onClose, onLoginClick }) {
     delete datos.confirmar;
 
     try {
-      const respuesta = await fetch("http://localhost:4000/api/registro", {
+      const respuesta = await fetch("http://localhost:4000/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(datos)
@@ -102,7 +103,7 @@ export default function RegistroModal({ visible, onClose, onLoginClick }) {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-contenido" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-cerrar" onClick={onClose}><IconCerrar/></button>
+        <button className="modal-cerrar" onClick={onClose}><IconCerrar /></button>
 
         <form className="registro-form" onSubmit={handleRegistro}>
           <h2>Registro en <strong>SENA</strong>DOCS</h2>
@@ -118,32 +119,36 @@ export default function RegistroModal({ visible, onClose, onLoginClick }) {
             <div className="paso-activo">
               <div className="form-row">
                 <div className="form-group">
-                  <label>Número de identificación</label>
-                  <input type="text" name="identificacion" value={formulario.identificacion} onChange={handleChange} required />
+                  <label>Documento</label>
+                  <input type="text" name="documento" value={formulario.documento} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
-                  <label>Nombre completo</label>
-                  <input type="text" name="nombre_completo" value={formulario.nombre_completo} onChange={handleChange} required />
+                  <label>Nombre</label>
+                  <input type="text" name="nombre" value={formulario.nombre} onChange={handleChange} required />
+                </div>
+                <div className="form-group">
+                  <label>Apellido</label>
+                  <input type="text" name="apellido" value={formulario.apellido} onChange={handleChange} required />
                 </div>
               </div>
               <div className="form-row">
                 <div className="form-group">
-                  <label>Correo institucional</label>
-                  <input type="email" name="correo" value={formulario.correo} onChange={handleChange} required />
+                  <label>Email institucional</label>
+                  <input type="email" name="email" value={formulario.email} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
-                  <label>Ciudad de residencia</label>
+                  <label>Ciudad</label>
                   <input type="text" name="ciudad" value={formulario.ciudad} onChange={handleChange} />
                 </div>
               </div>
               <div className="form-row">
                 <div className="form-group">
                   <label>Fecha de nacimiento</label>
-                  <input type="date" name="nacimiento" value={formulario.nacimiento} onChange={handleChange} />
+                  <input type="date" name="fecha_nacimiento" value={formulario.fecha_nacimiento} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                   <label>Tipo de sangre</label>
-                  <input type="text" name="sangre" value={formulario.sangre} onChange={handleChange} />
+                  <input type="text" name="tipo_sangre" value={formulario.tipo_sangre} onChange={handleChange} />
                 </div>
               </div>
             </div>
@@ -153,7 +158,7 @@ export default function RegistroModal({ visible, onClose, onLoginClick }) {
             <div className="paso-activo">
               <div className="form-row">
                 <div className="form-group">
-                  <label>Número de teléfono</label>
+                  <label>Teléfono</label>
                   <input type="text" name="telefono" value={formulario.telefono} onChange={handleChange} />
                 </div>
                 <div className="form-group">
@@ -167,19 +172,19 @@ export default function RegistroModal({ visible, onClose, onLoginClick }) {
                   <input type="text" name="cargo" value={formulario.cargo} onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                  <label>Funciones que desempeña</label>
-                  <input type="text" name="funciones" value={formulario.funciones} onChange={handleChange} />
+                  <label>Funciones</label>
+                  <input type="text" name="funciones_trabajo" value={formulario.funciones_trabajo} onChange={handleChange} />
                 </div>
               </div>
               <h3 className="contacto">Contacto de Emergencia</h3>
               <div className="form-row">
                 <div className="form-group">
                   <label>Nombre del contacto</label>
-                  <input type="text" name="nombre_emergencia" value={formulario.nombre_emergencia} onChange={handleChange} />
+                  <input type="text" name="nombre_contacto" value={formulario.nombre_contacto} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                   <label>Teléfono del contacto</label>
-                  <input type="text" name="numero_emergencia" value={formulario.numero_emergencia} onChange={handleChange} />
+                  <input type="text" name="contacto_emergencia" value={formulario.contacto_emergencia} onChange={handleChange} />
                 </div>
               </div>
             </div>
@@ -190,7 +195,7 @@ export default function RegistroModal({ visible, onClose, onLoginClick }) {
               <div className="form-row">
                 <div className="form-group">
                   <label>Contraseña</label>
-                  <input type="password" name="contrasena" value={formulario.contrasena} onChange={handleChange} required />
+                  <input type="password" name="password" value={formulario.password} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
                   <label>Confirmar contraseña</label>

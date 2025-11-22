@@ -13,25 +13,26 @@ export default function ActualizarDatosModal({ visible, onClose }) {
   const [nuevaContrasena, setNuevaContrasena] = useState("");
 
   const [formulario, setFormulario] = useState({
-    nombre_completo: "",
+    nombre: "",
+    apellido: "",
+    email: "",
+    password: "",
+    documento: "",
     ciudad: "",
-    nacimiento: "",
-    funciones: "",
-    correo: "",
-    cargo: "",
-    sangre: "",
     telefono: "",
-    nombre_emergencia: "",
-    telefono_emergencia: "",
-    foto: "",
-    identificacion: ""
+    contacto_emergencia: "",
+    nombre_contacto: "",
+    tipo_sangre: "",
+    fecha_nacimiento: "",
+    cargo: "",
+    funciones_trabajo: "",
   });
 
   useEffect(() => {
     if (usuario) {
       setFormulario({
         ...usuario,
-        identificacion: usuario.identificacion || ""
+        documento: usuario.documento || ""
       });
     }
   }, [usuario]);
@@ -122,11 +123,11 @@ export default function ActualizarDatosModal({ visible, onClose }) {
               <div className="form-row">
                 <div className="form-group">
                   <label>Nombre completo</label>
-                  <input type="text" name="nombre_completo" value={formulario.nombre_completo} onChange={handleChange} />
+                  <input type="text" name="nombre" value={formulario.nombre} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                   <label>Correo institucional</label>
-                  <input type="email" name="correo" value={formulario.correo} onChange={handleChange} />
+                  <input type="email" name="email" value={formulario.email} onChange={handleChange} />
                 </div>
               </div>
               <div className="form-row">
@@ -136,7 +137,7 @@ export default function ActualizarDatosModal({ visible, onClose }) {
                 </div>
                 <div className="form-group">
                   <label>Fecha de nacimiento</label>
-                  <input type="date" name="nacimiento" value={formulario.nacimiento} onChange={handleChange} />
+                  <input type="date" name="fecha_nacimiento" value={formulario.fecha_nacimiento} onChange={handleChange} />
                 </div>
               </div>
             </>
@@ -147,7 +148,7 @@ export default function ActualizarDatosModal({ visible, onClose }) {
               <div className="form-row">
                 <div className="form-group">
                   <label>Tipo de sangre</label>
-                  <input type="text" name="sangre" value={formulario.sangre} onChange={handleChange} />
+                  <input type="text" name="tipo_sangre" value={formulario.tipo_sangre} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                   <label>Número de teléfono</label>
@@ -161,7 +162,7 @@ export default function ActualizarDatosModal({ visible, onClose }) {
                 </div>
                 <div className="form-group">
                   <label>Identificación</label>
-                  <input type="text" name="identificacion" value={formulario.identificacion} disabled />
+                  <input type="text" name="documento" value={formulario.documento} disabled />
                 </div>
               </div>
             </>
