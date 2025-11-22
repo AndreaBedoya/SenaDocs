@@ -29,7 +29,8 @@ export default function RegistroModal({ visible, onClose, onLoginClick }) {
     cargo: "",
     funciones_trabajo: "",
     rol_id: 1,
-    confirmar: ""
+    confirmar: "",
+     foto:""
   });
 
   const handleChange = (e) => {
@@ -42,8 +43,11 @@ export default function RegistroModal({ visible, onClose, onLoginClick }) {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setFormulario((prev) => ({ ...prev, foto: reader.result }));
-      };
+      const base64 = reader.result;
+      localStorage.setItem("fotoPerfil", base64); // ✅ guarda en localStorage
+      setFormulario((prev) => ({ ...prev, foto: base64 }));
+    };
+
       reader.readAsDataURL(file);
     }
   };
@@ -62,7 +66,8 @@ export default function RegistroModal({ visible, onClose, onLoginClick }) {
 
     const datos = { ...formulario };
     delete datos.confirmar;
-
+    delete datos.foto;
+    
     try {
       const respuesta = await fetch("http://localhost:4000/api/auth/register", {
         method: "POST",
