@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 // ACA SE IMPORTAN LOS ICONOS
+import IconUsuarios from "../Icons/IconUsuarios.jsx";
+import IconAyuda from "../Icons/IconAyuda.jsx";
 import IconColapsar from "../Icons/IconColapsar.jsx";
 import IconInicio from "../Icons/IconInicio.jsx";
 import IconPDF from "../Icons/IconPDF.jsx";
@@ -63,6 +65,16 @@ export default function Dashboard() {
               <Link to="/dashboard/novedades-academicas" className="sidebarLink">
                 <IconNovedades />
                 {!isCollapsed && <span>Novedades académicas</span>}
+              </Link>
+
+              <Link to="/dashboard/gestion-usuarios" className="sidebarLink">
+                <IconUsuarios />
+                {!isCollapsed && <span>Gestionar usuarios</span>}
+              </Link>
+
+              <Link to="/dashboard/centro-ayuda" className="sidebarLink">
+                <IconAyuda /> {/* ← aquí agregas tu ícono */}
+                {!isCollapsed && <span>Centro de ayuda</span>}
               </Link>
             </nav>
           </div>

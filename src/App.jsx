@@ -7,6 +7,10 @@ import Dashboard from "./Views/Dashboard";
 import RenombrarPDF from "./Views/RenombrarPDF";
 import NovedadesAcademicas from "./Views/NovedadesAcademicas";
 import JuiciosEvaluativos from "./Views/JuiciosEvaluativos";
+import GestionarUsuarios from "./Views/GestionarUsuarios";
+import CentroAyuda from "./Views/CentroAyuda";
+
+// Componentes
 import Perfil from "./components/Perfil";
 import Configuracion from "./components/Configuracion";
 import RutaProtegida from "./components/RutaProtegida";
@@ -52,6 +56,8 @@ function App() {
           <Route path="novedades-academicas" element={<NovedadesAcademicas />} />
           <Route path="perfil" element={<Perfil />} />
           <Route path="configuracion" element={<Configuracion />} />
+          <Route path="gestion-usuarios" element={<GestionarUsuarios />} />
+          <Route path="centro-ayuda" element={<CentroAyuda />} />
         </Route>
 
         {/* Redirecciones opcionales para rutas eliminadas */}
