@@ -85,7 +85,7 @@ export default function Dashboard() {
           <BotonPerfil
             texto={!isCollapsed ? "Perfil" : ""}
             Icon={IconPerfil}
-            className="boton-dashboard"
+            className="boton-dashboard-perfil"
             onClick={() => navigate("/dashboard/perfil")}
           />
 
@@ -102,8 +102,7 @@ export default function Dashboard() {
           onBuscar={handleBusqueda}
           className={`barra-busqueda ${isCollapsed ? "busqueda-colapsada" : ""}`}
         />
-        <Outlet /> {/* Aquí se renderiza el dashboard funcional */}
-        
+        <Outlet />
       </main>
     </div>
   );

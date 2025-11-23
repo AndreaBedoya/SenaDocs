@@ -147,6 +147,29 @@
 }
 
 /* BOTÓN PERSONALIZADO */
+
+.boton-dashboard-perfil {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: white;
+  border: 2px solid gray;
+  color: black;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-dashboard-perfil:hover {
+  background:none;
+  border: 2px solid gray;
+  color: black;
+}
+
 .boton-dashboard {
   display: flex;
   align-items: center;
@@ -215,7 +238,9 @@ span {
   max-height: 32px !important;
 }
 
-/* CONTENIDO PRINCIPAL */
+/* -------------------------------------- */
+/* CONTENIDO PRINCIPAL  DEL DASHBOARD*/
+/* ------------------------------------- */
 .main-content {
   background:#fff;
 }

@@ -9,6 +9,7 @@ import NovedadesAcademicas from "./Views/NovedadesAcademicas";
 import JuiciosEvaluativos from "./Views/JuiciosEvaluativos";
 import GestionarUsuarios from "./Views/GestionarUsuarios";
 import CentroAyuda from "./Views/CentroAyuda";
+import Inicio from "./Views/Inicio";
 
 // Componentes
 import Perfil from "./components/Perfil";
@@ -51,6 +52,7 @@ function App() {
             </RutaProtegida>
           }
         >
+          <Route path="" element={<Inicio />} />
           <Route path="renombrar-pdf" element={<RenombrarPDF />} />
           <Route path="juicios-evaluativos" element={<JuiciosEvaluativos />} />
           <Route path="novedades-academicas" element={<NovedadesAcademicas />} />

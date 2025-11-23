@@ -86,27 +86,33 @@ export default function RenombrarPDF() {
 
   return (
     <section id="subirpdf">
-      <h2 className="herramientas">Herramientas</h2>
       <form className="formulario" onSubmit={handleSubmit}>
         <h3>Organiza tus documentos PDF</h3>
         <h4>Renombra y organiza tus archivos PDF con la estructura (Cédula, nombre y apellido)</h4>
 
-        <label>Nombre de la carpeta</label>
-        <input
-          type="text"
-          placeholder="Ej: Certificación"
-          value={carpeta}
-          onChange={(e) => setCarpeta(e.target.value)}
-          required
-        />
+        <div className="grupo-inputs">
+          <div className="campo">
+            <label>Nombre de la carpeta</label>
+            <input
+              type="text"
+              placeholder="Ej: Certificación"
+              value={carpeta}
+              onChange={(e) => setCarpeta(e.target.value)}
+              required
+            />
+          </div>
 
-        <label>Número de la ficha</label>
-        <input
-          type="text"
-          placeholder="Ej: 2828866"
-          value={ficha}
-          onChange={(e) => setFicha(e.target.value)}
-        />
+          <div className="campo">
+            <label>Número de la ficha</label>
+            <input
+              type="text"
+              placeholder="Ej: 2828866"
+              value={ficha}
+              onChange={(e) => setFicha(e.target.value)}
+            />
+          </div>
+        </div>
+
 
         <label>Selecciona los archivos PDF</label>
         <div {...getRootProps({ className: "zona-carga" })}>

@@ -5,16 +5,16 @@ import { persist } from "zustand/middleware";
 export const useUsuarioStore = create(
   persist(
     (set, get) => ({
-      // ✅ Estado inicial del usuario
+      // Estado inicial del usuario
       usuario: null,
 
-      // ✅ Guardar datos del usuario
+      // Guardar datos del usuario
       setUsuario: (data) => set({ usuario: data }),
 
-      // ✅ Limpiar datos del usuario (logout)
+      // Limpiar datos del usuario (logout)
       limpiarUsuario: () => set({ usuario: null }),
 
-      // ✅ Verificar si el usuario está autenticado
+      // Verificar si el usuario está autenticado
       estaAutenticado: () => !!get().usuario
     }),
     {
