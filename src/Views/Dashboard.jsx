@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 // ACA SE IMPORTAN LOS ICONOS
+import IconUsuarios from "../Icons/IconUsuarios.jsx";
+import IconAyuda from "../Icons/IconAyuda.jsx";
 import IconColapsar from "../Icons/IconColapsar.jsx";
 import IconInicio from "../Icons/IconInicio.jsx";
 import IconPDF from "../Icons/IconPDF.jsx";
@@ -64,6 +66,16 @@ export default function Dashboard() {
                 <IconNovedades />
                 {!isCollapsed && <span>Novedades académicas</span>}
               </Link>
+
+              <Link to="/dashboard/gestion-usuarios" className="sidebarLink">
+                <IconUsuarios />
+                {!isCollapsed && <span>Gestionar usuarios</span>}
+              </Link>
+
+              <Link to="/dashboard/centro-ayuda" className="sidebarLink">
+                <IconAyuda /> {/* ← aquí agregas tu ícono */}
+                {!isCollapsed && <span>Centro de ayuda</span>}
+              </Link>
             </nav>
           </div>
         </div>
@@ -73,7 +85,7 @@ export default function Dashboard() {
           <BotonPerfil
             texto={!isCollapsed ? "Perfil" : ""}
             Icon={IconPerfil}
-            className="boton-dashboard"
+            className="boton-dashboard-perfil"
             onClick={() => navigate("/dashboard/perfil")}
           />
 
@@ -90,8 +102,7 @@ export default function Dashboard() {
           onBuscar={handleBusqueda}
           className={`barra-busqueda ${isCollapsed ? "busqueda-colapsada" : ""}`}
         />
-        <Outlet /> {/* Aquí se renderiza el dashboard funcional */}
-        
+        <Outlet />
       </main>
     </div>
   );

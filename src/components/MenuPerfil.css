@@ -1,66 +1,77 @@
-.perfilComponente{
+.perfilComponente {
   position: relative;
   display: inline-block;
-  font-family: "Segoe UI", sans-serif;
 }
 
-.componentePerfil:hover {
-  color: #FFFFFF;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 6px;
+/* Botón con foto y nombre */
+.boton-foto-perfil {
+  display: flex;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: #e8f5e9;
+  border: 1px solid #4caf50;
+  border-radius: 50px;
+  padding: 0;
   cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
-.componentePerfil:hover {
-  background-color: #00A859;
+.boton-foto-perfil:hover {
+  background-color: #c8e6c9;
 }
 
+/* Foto del usuario */
+.avatar-perfil {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Nombre del usuario */
+.nombre-usuario {
+  font-size: 14px;
+  font-weight: 500;
+  color: #2e7d32;
+  white-space: nowrap;
+}
+
+/* Menú desplegable */
 .perfil-menu {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #FFFFFF;
-  border: 1px solid #E0E0E0;
+  background-color: white;
+  border: 1px solid #ccc;
   border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  list-style: none;
-  padding: 8px 0;
-  margin: 0;
-  min-width: 180px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-top: 6px;
   z-index: 1000;
-  display: none;
+  min-width: 160px;
+  padding: 6px 0;
+  list-style: none;
 }
 
-.perfilComponente:hover .perfil-menu {
-  display: block;
-}
-
+/* Ítems del menú */
 .perfil-menu li {
-  padding: 10px 16px;
-  transition: background-color 0.2s ease;
+  width: 100%;
 }
 
-.perfil-menu li a {
-  text-decoration: none;
-  color: #1A1A1A;
-  font-weight: 500;
-  display: block;
-}
-
-.perfil-menu li:hover {
-  background-color: #F4F4F4;
-}
-
-.perfil-menu li button {
+/* Botones del menú */
+.perfil-menu button {
+  width: 100%;
+  padding: 8px 12px;
   background: none;
   border: none;
-  color: #007A33;
-  font-weight: 500;
-  cursor: pointer;
-  width: 100%;
   text-align: left;
-  padding: 0;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.perfil-menu button:hover {
+  background-color: #f0f0f0;
 }

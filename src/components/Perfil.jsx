@@ -59,7 +59,7 @@ export default function Perfil() {
                 </div>
                 <div className="columnas-perfil">
                   <label>Tipo de sangre</label>
-                  <p>{usuario.sangre || "No registrada"}</p>
+                  <p>{usuario.tipo_sangre || "No registrada"}</p>
                 </div>
               </div>
 
@@ -81,7 +81,7 @@ export default function Perfil() {
                 </div>
                 <div className="columnas-perfil">
                   <label>Teléfono del contacto</label>
-                  <p>{usuario.telefono_emergencia || "No registrado"}</p>
+                  <p>{usuario.contacto_emergencia || "No registrado"}</p>
                 </div>
               </div>
             </div>
