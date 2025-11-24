@@ -1,99 +1,46 @@
 /* Contenedor principal */
+.contenedorConfiguracion{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80dvw;
+  height: 93dvh;
+}
 .configuracion {
-  min-width: 70dvw;
-  min-height: 80dvh;
+  width: 70dvw;
+  height: auto;
   padding: 10px 30px;
   background-color: #fdfdfd;
   border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid gray;
+  box-shadow: 2px 2px 4px gray;
   font-family: "Segoe UI", sans-serif;
 }
-
-/* Barra superior */
-.navbar-configuracion {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
-.foto-pequeña {
-  display: flex;
-  justify-content: space-between;
-  width: 100px;
-  height: auto;
-}
-
-.foto-pequeña img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #4caf50;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  
-}
-
-.navbar-configuracion p {
-  font-size: 24px;
-  font-weight: 500;
-}
-
-.cuenta{
-    display: flex;
-    gap: 20px;
-    margin: 30px 0px;
-}
-
-.nombre-cuenta h2{
-  color: black;
-  font-size: 18px;
-}
-
-.nombre-cuenta p{
-    color: black;
-    font-size: 16px;
-}
-
-.cuenta img{
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #4caf50;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-}
-/* Contenedor de contenido principal */
-.informacion-configuracion {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-}
-
+.configuracion h2 {
+  font-size: 28px;
+  font-weight:600;
+  color: #000;
+  text-align: center;
+  padding: 20px 0;
+}                                 
 /* Panel izquierdo: datos + foto + contraseña */
 .foto-contrasena {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: #fff;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
-  min-height: 25dvw;
-}
-
-.foto-contrasena label{
-  font-size: 18px;
+  height: 75vh;
 }
 
 /* Subpanel: datos + foto */
 .configuracion-middle {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   gap: 20px;
 }
-
 /* Datos personales */
 .configuracion-middle > div {
   flex: 1;
@@ -101,24 +48,22 @@
 .columnas-configuracion{
   padding: 10px 0px;
 }
-
 .columnas-configuracion p{
   font-size: 18px;
 }
-
 .columnas-configuracion {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
-
 .columnas-configuracion label {
+  font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 5px;
   color: #000;
 }
-
 .columnas-configuracion p {
+  font-size: 1rem;
   padding: 10px;
   background-color: #f9f9f9;
   border: 2px solid #ccc;
@@ -126,57 +71,33 @@
   color: #000;
   margin: 0;
 }
-
 /* Foto de configuracion */
 .foto-configuracion {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .configuracion-avatar {
   width: 300px;
   height: 300px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #4caf50;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  border: 3px solid gray;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
-
-
-/* Panel derecho: preferencias */
-.preferencias{
-    background-color: #fff;
-    flex: 1;
-    border-radius: 12px;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
-    min-height: 25dvw;
-}
-.preferencias h2{
-    text-align: center;
-    font-size: 26px;
-    color: black;
-    margin-top: 40px ;
-    text-shadow: 2px 2px 4px gray;
-    font-weight: 500;
-}
-
 .idioma-tema {
-  flex: 1;
   display: flex;
   justify-content: center;
   background-color: #fff;
-  margin: 30px 0px;
-  padding-top: 30px 20px;
-  min-height: 420px;
-  gap: 50px;
+  margin: 10px 0px;
+  height: 23vh;
+  gap: 40px;
 }
-
 /* Bloques de idioma y tema */
 .idiomas,
 .tema {
   border: 2px solid gray;
-  padding: 20px;
+  padding: 10px 20px;
   margin-bottom: 30px;
   border-radius: 25px ;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
@@ -184,24 +105,24 @@
 
 .idiomas h3,
 .tema h3 {
-  font-size: 28px;
+  font-size: 24px;
   margin: 10px 0px;
   color: black;
 }
 
 .idiomas p,
 .tema p {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   color: #666;
   font-size: 18px;
 }
 
 select {
   width: 100%;
-  padding: 10px;
+  padding: 4px 10px;
   border-radius: 8px;
   border: 1px solid #4caf50;
-  font-size: 24px;
+  font-size: 20px;
   background-color: #fff;
   color: black;
   margin: 20px 0px;
@@ -219,8 +140,8 @@ select:focus {
 .botones-configuracion {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
   gap: 40px;
+  margin-bottom: 20px;
 }
 
 .boton-actualizar {

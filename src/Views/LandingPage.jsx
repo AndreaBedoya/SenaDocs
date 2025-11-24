@@ -77,7 +77,7 @@ export default function LandingPage() {
               visible={mostrarLogin}
               onClose={() => setMostrarLogin(false)}
               onRegistroClick={abrirRegistro}
-              onRecuperarClick={abrirRecuperar} // 👈 conecta el link de recuperar
+              onRecuperarClick={abrirRecuperar} 
             />
 
             <RecuperarModal

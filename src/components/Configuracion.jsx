@@ -49,94 +49,67 @@ export default function Perfil() {
 };
 
   return (
-    <div className="configuracion">
-      {/* Barra superior */}
-      <nav className="navbar-configuracion">
-        <div className="senadocs">
-          <p> Configuración</p>
-        </div>
-        <div className="foto-pequeña">
-          <IconBell />
-          <img
-          src={usuario.foto || "https://via.placeholder.com/150"}
-        />
-        </div>
-      </nav>
-      {/* --------------------------- */}
-      <div className="cuenta">
-        <img
-          src={usuario.foto || "https://via.placeholder.com/150"}
-          alt="Foto de perfil"
-          className="cuenta-avatar"
-        />
-        <div className="nombre-cuenta">
-          <h2>{usuario.nombre_completo || "NOMBRE"}</h2>
-          <p>Tu cuenta personal</p>
-        </div> 
-      </div>
+    <div className="contenedorConfiguracion">
+      <div className="configuracion">
+        <h2> Configuración</h2>
+          {/* --------------------------- */}
+          {/* Panel intermedio izquierdo  */}
+          <div className="informacion-configuracion">
+            <div className="foto-contrasena">
+              <div className="configuracion-middle">
+                {/* Bloque izquierdo: Foto + Nombre */}
+                <div>
+                  <div className="columnas-configuracion">
+                      <label>Documento</label>
+                      <p>{usuario.identificacion || "No registrado"}</p>
+                  </div>
+                  <div className="columnas-configuracion">
+                      <label>Correo institucional</label>
+                      <p>{usuario.correo || "No registrado"}</p>
+                  </div>
+                  <div className="columnas-configuracion">
+                      <label>Teléfono</label>
+                      <p>{usuario.telefono || "No registrado"}</p>
+                  </div>
+                </div>
+                <div className="foto-configuracion">
+                  <img
+                    src={usuario.foto || "https://via.placeholder.com/150"}
+                    className="configuracion-avatar"
+                  />
+                </div>
+              </div>
 
-      {/* Panel intermedio izquierdo  */}
-      <div className="informacion-configuracion">
-        <div className="foto-contrasena">
-          <div className="configuracion-middle">
-            {/* Bloque izquierdo: Foto + Nombre */}
-            <div>
-              <div className="columnas-configuracion">
-                  <label>Documento</label>
-                  <p>{usuario.identificacion || "No registrado"}</p>
-              </div>
-              <div className="columnas-configuracion">
-                  <label>Correo institucional</label>
-                  <p>{usuario.correo || "No registrado"}</p>
-              </div>
-              <div className="columnas-configuracion">
-                  <label>Teléfono</label>
-                  <p>{usuario.telefono || "No registrado"}</p>
-              </div>
-            </div>
-            <div className="foto-configuracion">
-              <img
-                src={usuario.foto || "https://via.placeholder.com/150"}
-                className="configuracion-avatar"
-              />
-            </div>
-          </div>  
-        </div>
-        
-        {/* ------------------------------------- */}
-        <div className="preferencias">
-        {/* Bloque derecho: información básica */}
-          <h2>Preferencias</h2>
-          <div className="idioma-tema">
-            <div className="idiomas">
-              <h3>Idiomas</h3>
-              <p>Seleccione el idioma de su preferencia</p>
-              <select name="idioma" defaultValue="es">
-                <option value="es">Español</option>
-                <option value="en">Inglés</option>
-              </select>
-          </div>
+              {/* ------------------------------------- */}
+              {/* Bloque derecho: información básica */}
+              <div className="idioma-tema">
+                  <div className="idiomas">
+                    <h3>Idiomas</h3>
+                    <p>Seleccione el idioma de su preferencia</p>
+                    <select name="idioma" defaultValue="es">
+                      <option value="es">Español</option>
+                      <option value="en">Inglés</option>
+                    </select>
+                </div>
 
-          <div className="tema">
-            <h3>Tema</h3>
-            <p>Seleccione el tema de su preferencia</p>
-            <select name="tema" defaultValue="claro">
-              <option value="claro">Claro</option>
-              <option value="oscuro">Oscuro</option>
-            </select>
+                <div className="tema">
+                  <h3>Tema</h3>
+                  <p>Seleccione el tema de su preferencia</p>
+                  <select name="tema" defaultValue="claro">
+                    <option value="claro">Claro</option>
+                    <option value="oscuro">Oscuro</option>
+                  </select>
+                </div>
+              </div>
+              <div className="botones-configuracion">
+                <button className="volverConfiguracion"><BotonVolver/></button>
+                <button className="boton-actualizar" onClick={handleActualizar}>
+                  Actualizar datos
+                </button>
+              </div>
+            </div> 
           </div>
-          </div>
-          
-        </div>
       </div>
-      
-      <div className="botones-configuracion">
-        <button className="volverConfiguracion"><BotonVolver/></button>
-        <button className="boton-actualizar" onClick={handleActualizar}>
-          Actualizar datos
-        </button>
-      </div>
-      
     </div>
   );
 }
