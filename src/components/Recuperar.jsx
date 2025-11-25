@@ -14,54 +14,86 @@ export default function RecuperarModal({ visible, onClose }) {
       Swal.fire({
         icon: "warning",
         title: "Correo requerido",
-        text: "Ingresa tu correo institucional"
+        text: "Ingresa tu correo institucional",
+        zIndex: 9999
       });
       return;
     }
 
     try {
-      const respuesta = await fetch("http://localhost:4000/api/enviar-codigo", {
+      const respuesta = await fetch("http://localhost:4000/api/auth/forgot-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ correo })
+        body: JSON.stringify({ email: correo })
       });
 
       const resultado = await respuesta.json();
 
-      if (respuesta.ok) {
+      if (respuesta.ok || resultado.success) {
         Swal.fire({
           icon: "success",
           title: "Código enviado",
-          text: "Revisa tu correo institucional"
+          text: resultado.message || "Revisa tu correo institucional",
+          zIndex: 9999
         });
         setPaso(2);
       } else {
         Swal.fire({
           icon: "error",
           title: "Error",
-          text: resultado.error || "No se pudo enviar el código"
+          text: resultado.message || "No se pudo enviar el código",
+          zIndex: 9999
         });
       }
     } catch {
       Swal.fire({
         icon: "error",
         title: "Error de conexión",
-        text: "No se pudo conectar con el servidor"
+        text: "No se pudo conectar con el servidor",
+        zIndex: 9999
       });
     }
   };
 
-  const verificarCodigo = () => {
+  const verificarCodigo = async () => {
     if (!codigo) {
       Swal.fire({
         icon: "warning",
         title: "Código requerido",
-        text: "Ingresa el código recibido"
+        text: "Ingresa el código recibido",
+        zIndex: 9999
       });
       return;
     }
 
-    setPaso(3);
+    try {
+      const respuesta = await fetch(`http://localhost:4000/api/auth/reset-password/${codigo}`);
+      const resultado = await respuesta.json();
+
+      if (respuesta.ok || resultado.success) {
+        Swal.fire({
+          icon: "success",
+          title: "Código válido",
+          text: resultado.message || "Puedes continuar",
+          zIndex: 9999
+        });
+        setPaso(3);
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Código inválido",
+          text: resultado.message || "Token inválido o expirado",
+          zIndex: 9999
+        });
+      }
+    } catch {
+      Swal.fire({
+        icon: "error",
+        title: "Error de conexión",
+        text: "No se pudo verificar el código",
+        zIndex: 9999
+      });
+    }
   };
 
   const actualizarContrasena = async () => {
@@ -69,40 +101,45 @@ export default function RecuperarModal({ visible, onClose }) {
       Swal.fire({
         icon: "warning",
         title: "Contraseña requerida",
-        text: "Ingresa tu nueva contraseña"
+        text: "Ingresa tu nueva contraseña",
+        zIndex: 9999
       });
       return;
     }
 
     try {
-      const respuesta = await fetch("http://localhost:4000/api/recuperar", {
+      const respuesta = await fetch("http://localhost:4000/api/auth/reset-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ correo, codigo, nuevaContrasena })
+        body: JSON.stringify({
+          token: codigo,
+          newPassword: nuevaContrasena
+        })
       });
 
       const resultado = await respuesta.json();
 
-      if (respuesta.ok) {
+      if (respuesta.ok || resultado.success) {
         Swal.fire({
           icon: "success",
           title: "Contraseña actualizada",
-          text: "Ya puedes iniciar sesión"
-        }).then(() => {
-          onClose();
-        });
+          text: resultado.message || "Ya puedes iniciar sesión",
+          zIndex: 9999
+        }).then(() => onClose());
       } else {
         Swal.fire({
           icon: "error",
           title: "Error",
-          text: resultado.error || "No se pudo actualizar la contraseña"
+          text: resultado.message || "No se pudo actualizar la contraseña",
+          zIndex: 9999
         });
       }
     } catch {
       Swal.fire({
         icon: "error",
         title: "Error de conexión",
-        text: "No se pudo conectar con el servidor"
+        text: "No se pudo conectar con el servidor",
+        zIndex: 9999
       });
     }
   };
@@ -121,14 +158,12 @@ export default function RecuperarModal({ visible, onClose }) {
         <form className="recuperar-form paso-activo" onSubmit={(e) => e.preventDefault()}>
           <h2>Recuperar Contraseña</h2>
 
-          {/* Barra de progreso */}
           <div className="barra-progreso">
             <div className={`paso ${paso >= 1 ? "activo" : ""}`}>1</div>
             <div className={`paso ${paso >= 2 ? "activo" : ""}`}>2</div>
             <div className={`paso ${paso === 3 ? "activo" : ""}`}>3</div>
           </div>
 
-          {/* Paso 1: correo */}
           {paso === 1 && (
             <>
               <p>Ingresa tu correo institucional para recibir el código de verificación.</p>
@@ -146,7 +181,6 @@ export default function RecuperarModal({ visible, onClose }) {
             </>
           )}
 
-          {/* Paso 2: código */}
           {paso === 2 && (
             <>
               <p>Ingresa el código que recibiste en tu correo institucional.</p>
@@ -165,7 +199,6 @@ export default function RecuperarModal({ visible, onClose }) {
             </>
           )}
 
-          {/* Paso 3: nueva contraseña */}
           {paso === 3 && (
             <>
               <p>Ingresa tu nueva contraseña para actualizarla.</p>

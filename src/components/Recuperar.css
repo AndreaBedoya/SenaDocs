@@ -1,3 +1,9 @@
+/* Forzar que las alertas de SweetAlert2 estén siempre encima del modal */
+.swal2-container {
+  z-index: 9999 !important;
+}
+
+
 .modal-Recuperar {
   position: fixed;
   top: 0;

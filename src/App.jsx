@@ -10,6 +10,7 @@ import JuiciosEvaluativos from "./Views/JuiciosEvaluativos";
 import GestionarUsuarios from "./Views/GestionarUsuarios";
 import CentroAyuda from "./Views/CentroAyuda";
 import Inicio from "./Views/Inicio";
+import NuevaContrasena from "./Views/NuevaContrasena"; // ✅ nueva vista
 
 // Componentes
 import Perfil from "./components/Perfil";
@@ -22,7 +23,11 @@ function App() {
   useEffect(() => {
     const verificarToken = () => {
       const token = localStorage.getItem("token");
-      const esValido = token && token !== "undefined" && token !== "null" && token.trim() !== "";
+      const esValido =
+        token &&
+        token !== "undefined" &&
+        token !== "null" &&
+        token.trim() !== "";
       setAutenticado(esValido);
     };
 
@@ -42,6 +47,9 @@ function App() {
 
         {/* Ruta pública principal */}
         <Route path="/landing" element={<LandingPage />} />
+
+        {/* Nueva ruta pública para restablecer contraseña */}
+        <Route path="/reset-password" element={<NuevaContrasena />} />
 
         {/* Rutas protegidas dentro del dashboard */}
         <Route

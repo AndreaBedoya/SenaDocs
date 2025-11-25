@@ -20,17 +20,15 @@ export default function RegistroModal({ visible, onClose, onLoginClick }) {
     email: "",
     password: "",
     documento: "",
+    centro_formacion:"",
     ciudad: "",
     telefono: "",
-    contacto_emergencia: "",
-    nombre_contacto: "",
-    tipo_sangre: "",
     fecha_nacimiento: "",
     cargo: "",
     funciones_trabajo: "",
     rol_id: 1,
     confirmar: "",
-     foto:""
+    foto:""
   });
 
   const handleChange = (e) => {
@@ -131,9 +129,15 @@ export default function RegistroModal({ visible, onClose, onLoginClick }) {
                   <label>Nombre</label>
                   <input type="text" name="nombre" value={formulario.nombre} onChange={handleChange} required />
                 </div>
+              </div>
+              <div className="form-row">
                 <div className="form-group">
                   <label>Apellido</label>
                   <input type="text" name="apellido" value={formulario.apellido} onChange={handleChange} required />
+                </div>
+                <div className="form-group">
+                  <label>Fecha de nacimiento</label>
+                  <input type="date" name="fecha_nacimiento" value={formulario.fecha_nacimiento} onChange={handleChange} />
                 </div>
               </div>
               <div className="form-row">
@@ -144,16 +148,6 @@ export default function RegistroModal({ visible, onClose, onLoginClick }) {
                 <div className="form-group">
                   <label>Ciudad</label>
                   <input type="text" name="ciudad" value={formulario.ciudad} onChange={handleChange} />
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="form-group">
-                  <label>Fecha de nacimiento</label>
-                  <input type="date" name="fecha_nacimiento" value={formulario.fecha_nacimiento} onChange={handleChange} />
-                </div>
-                <div className="form-group">
-                  <label>Tipo de sangre</label>
-                  <input type="text" name="tipo_sangre" value={formulario.tipo_sangre} onChange={handleChange} />
                 </div>
               </div>
             </div>
@@ -181,22 +175,17 @@ export default function RegistroModal({ visible, onClose, onLoginClick }) {
                   <input type="text" name="funciones_trabajo" value={formulario.funciones_trabajo} onChange={handleChange} />
                 </div>
               </div>
-              <h3 className="contacto">Contacto de Emergencia</h3>
-              <div className="form-row">
-                <div className="form-group">
-                  <label>Nombre del contacto</label>
-                  <input type="text" name="nombre_contacto" value={formulario.nombre_contacto} onChange={handleChange} />
-                </div>
-                <div className="form-group">
-                  <label>Teléfono del contacto</label>
-                  <input type="text" name="contacto_emergencia" value={formulario.contacto_emergencia} onChange={handleChange} />
-                </div>
-              </div>
             </div>
           )}
 
           {step === 3 && (
             <div className="paso-activo">
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Centro formación</label>
+                  <input type="text" name="centro_formacion" value={formulario.centro_formacion} onChange={handleChange} />
+                </div>
+              </div>
               <div className="form-row">
                 <div className="form-group">
                   <label>Contraseña</label>
