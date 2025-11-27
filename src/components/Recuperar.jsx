@@ -8,6 +8,8 @@ export default function RecuperarModal({ visible, onClose }) {
   const [correo, setCorreo] = useState("");
   const [codigo, setCodigo] = useState("");
   const [nuevaContrasena, setNuevaContrasena] = useState("");
+  const [confirmarContrasena, setConfirmarContrasena] = useState("");
+  const [cargando, setCargando] = useState(false);
 
   const enviarCodigo = async () => {
     if (!correo) {
@@ -97,23 +99,35 @@ export default function RecuperarModal({ visible, onClose }) {
   };
 
   const actualizarContrasena = async () => {
-    if (!nuevaContrasena) {
+    if (!nuevaContrasena || !confirmarContrasena) {
       Swal.fire({
         icon: "warning",
-        title: "Contraseña requerida",
-        text: "Ingresa tu nueva contraseña",
+        title: "Campos requeridos",
+        text: "Debes ingresar y confirmar tu nueva contraseña",
         zIndex: 9999
       });
       return;
     }
 
+    if (nuevaContrasena !== confirmarContrasena) {
+      Swal.fire({
+        icon: "error",
+        title: "Contraseñas no coinciden",
+        text: "Verifica que ambas contraseñas sean iguales",
+        zIndex: 9999
+      });
+      return;
+    }
+
+    setCargando(true);
     try {
       const respuesta = await fetch("http://localhost:4000/api/auth/reset-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           token: codigo,
-          newPassword: nuevaContrasena
+          newPassword: nuevaContrasena,
+          confirmPassword: confirmarContrasena
         })
       });
 
@@ -141,6 +155,8 @@ export default function RecuperarModal({ visible, onClose }) {
         text: "No se pudo conectar con el servidor",
         zIndex: 9999
       });
+    } finally {
+      setCargando(false);
     }
   };
 
@@ -176,7 +192,7 @@ export default function RecuperarModal({ visible, onClose }) {
                 required
               />
               <div className="pasos-navegacion">
-                <button className="ButtonSiguiente" onClick={enviarCodigo}>Siguiente</button>
+                <button className="ButtonSiguiente" onClick={enviarCodigo}>Enviar código</button>
               </div>
             </>
           )}
@@ -194,7 +210,7 @@ export default function RecuperarModal({ visible, onClose }) {
               />
               <div className="pasos-navegacion">
                 <button className="ButtonAtras" onClick={retrocederPaso}>Atrás</button>
-                <button className="ButtonSiguiente" onClick={verificarCodigo}>Siguiente</button>
+                <button className="ButtonSiguiente" onClick={verificarCodigo}>Validar código</button>
               </div>
             </>
           )}
@@ -210,9 +226,19 @@ export default function RecuperarModal({ visible, onClose }) {
                 placeholder="Tu nueva contraseña"
                 required
               />
+              <label>Confirmar contraseña</label>
+              <input
+                type="password"
+                value={confirmarContrasena}
+                onChange={(e) => setConfirmarContrasena(e.target.value)}
+                placeholder="Confirma tu contraseña"
+                required
+              />
               <div className="pasos-navegacion">
                 <button className="ButtonAtras" onClick={retrocederPaso}>Atrás</button>
-                <button className="ButtonSiguiente" onClick={actualizarContrasena}>Actualizar contraseña</button>
+                <button className="ButtonSiguiente" onClick={actualizarContrasena} disabled={cargando}>
+                  {cargando ? "Actualizando..." : "Actualizar contraseña"}
+                </button>
               </div>
             </>
           )}

@@ -12,10 +12,13 @@ export default function NuevaContrasena() {
   const [validando, setValidando] = useState(true);
   const [valido, setValido] = useState(false);
   const [nuevaContrasena, setNuevaContrasena] = useState("");
+  const [confirmarContrasena, setConfirmarContrasena] = useState("");
   const [cargando, setCargando] = useState(false);
 
+  const claseFortaleza = (nivel) =>
+    nivel.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
   useEffect(() => {
-    // Asegura que las alertas queden por encima
     const style = document.createElement("style");
     style.innerHTML = `.swal2-container { z-index: 9999 !important; }`;
     document.head.appendChild(style);
@@ -30,16 +33,15 @@ export default function NuevaContrasena() {
         icon: "error",
         title: "Token faltante",
         text: "El enlace no contiene un token válido",
-      }).then(() => navigate("/"));
+      }).then(() => navigate("/landing"));
       return;
     }
 
-    // Validar token con el backend
     fetch(`http://localhost:4000/api/auth/reset-password/${token}`)
-      .then(res => res.json())
-      .then(data => {
+      .then(async (res) => {
+        const data = await res.json().catch(() => ({}));
         setValidando(false);
-        if (data.success || data.ok) {
+        if (res.ok && data.success === true) {
           setValido(true);
         } else {
           setValido(false);
@@ -47,7 +49,7 @@ export default function NuevaContrasena() {
             icon: "error",
             title: "Token inválido o expirado",
             text: data.message || "Solicita nuevamente el restablecimiento",
-          }).then(() => navigate("/"));
+          }).then(() => navigate("/landing"));
         }
       })
       .catch(() => {
@@ -57,7 +59,7 @@ export default function NuevaContrasena() {
           icon: "error",
           title: "Error de conexión",
           text: "No se pudo verificar el token",
-        }).then(() => navigate("/"));
+        }).then(() => navigate("/landing"));
       });
   }, [token, navigate]);
 
@@ -68,53 +70,88 @@ export default function NuevaContrasena() {
   };
 
   const onSubmit = async (e) => {
-    e.preventDefault();
-    if (!nuevaContrasena) {
+  e.preventDefault();
+
+  if (!nuevaContrasena || !confirmarContrasena) {
+    Swal.fire({
+      icon: "warning",
+      title: "Campos requeridos",
+      text: "Debes ingresar y confirmar tu nueva contraseña",
+    });
+    return;
+  }
+
+  if (nuevaContrasena !== confirmarContrasena) {
+    Swal.fire({
+      icon: "error",
+      title: "Contraseñas no coinciden",
+      text: "Verifica que ambas contraseñas sean iguales",
+    });
+    return;
+  }
+
+  if (nuevaContrasena.length < 6) {
+    Swal.fire({
+      icon: "warning",
+      title: "Contraseña muy corta",
+      text: "Debe tener al menos 6 caracteres",
+    });
+    return;
+  }
+
+  if (!/[A-Z]/.test(nuevaContrasena) || !/[a-z]/.test(nuevaContrasena) || !/\d/.test(nuevaContrasena)) {
+    Swal.fire({
+      icon: "warning",
+      title: "Contraseña insegura",
+      text: "Debe tener al menos una mayúscula, una minúscula y un número",
+    });
+    return;
+  }
+
+  setCargando(true);
+  try {
+    const respuesta = await fetch("http://localhost:4000/api/auth/reset-password", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        token,
+        newPassword: nuevaContrasena,
+        confirmPassword: confirmarContrasena,
+      }),
+    });
+
+    const resultado = await respuesta.json().catch(() => ({}));
+
+    if (respuesta.ok || resultado.success === true) {
       Swal.fire({
-        icon: "warning",
-        title: "Contraseña requerida",
-        text: "Ingresa tu nueva contraseña",
-      });
-      return;
-    }
+        icon: "success",
+        title: "Contraseña actualizada",
+        text: resultado.message || "Ya puedes iniciar sesión",
+        zIndex: 9999,
+      }).then(() => navigate("/landing"));
+    } else {
+      const mensajeValidator = Array.isArray(resultado.errors)
+        ? resultado.errors.map(e => e.msg).join("\n")
+        : resultado.message || "Solicitud inválida";
 
-    setCargando(true);
-    try {
-      const respuesta = await fetch("http://localhost:4000/api/auth/reset-password", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          token,
-          newPassword: nuevaContrasena
-        })
-      });
-
-      const resultado = await respuesta.json();
-
-      if (respuesta.ok || resultado.success) {
-        Swal.fire({
-          icon: "success",
-          title: "Contraseña actualizada",
-          text: resultado.message || "Ya puedes iniciar sesión",
-          zIndex: 9999
-        }).then(() => navigate("/"));
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: resultado.message || "No se pudo actualizar la contraseña",
-        });
-      }
-    } catch {
       Swal.fire({
         icon: "error",
-        title: "Error de conexión",
-        text: "No se pudo conectar con el servidor",
+        title: "No se pudo actualizar",
+        text: mensajeValidator,
       });
-    } finally {
-      setCargando(false);
+      console.error("ResetPassword error:", resultado);
     }
-  };
+  } catch (err) {
+    Swal.fire({
+      icon: "error",
+      title: "Error de conexión",
+      text: "No se pudo conectar con el servidor",
+    });
+  } finally {
+    setCargando(false);
+  }
+};
+
 
   if (validando) {
     return (
@@ -127,9 +164,7 @@ export default function NuevaContrasena() {
     );
   }
 
-  if (!valido) {
-    return null; // Ya se gestionó con alertas y redirección
-  }
+  if (!valido) return null;
 
   return (
     <div className="reset-container">
@@ -146,18 +181,32 @@ export default function NuevaContrasena() {
             placeholder="Tu nueva contraseña"
             required
           />
-          <p className={`strength strength-${validarFortaleza(nuevaContrasena).toLowerCase()}`}>
+          <p className={`strength strength-${claseFortaleza(validarFortaleza(nuevaContrasena))}`}>
             Fortaleza: {validarFortaleza(nuevaContrasena)}
           </p>
 
-          <button type="submit" disabled={cargando}>
-            {cargando ? "Actualizando..." : "Actualizar contraseña"}
-          </button>
-        </form>
+          <label>Confirmar contraseña</label>
+          <input
+            type="password"
+            value={confirmarContrasena}
+            onChange={(e) => setConfirmarContrasena(e.target.value)}
+            placeholder="Confirma tu contraseña"
+            required
+          />
 
-        <button className="btn-secundario" onClick={() => navigate("/")}>
-          Volver al inicio
-        </button>
+          <div className="botonesNuevaContrasena">
+            <button type="submit" disabled={cargando}>
+              {cargando ? "Actualizando..." : "Actualizar contraseña"}
+            </button>
+            <button
+              type="button"
+              className="btn-secundarioNuevaContrasena"
+              onClick={() => navigate("/landing")}
+            >
+              Volver al inicio
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
