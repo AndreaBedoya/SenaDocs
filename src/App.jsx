@@ -10,7 +10,7 @@ import JuiciosEvaluativos from "./Views/JuiciosEvaluativos";
 import GestionarUsuarios from "./Views/GestionarUsuarios";
 import CentroAyuda from "./Views/CentroAyuda";
 import Inicio from "./Views/Inicio";
-import NuevaContrasena from "./Views/NuevaContrasena"; // ✅ nueva vista
+import NuevaContrasena from "./Views/NuevaContrasena";
 
 // Componentes
 import Perfil from "./components/Perfil";

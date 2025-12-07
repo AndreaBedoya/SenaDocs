@@ -31,7 +31,7 @@ export default function LandingPage() {
   const abrirRecuperar = () => {
     setMostrarLogin(false);
     setMostrarRegistro(false);
-    setMostrarRecuperar(true); // 👈 abre recuperar contraseña
+    setMostrarRecuperar(true); 
   };
 
   return (
@@ -123,11 +123,11 @@ export default function LandingPage() {
               SENADOCS automatiza procesos clave en la gestión educativa, permitiendo ahorrar tiempo y reducir errores. Estas son algunas de sus capacidades:
             </p>
             <ul>
-              <li>📁 Renombrado inteligente de archivos PDF</li>
-              <li>📊 Cálculo automático de juicios evaluativos</li>
-              <li>📈 Generación de gráficas a partir de novedades académicas</li>
-              <li>🔔 Exportación de documentos PDF</li>
-              <li>📂 Organización de documentos por ficha.</li>
+              <li> Renombrado inteligente de archivos PDF</li>
+              <li> Cálculo automático de juicios evaluativos</li>
+              <li> Generación de gráficas a partir de novedades académicas</li>
+              <li> Exportación de documentos PDF</li>
+              <li> Organización de documentos por ficha.</li>
             </ul>
           </div>
 

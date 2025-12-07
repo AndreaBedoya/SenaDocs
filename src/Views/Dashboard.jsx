@@ -14,7 +14,7 @@ import IconNovedades from "../Icons/IconNovedades.jsx";
 import IconPerfil from "../Icons/IconPerfil.jsx";
 import IconLogout from "../Icons/IconLogout.jsx";
 // ACA SE IMPORTAN LOS COMPONENTES
-import BarraBusqueda from "../components/BarraBusqueda.jsx";
+import BarraSuperior from "../components/BarraSuperior.jsx";
 // ACA SE IMPORTAN LOS BOTONES
 import BotonCerrarSesion from "../Botones/BotonCerrarSesion";
 import BotonPerfil from "../Botones/BotonPerfil";
@@ -73,7 +73,7 @@ export default function Dashboard() {
               </Link>
 
               <Link to="/dashboard/centro-ayuda" className="sidebarLink">
-                <IconAyuda /> {/* ← aquí agregas tu ícono */}
+                <IconAyuda /> 
                 {!isCollapsed && <span>Centro de ayuda</span>}
               </Link>
             </nav>
@@ -98,7 +98,7 @@ export default function Dashboard() {
       </aside>
 
       <main className="main-content">
-        <BarraBusqueda
+        <BarraSuperior
           onBuscar={handleBusqueda}
           className={`barra-busqueda ${isCollapsed ? "busqueda-colapsada" : ""}`}
         />

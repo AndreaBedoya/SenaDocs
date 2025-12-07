@@ -1,0 +1,38 @@
+.gestion-usuarios {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 94vh;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.aviso-roles {
+  padding: 20px 30px;
+  text-align: center;
+  width: 60dvw;
+  height: 80dvh;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: white;
+  border: 2px solid #007A33;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.aviso-roles h2 {
+  margin-bottom: 15px;
+  color: #000;
+}
+
+.aviso-roles p {
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+}
+
+.aviso-roles svg {
+ width: 60dvw;
+ height: 30vw;
+}

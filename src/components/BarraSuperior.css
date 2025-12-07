@@ -1,6 +1,7 @@
 /* Contenedor principal */
-.barra-busqueda {
+.barra-superior {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   width: 84vw;
   gap: 10px;
@@ -10,19 +11,11 @@
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
   font-family: "Segoe UI", sans-serif;
 }
-
-/* Input de búsqueda */
-.barra-busqueda input {
-  flex: 1;
-  padding: 8px 12px;
-  border: 1px solid #CCCCCC;
-  border-radius: 8px;
-  font-size: 1rem;
-  color: #1A1A1A;
-}
-
-.barra-busqueda div{
+.barra-superior div{
   width: auto;
+}
+.mensaje-bienvenida h2{
+  color: #000;
 }
 
 .acciones-barra{
@@ -30,25 +23,8 @@
   width: 300px;
 }
 
-
-/* Botón de búsqueda */
-.btn-buscar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  background-color: #fff;
-  color: #248232;
-  border: none;
-  cursor: pointer;
-  
-}
-.btn-buscar:hover{
-  background: #fff;
-}
-
-/* Estilos del boton perfil de la barra busqueda */
-.Perfil-busqueda{
+/* Estilos del boton perfil de la barra superior */
+.Perfil-superior{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,7 +36,7 @@
   cursor: pointer;
 }
 
-.Perfil-busqueda:hover{
+.Perfil-superior:hover{
   background: #fff;
 }
 

@@ -1,45 +1,61 @@
+import IlustracionInformacion from "../Icons/IlustracionInformacion.jsx";
+import IlustracionVideo from "../Icons/IlustracionVideo.jsx";
+import IlustracionMejoras from "../Icons/IlustracionMejoras.jsx";
+import "./CentroAyuda.css";
+
 export default function CentroAyuda() {
   return (
-    <div className="help-wrapper">
-      <nav className="help-navbar">
-        <div className="logo">SENA DOCS</div>
-        <div className="nav-links">
-          <a href="#">Upgrade</a>
-          <a href="#">Log In</a>
-          <span className="settings-icon">⚙️</span>
+    <div className="CentroAyuda">
+      <div className="NavbarAyuda">
+        <div className="logoAyuda"> <span>SENA</span>DOCS <span>│</span>Centro de Ayuda</div>
+        <div className="LinksAyuda">
+          <a href="#">Cerrar Sesion</a>
+          <span className="settings-icon"></span>
         </div>
-      </nav>
+      </div>
 
-      <header className="help-header">
-        <h1>How can we help?</h1>
+      <header className="HeaderAyuda">
+        <h1>¿Necesitas ayuda?</h1>
         <input
           type="text"
-          className="help-search"
+          className="BusquedaAyuda"
           placeholder="Search how tos and more"
         />
-        <div className="top-searches">
-          <button>Forms</button>
-          <button>Templates</button>
-          <button>Rules</button>
-          <button>Export</button>
-          <button>Billing</button>
+        <div className="Busquedas">
+          <button>Funcionalidades</button>
+          <button>Manuales</button>
+          <button>Reglas</button>
+          <button>Sistema</button>
+          <button>Contacto</button>
         </div>
       </header>
 
       <section className="help-intro">
-        <h2>New to SenaDocs? Start here.</h2>
-        <div className="help-cards">
-          <div className="card">
-            <img src="/img/getting-started.png" alt="Getting started" />
-            <p>Getting started with SenaDocs</p>
+        <h2>Busca información sobre SENADOCS aqui</h2>
+        <div className="contenedorAyuda">
+          <div className="TarjetaAyuda">
+            <div className="card">
+              <IlustracionInformacion />
+            </div>
+            <div className="textoAyuda">
+              <p>Conoce mas sobre SenaDocs</p>
+            </div>
           </div>
-          <div className="card">
-            <img src="/img/video-tutorials.png" alt="Video tutorials" />
-            <p>Video tutorials</p>
+          <div className="TarjetaAyuda">
+            <div className="card">
+              <IlustracionVideo />
+            </div>
+            <div className="textoAyuda">
+              <p>Video tutorial</p>
+            </div>
           </div>
-          <div className="card">
-            <img src="/img/navigating-interface.png" alt="Navigating Asana" />
-            <p>Navigating the Asana interface</p>
+          <div className="TarjetaAyuda">
+            <div className="card">
+              <IlustracionMejoras />
+            </div>
+            <div className="textoAyuda">
+              <p>Futuras mejoras</p>
+            </div>
           </div>
         </div>
       </section>

@@ -9,11 +9,7 @@ export default function Inicio() {
 
   return (
     <div className="inicio">
-      <div className="mensaje-bienvenida">
-        <h2>¡Hola, {primerNombre} {primerApellido}!</h2>
-        <p>Bienvenido a tu espacio en <strong>SENA</strong>DOCS.</p>
-      </div>
-
+      <p>Esta seccion estara disponible pronto</p>
       {/* Aquí puedes agregar contenido adicional del inicio */}
     </div>
   );
