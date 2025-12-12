@@ -10,12 +10,12 @@ export default function Perfil() {
 
   if (!usuario) return <p>Cargando perfil...</p>;
 
-  const fechaFormateada = usuario.nacimiento
-    ? new Date(usuario.nacimiento).toLocaleDateString("es-CO", {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      })
+  const fechaFormateada = usuario.fecha_nacimiento
+    ? new Date(usuario.fecha_nacimiento).toLocaleDateString("es-CO", {
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    })
     : "No registrada";
 
   return (
@@ -26,7 +26,7 @@ export default function Perfil() {
           {/* Bloque izquierdo: Foto + Nombre */}
           <div className="perfil-identidad">
             <img
-              src={usuario.foto || "https://via.placeholder.com/150"}
+              src={usuario.foto || "https://placehold.co/150x150"}
               alt="Foto de perfil"
               className="perfil-avatar"
             />
@@ -58,8 +58,8 @@ export default function Perfil() {
                   <p>{fechaFormateada}</p>
                 </div>
                 <div className="columnas-perfil">
-                  <label>Tipo de sangre</label>
-                  <p>{usuario.tipo_sangre || "No registrada"}</p>
+                  <label>Centro de formación</label>
+                  <p>{usuario.centro_formacion || "No registrado"}</p>
                 </div>
               </div>
 
@@ -70,27 +70,20 @@ export default function Perfil() {
                 </div>
                 <div className="columnas-perfil">
                   <label>Documento</label>
-                  <p>{usuario.identificacion || "No registrado"}</p>
-                </div>
-              </div>
-            
-              <div className="filas-perfil">
-                <div className="columnas-perfil">
-                  <label>Nombre del contacto</label>
-                  <p>{usuario.nombre_emergencia || "No registrado"}</p>
-                </div>
-                <div className="columnas-perfil">
-                  <label>Teléfono del contacto</label>
-                  <p>{usuario.contacto_emergencia || "No registrado"}</p>
+                  <p>{usuario.documento || "No registrado"}</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         {/* Panel inferior */}
         <div className="botones-perfil">
           <BotonVolver />
-          <button className="actualizarPerfil" onClick={() => setMostrarActualizar(true)}>
+          <button
+            className="actualizarPerfil"
+            onClick={() => setMostrarActualizar(true)}
+          >
             Actualizar datos
           </button>
           {/* Modal de actualización */}
@@ -99,7 +92,7 @@ export default function Perfil() {
             onClose={() => setMostrarActualizar(false)}
           />
         </div>
-      </div>  
+      </div>
     </div>
   );
 }

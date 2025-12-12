@@ -9,7 +9,11 @@ export default function LoginModal({ visible, onClose, onRegistroClick, onRecupe
   const navigate = useNavigate();
   const [documento, setDocumento] = useState("");
   const [password, setPassword] = useState("");
+
+  // Acciones del store
   const setUsuario = useUsuarioStore((state) => state.setUsuario);
+  const setToken = useUsuarioStore((state) => state.setToken);
+  const fetchPerfil = useUsuarioStore((state) => state.fetchPerfil);
 
   useEffect(() => {
     if (!visible) return;
@@ -30,7 +34,6 @@ export default function LoginModal({ visible, onClose, onRegistroClick, onRecupe
     }
 
     const datos = { documento, password };
-    console.log("Documento: ", documento, " Contraseña: ", password);
 
     try {
       const respuesta = await fetch("http://localhost:4000/api/auth/login", {
@@ -43,13 +46,18 @@ export default function LoginModal({ visible, onClose, onRegistroClick, onRecupe
       console.log("Respuesta backend:", resultado);
 
       if (respuesta.ok && resultado.token && resultado.user) {
+        // Guardar token y usuario básico
         localStorage.setItem("token", resultado.token);
+        setToken(resultado.token);
         setUsuario(resultado.user);
+
+        // 🔑 Cargar perfil completo desde el backend
+        await fetchPerfil();
 
         Swal.fire({
           icon: "success",
           title: "¡Bienvenido!",
-          text: `Hola ${resultado.user.nombre}`,
+          text: `Hola ${resultado.user.nombre }`,
           confirmButtonText: "Continuar"
         }).then(() => {
           navigate("/dashboard");
