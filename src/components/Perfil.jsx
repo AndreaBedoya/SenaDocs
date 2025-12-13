@@ -5,18 +5,11 @@ import ActualizarDatosModal from "./ActualizarDatos";
 import "./Perfil.css";
 
 export default function Perfil() {
+  const foto = localStorage.getItem("fotoPerfil");
   const usuario = useUsuarioStore((state) => state.usuario);
   const [mostrarActualizar, setMostrarActualizar] = useState(false);
 
   if (!usuario) return <p>Cargando perfil...</p>;
-
-  const fechaFormateada = usuario.fecha_nacimiento
-    ? new Date(usuario.fecha_nacimiento).toLocaleDateString("es-CO", {
-      year: "numeric",
-      month: "long",
-      day: "numeric"
-    })
-    : "No registrada";
 
   return (
     <div className="perfil-container">
@@ -26,7 +19,7 @@ export default function Perfil() {
           {/* Bloque izquierdo: Foto + Nombre */}
           <div className="perfil-identidad">
             <img
-              src={usuario.foto || "https://placehold.co/150x150"}
+              src={foto || "default.jpg"}
               alt="Foto de perfil"
               className="perfil-avatar"
             />
@@ -43,34 +36,37 @@ export default function Perfil() {
             <div className="informacionPerfil">
               <div className="filas-perfil">
                 <div className="columnas-perfil">
-                  <label>Correo institucional</label>
-                  <p>{usuario.correo || "No registrado"}</p>
-                </div>
-                <div className="columnas-perfil">
-                  <label>Ciudad de residencia</label>
-                  <p>{usuario.ciudad || "No registrado"}</p>
-                </div>
-              </div>
-
-              <div className="filas-perfil">
-                <div className="columnas-perfil">
-                  <label>Fecha de nacimiento</label>
-                  <p>{fechaFormateada}</p>
-                </div>
-                <div className="columnas-perfil">
-                  <label>Centro de formación</label>
-                  <p>{usuario.centro_formacion || "No registrado"}</p>
-                </div>
-              </div>
-
-              <div className="filas-perfil">
-                <div className="columnas-perfil">
                   <label>Teléfono</label>
                   <p>{usuario.telefono || "No registrado"}</p>
                 </div>
                 <div className="columnas-perfil">
                   <label>Documento</label>
                   <p>{usuario.documento || "No registrado"}</p>
+                </div>
+              </div>
+
+              <div className="filas-perfil">
+                <div className="columnas-perfil">
+                  <label>Correo institucional</label>
+                  <p>{usuario.correo || "No registrado"}</p>
+                </div>
+              </div>
+
+              <div className="filas-perfil">
+                <div className="columnas-perfil">
+                  <label>Ciudad de residencia</label>
+                  <p>{usuario.ciudad || "No registrado"}</p>
+                </div>
+                <div className="columnas-perfil">
+                  <label>Fecha de nacimiento</label>
+                  <p>{usuario.fecha_nacimiento || "No registrada"}</p>
+                </div>
+              </div>
+
+              <div className="filas-perfil">
+                <div className="columnas-perfil">
+                  <label>Centro de formación</label>
+                  <p>{usuario.centro_formacion || "No registrado"}</p>
                 </div>
               </div>
             </div>

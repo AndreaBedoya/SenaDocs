@@ -7,7 +7,6 @@ export default function BotonPerfil({ className = "", onClick }) {
   const navigate = useNavigate();
   const usuario = useUsuarioStore((state) => state.usuario);
   const foto = localStorage.getItem("fotoPerfil");
-  const primerNombre = usuario?.nombre?.split(" ")[0] || "Perfil";
 
   const handleClick = () => {
     if (onClick) {
@@ -24,7 +23,7 @@ export default function BotonPerfil({ className = "", onClick }) {
         alt="Foto de perfil"
         className="avatar-perfil"
       />
-      <span className="nombre-usuario">{primerNombre}</span>
+      <span className="nombre-usuario">{usuario.nombre_completo || "Nombre no registrado"}</span>
     </button>
   );
 }

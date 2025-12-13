@@ -6,20 +6,24 @@
 /* Botón con foto y nombre */
 .boton-foto-perfil {
   display: flex;
-  width: auto;
+  width: 40px;
+  height: 40px;
   justify-content: center;
   align-items: center;
+  color: black;
   gap: 8px;
-  background-color: #e8f5e9;
-  border: 1px solid #4caf50;
-  border-radius: 50px;
+  background: white;
   padding: 0;
   cursor: pointer;
   transition: background-color 0.3s;
 }
+.boton-foto-perfil svg{
+  width: 40px;
+  height: 40px;
+}
 
 .boton-foto-perfil:hover {
-  background-color: #c8e6c9;
+  background-color: white;
 }
 
 /* Foto del usuario */

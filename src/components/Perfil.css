@@ -24,7 +24,7 @@ body{
 /* Fondo y contenedor principal */
 .perfil-wrapper {
   display: inline-block;
-  max-width: 70dvw;
+  width: 60dvw;
   min-height: 80vh;
   background: #fff;
   padding: 20px 50px;

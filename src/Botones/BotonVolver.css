@@ -1,10 +1,10 @@
 .boton-volver {
-  background-color: #6c757d;
-  color: #fff;
+  background-color: transparent;
+  color: black;
   padding: 12px 24px;
-  border: none;
+  border: 2px solid #007A33;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -12,9 +12,10 @@
 }
 
 .boton-volver:hover {
-  background-color: #5a6268;
+  background-color: transparent;
   transform: translateY(-1px);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  border: 2px solid #4caf50;
 }
 
 .boton-volver:active {

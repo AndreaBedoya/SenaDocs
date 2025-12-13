@@ -2,7 +2,7 @@
 import { useUsuarioStore } from "../Store/useUsuarioStore";
 import MenuPerfil from "../components/MenuPerfil";
 import IconPerfil from "../Icons/IconPerfil";
-import "./BarraSuperior.css"; // puedes renombrar a BarraSuperior.css si prefieres
+import "./BarraSuperior.css"; 
 
 export default function BarraSuperior({ className = "" }) {
   const usuario = useUsuarioStore((state) => state.usuario);
@@ -11,7 +11,7 @@ export default function BarraSuperior({ className = "" }) {
   return (
     <div className={`barra-superior ${className}`}>
       <div className="mensaje-bienvenida">
-        <h2>¡Hola, {primerNombre}!</h2>
+        <h2>¡Hola {usuario.nombre_completo || "Nombre no registrado"}!</h2>
       </div>
 
       <div className="acciones-barra">

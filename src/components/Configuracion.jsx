@@ -1,23 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useUsuarioStore } from "../Store/useUsuarioStore";
-import  IconBell from '../Icons/IconBell.jsx';
 import BotonVolver from "../Botones/BotonVolver.jsx";
 import "./Configuracion.css";
 
 export default function Perfil() {
+  const foto = localStorage.getItem("fotoPerfil");
   const navigate = useNavigate();
   const usuario = useUsuarioStore((state) => state.usuario);
 
   if (!usuario) return <p>Cargando perfil...</p>;
-
-  // ✅ Formatear fecha de nacimiento
-  const fechaFormateada = usuario.nacimiento
-    ? new Date(usuario.nacimiento).toLocaleDateString("es-CO", {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      })
-    : "No registrada";
 
   const handleActualizar = async () => {
   try {
@@ -61,7 +52,7 @@ export default function Perfil() {
                 <div>
                   <div className="columnas-configuracion">
                       <label>Documento</label>
-                      <p>{usuario.identificacion || "No registrado"}</p>
+                      <p>{usuario.documento || "No registrado"}</p>
                   </div>
                   <div className="columnas-configuracion">
                       <label>Correo institucional</label>
@@ -74,7 +65,7 @@ export default function Perfil() {
                 </div>
                 <div className="foto-configuracion">
                   <img
-                    src={usuario.foto || "https://via.placeholder.com/150"}
+                    src={foto || "default.jpg"}
                     className="configuracion-avatar"
                   />
                 </div>

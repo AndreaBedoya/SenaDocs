@@ -2,13 +2,14 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUsuarioStore } from "../Store/useUsuarioStore";
 import BotonCerrarSesion from "../Botones/BotonCerrarSesion";
+import IconMenu from "../Icons/IconMenu.jsx";
 import "./MenuPerfil.css";
 
 export default function MenuPerfil({ className = "" }) {
   const navigate = useNavigate();
   const usuario = useUsuarioStore((state) => state.usuario);
   const foto = localStorage.getItem("fotoPerfil");
-  const primerNombre = usuario?.nombre?.split(" ")[0] || "Perfil";
+ 
 
   const [menuVisible, setMenuVisible] = useState(false);
   const menuRef = useRef(null);
@@ -29,11 +30,7 @@ export default function MenuPerfil({ className = "" }) {
   return (
     <div className={`perfilComponente ${className}`} ref={menuRef}>
       <button className="boton-foto-perfil" onClick={toggleMenu}>
-        <img
-          src={foto || "default.jpg"}
-          alt="Foto de perfil"
-          className="avatar-perfil"
-        />
+        <IconMenu/>
       </button>
 
       {menuVisible && (
