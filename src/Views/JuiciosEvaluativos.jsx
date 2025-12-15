@@ -3,6 +3,27 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import "./JuiciosEvaluativos.css";
 
+// Traducción manual al español
+const localeText = {
+  noRowsLabel: "Sin resultados",
+  columnMenuSortAsc: "Ordenar ASC",
+  columnMenuSortDesc: "Ordenar DESC",
+  columnMenuFilter: "Filtrar",
+  columnMenuHideColumn: "Ocultar columna",
+  columnMenuManageColumns: "Administrar columnas",
+  toolbarFilters: "Filtros",
+  toolbarExport: "Exportar",
+  toolbarDensity: "Densidad",
+  filterPanelInputLabel: "Valor",
+  filterPanelInputPlaceholder: "Filtrar valor...",
+  columnsPanelTextFieldLabel: "Buscar columna",
+  columnsPanelTextFieldPlaceholder: "Título de columna",
+  columnsPanelShowAllButton: "Mostrar todas",
+  columnsPanelHideAllButton: "Ocultar todas",
+  footerRowSelected: (count) => `${count} fila(s) seleccionada(s)`,
+  footerTotalRows: "Filas totales:",
+};
+
 export default function JuiciosEvaluativos() {
   const [excelEvaluativo, setExcelEvaluativo] = useState(null);
   const [juicios, setJuicios] = useState([]);
@@ -127,6 +148,7 @@ export default function JuiciosEvaluativos() {
             rowsPerPageOptions={[5, 10, 20, 25, 50, 100]}
             disableRowSelectionOnClick
             autoHeight
+            localeText={localeText}
           />
         </div>
       )}

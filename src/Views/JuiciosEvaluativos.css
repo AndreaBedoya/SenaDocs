@@ -73,3 +73,81 @@
 .archivo-info button:hover {
   background-color: #2e7d32;
 }
+
+/* ------------------------------------------------------------ */
+/* Estilos de la tabla de juicios evaluativos */
+/* ------------------------------------------------------------ */
+
+.evaluativos {
+  padding: 2rem;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.juicios {
+  margin-bottom: 2rem;
+}
+
+.archivo-info {
+  margin-top: 1rem;
+}
+
+.tabla-juicios {
+  margin-top: 2rem;
+  width: 100%;
+  overflow: visible; /* permite que los menús flotantes se vean */
+  position: relative;
+  z-index: 1;
+}
+
+/* Asegura que el DataGrid tenga espacio suficiente */
+.MuiDataGrid-root {
+  min-width: 900px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Corrige el botón del menú de columnas y filtros */
+.MuiDataGrid-menuIconButton {
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  padding: 0;
+  margin-left: 4px;
+}
+
+/* Evita que el ícono se superponga al texto del encabezado */
+.MuiDataGrid-columnHeaderTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 28px; /* espacio para el ícono */
+  overflow: visible;
+}
+
+/* Ajusta el encabezado para que el menú se despliegue sin solaparse */
+.MuiDataGrid-columnHeader {
+  overflow: visible !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* Panel flotante de filtros y columnas */
+.MuiDataGrid-panel,
+.MuiDataGrid-menu {
+  z-index: 1500 !important; /* asegura que quede por encima */
+  position: absolute;
+}
+
+/* Estilo para los textos secundarios en celdas (porcentaje) */
+.MuiDataGrid-cell span {
+  display: inline-block;
+  font-size: 0.9em;
+  color: #333;
+}
+
+/* Mejora visual de botones de acción */
+.MuiDataGrid-cell .MuiButton-root {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  text-transform: none;
+}
