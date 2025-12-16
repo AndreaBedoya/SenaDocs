@@ -123,11 +123,11 @@ export default function ActualizarDatosModal({ visible, onClose }) {
               <div className="form-row">
                 <div className="form-group">
                   <label>Nombre completo</label>
-                  <input type="text" name="nombre" value={formulario.nombre} onChange={handleChange} />
+                  <input type="text" name="nombre" value={formulario.nombre_completo} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                   <label>Correo institucional</label>
-                  <input type="email" name="email" value={formulario.email} onChange={handleChange} />
+                  <input type="email" name="email" value={formulario.correo} onChange={handleChange} />
                 </div>
               </div>
               <div className="form-row">
@@ -147,8 +147,8 @@ export default function ActualizarDatosModal({ visible, onClose }) {
             <>
               <div className="form-row">
                 <div className="form-group">
-                  <label>Tipo de sangre</label>
-                  <input type="text" name="tipo_sangre" value={formulario.tipo_sangre} onChange={handleChange} />
+                  <label>Cargo</label>
+                  <input type="text" name="cargo" value={formulario.cargo} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                   <label>Número de teléfono</label>
@@ -172,23 +172,8 @@ export default function ActualizarDatosModal({ visible, onClose }) {
             <>
               <div className="form-row">
                 <div className="form-group">
-                  <label>Cargo</label>
-                  <input type="text" name="cargo" value={formulario.cargo} onChange={handleChange} />
-                </div>
-                <div className="form-group">
                   <label>Funciones que desempeña</label>
-                  <input type="text" name="funciones" value={formulario.funciones} onChange={handleChange} />
-                </div>
-              </div>
-              <h3 className="contacto">Contacto de Emergencia</h3>
-              <div className="form-row">
-                <div className="form-group">
-                  <label>Nombre del contacto</label>
-                  <input type="text" name="nombre_emergencia" value={formulario.nombre_emergencia} onChange={handleChange} />
-                </div>
-                <div className="form-group">
-                  <label>Teléfono del contacto</label>
-                  <input type="text" name="telefono_emergencia" value={formulario.telefono_emergencia} onChange={handleChange} />
+                  <input type="text" className="FuncionesDesempeñar" name="funciones" value={formulario.funciones} onChange={handleChange} />
                 </div>
               </div>
             </>

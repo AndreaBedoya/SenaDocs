@@ -113,6 +113,11 @@ button.cerrarActualizar{
   background-color: #e6ffe6;
 }
 
+.FuncionesDesempeñar {
+  height: 10vh;
+  font-size: 1rem;
+}
+
 /* ------------------------------------------------------------ */
 /* Contraseña */
 /* ------------------------------------------------------------ */
