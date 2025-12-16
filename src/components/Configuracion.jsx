@@ -72,26 +72,7 @@ export default function Perfil() {
               </div>
 
               {/* ------------------------------------- */}
-              {/* Bloque derecho: información básica */}
-              <div className="idioma-tema">
-                  <div className="idiomas">
-                    <h3>Idiomas</h3>
-                    <p>Seleccione el idioma de su preferencia</p>
-                    <select name="idioma" defaultValue="es">
-                      <option value="es">Español</option>
-                      <option value="en">Inglés</option>
-                    </select>
-                </div>
-
-                <div className="tema">
-                  <h3>Tema</h3>
-                  <p>Seleccione el tema de su preferencia</p>
-                  <select name="tema" defaultValue="claro">
-                    <option value="claro">Claro</option>
-                    <option value="oscuro">Oscuro</option>
-                  </select>
-                </div>
-              </div>
+              
               <div className="botones-configuracion">
                 <button className="volverConfiguracion"><BotonVolver/></button>
                 <button className="boton-actualizar" onClick={handleActualizar}>

@@ -23,16 +23,6 @@
   text-align: center;
   padding: 20px 0;
 }                                 
-/* Panel izquierdo: datos + foto + contraseña */
-.foto-contrasena {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  height: 75vh;
-}
 
 /* Subpanel: datos + foto */
 .configuracion-middle {
@@ -84,54 +74,6 @@
   object-fit: cover;
   border: 3px solid gray;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-.idioma-tema {
-  display: flex;
-  justify-content: center;
-  background-color: #fff;
-  margin: 10px 0px;
-  height: 23vh;
-  gap: 40px;
-}
-/* Bloques de idioma y tema */
-.idiomas,
-.tema {
-  border: 2px solid gray;
-  padding: 10px 20px;
-  margin-bottom: 30px;
-  border-radius: 25px ;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-}
-
-.idiomas h3,
-.tema h3 {
-  font-size: 24px;
-  margin: 10px 0px;
-  color: black;
-}
-
-.idiomas p,
-.tema p {
-  margin-bottom: 5px;
-  color: #666;
-  font-size: 18px;
-}
-
-select {
-  width: 100%;
-  padding: 4px 10px;
-  border-radius: 8px;
-  border: 1px solid #4caf50;
-  font-size: 20px;
-  background-color: #fff;
-  color: black;
-  margin: 20px 0px;
-}
-
-select:focus {
-  outline: none;
-  border-color: #3085d6;
-  box-shadow: 0 0 4px rgba(48, 133, 214, 0.4);
 }
 
 /* Botones finales */
