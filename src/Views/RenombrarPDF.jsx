@@ -40,22 +40,33 @@ export default function RenombrarPDF() {
     }
 
     const formData = new FormData();
-    formData.append("carpeta", carpeta);
-    formData.append("ficha", ficha);
+    formData.append("nombreCarpeta", carpeta);
+    formData.append("fichaAsignada", ficha);
     archivos.forEach((file) => {
-      formData.append("archivos", file);
+      formData.append("documentos", file);
     });
 
     try {
-      const response = await fetch("http://localhost:4000/api/upload", {
+      const response = await fetch("http://localhost:4000/api/documents/renombrar-descargar", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
         body: formData
       });
 
-      const data = await response.json();
+      const data = await response.blob();
+
+        const url = window.URL.createObjectURL(data);
+        const a = document.createElement('a');
+        a.href = url;
+
+        a.download = `Documentos_${ficha}.zip`;
+        document.body.appendChild(a);
+        a.click();
+
+        a.remove();
+        window.URL.revokeObjectURL(url);
 
       if (response.ok) {
         Swal.fire({
@@ -77,7 +88,7 @@ export default function RenombrarPDF() {
       console.error("Error al subir archivos:", error);
       Swal.fire({
         title: "❌ Error de conexión",
-        text: "No se pudo conectar con el servidor.",
+        text: error.message,
         icon: "error",
         confirmButtonText: "Cerrar"
       });
