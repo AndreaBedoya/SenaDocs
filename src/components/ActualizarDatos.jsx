@@ -13,8 +13,7 @@ export default function ActualizarDatosModal({ visible, onClose }) {
   const [nuevaContrasena, setNuevaContrasena] = useState("");
 
   const [formulario, setFormulario] = useState({
-    nombre: "",
-    apellido: "",
+    nombre_completo: "",
     email: "",
     password: "",
     documento: "",
@@ -26,12 +25,14 @@ export default function ActualizarDatosModal({ visible, onClose }) {
     fecha_nacimiento: "",
     cargo: "",
     funciones_trabajo: "",
+    foto: ""
   });
 
   useEffect(() => {
     if (usuario) {
       setFormulario({
         ...usuario,
+        nombre_completo: `${usuario.nombre || ""} ${usuario.apellido || ""}`.trim(),
         documento: usuario.documento || ""
       });
     }
@@ -57,32 +58,42 @@ export default function ActualizarDatosModal({ visible, onClose }) {
   const retrocederPaso = () => setPaso((prev) => Math.max(prev - 1, 1));
 
   const handleGuardar = () => {
-    const identificacion = formulario.identificacion?.toString().trim();
+    const documento = usuario?.documento?.toString().trim();
 
-    if (!identificacion || isNaN(identificacion)) {
+    if (!documento || isNaN(documento)) {
       Swal.fire({
         icon: "error",
-        title: "Identificación inválida",
-        text: "El campo 'identificación' es obligatorio y debe ser numérico."
+        title: "Documento inválido",
+        text: "El campo 'documento' es obligatorio y debe ser numérico."
       });
       return;
     }
 
-    fetch(`/api/perfil/${identificacion}`, {
+    // Separar nombre y apellido desde nombre_completo
+    const partes = formulario.nombre_completo.trim().split(" ");
+    const nombre = partes.slice(0, -1).join(" ");
+    const apellido = partes.slice(-1).join(" ");
+
+    const datos = {
+      ...formulario,
+      nombre,
+      apellido
+    };
+
+    fetch(`/api/usuarios/perfil/documento/${documento}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formulario)
+      body: JSON.stringify(datos)
     })
       .then(async res => {
         if (!res.ok) {
           const errorText = await res.text();
           throw new Error(`Error del servidor: ${errorText}`);
         }
-        const text = await res.text();
-        return text ? JSON.parse(text) : {};
+        return res.json();
       })
       .then(data => {
-        setUsuario(data);
+        setUsuario(data.usuario);
         Swal.fire({
           icon: "success",
           title: "¡Datos actualizados!",
@@ -123,21 +134,41 @@ export default function ActualizarDatosModal({ visible, onClose }) {
               <div className="form-row">
                 <div className="form-group">
                   <label>Nombre completo</label>
-                  <input type="text" name="nombre" value={formulario.nombre_completo} onChange={handleChange} />
+                  <input
+                    type="text"
+                    name="nombre_completo"
+                    value={formulario.nombre_completo}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="form-group">
                   <label>Correo institucional</label>
-                  <input type="email" name="email" value={formulario.correo} onChange={handleChange} />
+                  <input
+                    type="email"
+                    name="email"
+                    value={formulario.email}
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
               <div className="form-row">
                 <div className="form-group">
                   <label>Ciudad de residencia</label>
-                  <input type="text" name="ciudad" value={formulario.ciudad} onChange={handleChange} />
+                  <input
+                    type="text"
+                    name="ciudad"
+                    value={formulario.ciudad}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="form-group">
                   <label>Fecha de nacimiento</label>
-                  <input type="date" name="fecha_nacimiento" value={formulario.fecha_nacimiento} onChange={handleChange} />
+                  <input
+                    type="date"
+                    name="fecha_nacimiento"
+                    value={formulario.fecha_nacimiento}
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
             </>
@@ -148,11 +179,21 @@ export default function ActualizarDatosModal({ visible, onClose }) {
               <div className="form-row">
                 <div className="form-group">
                   <label>Cargo</label>
-                  <input type="text" name="cargo" value={formulario.cargo} onChange={handleChange} />
+                  <input
+                    type="text"
+                    name="cargo"
+                    value={formulario.cargo}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="form-group">
                   <label>Número de teléfono</label>
-                  <input type="text" name="telefono" value={formulario.telefono} onChange={handleChange} />
+                  <input
+                    type="text"
+                    name="telefono"
+                    value={formulario.telefono}
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
               <div className="form-row">
@@ -161,23 +202,40 @@ export default function ActualizarDatosModal({ visible, onClose }) {
                   <input type="file" accept="image/*" onChange={handleFotoChange} />
                 </div>
                 <div className="form-group">
-                  <label>Identificación</label>
+                  <label>Documento</label>
                   <input type="text" name="documento" value={formulario.documento} disabled />
                 </div>
               </div>
             </>
           )}
 
-          {paso === 3 && (
-            <>
-              <div className="form-row">
-                <div className="form-group">
-                  <label>Funciones que desempeña</label>
-                  <input type="text" className="FuncionesDesempeñar" name="funciones" value={formulario.funciones} onChange={handleChange} />
-                </div>
-              </div>
-            </>
-          )}
+        {paso === 3 && (
+        <>
+          <div className="form-row">
+            <div className="form-group">
+              <label>Funciones que desempeña</label>
+              <input
+                type="text"
+                name="funciones_trabajo"
+                value={formulario.funciones_trabajo}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div>
+            <div className="form-group">
+              <label>Centro de formación</label>
+              <input
+                type="text"
+                name="centro_formacion"
+                value={formulario.centro_formacion || ""}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+        </>
+      )}
+
 
           {paso === 4 && (
             <>
@@ -185,11 +243,19 @@ export default function ActualizarDatosModal({ visible, onClose }) {
               <div className="form-row">
                 <div className="form-group">
                   <label>Contraseña actual</label>
-                  <input type="password" value={contraseñaAnterior} onChange={(e) => setContraseñaAnterior(e.target.value)} />
+                  <input
+                    type="password"
+                    value={contraseñaAnterior}
+                    onChange={(e) => setContraseñaAnterior(e.target.value)}
+                  />
                 </div>
                 <div className="form-group">
                   <label>Nueva contraseña</label>
-                  <input type="password" value={nuevaContrasena} onChange={(e) => setNuevaContrasena(e.target.value)} />
+                  <input
+                    type="password"
+                    value={nuevaContrasena}
+                    onChange={(e) => setNuevaContrasena(e.target.value)}
+                  />
                 </div>
               </div>
             </>

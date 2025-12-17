@@ -23,10 +23,10 @@ export default function Perfil() {
               alt="Foto de perfil"
               className="perfil-avatar"
             />
-            <h2>{usuario.nombre_completo || "Nombre no registrado"}</h2>
+            <h2>{`${usuario.nombre || ""} ${usuario.apellido || ""}`.trim() || "Nombre no registrado"}</h2>
             <div className="columnasIdentidad">
               <p className="cargo">{usuario.cargo || "No registrado"}</p>
-              <p>{usuario.funciones || "Sin funciones registradas"}</p>
+              <p>{usuario.funciones_trabajo || "Sin funciones registradas"}</p>
             </div>
           </div>
 
@@ -48,7 +48,7 @@ export default function Perfil() {
               <div className="filas-perfil">
                 <div className="columnas-perfil">
                   <label>Correo institucional</label>
-                  <p>{usuario.correo || "No registrado"}</p>
+                  <p>{usuario.email || "No registrado"}</p>
                 </div>
               </div>
 

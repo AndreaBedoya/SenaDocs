@@ -23,7 +23,7 @@ export default function BotonPerfil({ className = "", onClick }) {
         alt="Foto de perfil"
         className="avatar-perfil"
       />
-      <span className="nombre-usuario">{usuario.nombre_completo || "Nombre no registrado"}</span>
+      <span className="nombre-usuario">{`${usuario?.nombre || ""} ${usuario?.apellido || ""}`.trim() || "Nombre no registrado"}</span>
     </button>
   );
 }
