@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Funcionalidades from "../components/Funcionalidades";
+import Manuales from "../components/Manuales";
 import IlustracionInformacion from "../Icons/IlustracionInformacion.jsx";
 import IlustracionVideo from "../Icons/IlustracionVideo.jsx";
 import IlustracionMejoras from "../Icons/IlustracionMejoras.jsx";
@@ -96,7 +97,7 @@ export default function CentroAyuda() {
 
         {/* ✅ Si hay sección activa, mostrar el componente correspondiente */}
         {seccionActiva === "funcionalidades" && <Funcionalidades />}
-        {/* Más adelante: {seccionActiva === "manuales" && <Manuales />} */}
+        {seccionActiva === "manuales" && <Manuales />} 
         {seccionActiva === "contacto" && <Contacto/>}
       </section>
     </div>

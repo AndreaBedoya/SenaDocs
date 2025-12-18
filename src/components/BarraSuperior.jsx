@@ -11,7 +11,7 @@ export default function BarraSuperior({ className = "" }) {
   return (
     <div className={`barra-superior ${className}`}>
       <div className="mensaje-bienvenida">
-        <h2>¡Hola {`${usuario?.nombre || ""} ${usuario?.apellido || ""}`.trim() || "Nombre no registrado"}!</h2>
+        <h2>¡Hola {usuario.nombre_completo || "Nombre no registrado"}!</h2>
       </div>
 
       <div className="acciones-barra">

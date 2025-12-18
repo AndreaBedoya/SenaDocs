@@ -28,7 +28,7 @@ export default function Configuracion() {
                 </div>
                 <div className="columnas-configuracion">
                   <label>Correo institucional</label>
-                  <p>{usuario.email || "No registrado"}</p>
+                  <p>{usuario.correo || "No registrado"}</p>
                 </div>
                 <div className="columnas-configuracion">
                   <label>Teléfono</label>

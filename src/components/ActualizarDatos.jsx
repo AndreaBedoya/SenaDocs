@@ -32,7 +32,6 @@ export default function ActualizarDatosModal({ visible, onClose }) {
     if (usuario) {
       setFormulario({
         ...usuario,
-        nombre_completo: `${usuario.nombre || ""} ${usuario.apellido || ""}`.trim(),
         documento: usuario.documento || ""
       });
     }
@@ -146,7 +145,7 @@ export default function ActualizarDatosModal({ visible, onClose }) {
                   <input
                     type="email"
                     name="email"
-                    value={formulario.email}
+                    value={formulario.correo}
                     onChange={handleChange}
                   />
                 </div>
@@ -217,7 +216,7 @@ export default function ActualizarDatosModal({ visible, onClose }) {
               <input
                 type="text"
                 name="funciones_trabajo"
-                value={formulario.funciones_trabajo}
+                value={formulario.funciones}
                 onChange={handleChange}
               />
             </div>
