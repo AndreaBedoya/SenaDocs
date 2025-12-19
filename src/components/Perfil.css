@@ -91,7 +91,7 @@ body{
 }
 
 .botones-perfil {
-  margin-top: 40px;
+
   display: flex;
   justify-content: center;
   gap: 50px;
@@ -155,9 +155,12 @@ body{
   margin: 20px 0 ;
   border: 1px solid gray;
   border-radius: 8px;
-  color: #000;
-  box-shadow: 0 4px 15px #388e3c;
+  box-shadow: 0 4px 15px gray;
   font-size: 1rem;
+}
+
+.columnasIdentidad p{
+  color: #000;
 }
 
 .columnas-perfil{
