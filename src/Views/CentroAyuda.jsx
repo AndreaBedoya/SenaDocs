@@ -1,13 +1,16 @@
 import { useState } from "react";
 import Funcionalidades from "../components/Funcionalidades";
 import Manuales from "../components/Manuales";
+import Reglas from "../components/Reglas";
+import Sistema from "../components/Sistema";
+import Contacto from "../components/Contacto";
 import IlustracionInformacion from "../Icons/IlustracionInformacion.jsx";
 import IlustracionVideo from "../Icons/IlustracionVideo.jsx";
 import IlustracionMejoras from "../Icons/IlustracionMejoras.jsx";
 import "./CentroAyuda.css";
 
 export default function CentroAyuda() {
-  const [seccionActiva, setSeccionActiva] = useState(null); // inicia mostrando ilustraciones
+  const [seccionActiva, setSeccionActiva] = useState(null);
 
   return (
     <div className="CentroAyuda">
@@ -22,12 +25,7 @@ export default function CentroAyuda() {
       </div>
 
       <header className="HeaderAyuda">
-        <h1>¿Necesitas ayuda?</h1>
-        <input
-          type="text"
-          className="BusquedaAyuda"
-          placeholder="Search how tos and more"
-        />
+        <h2>Busca información sobre SENADOCS aquí</h2>
         <div className="Busquedas">
           <button
             className={seccionActiva === "funcionalidades" ? "activo" : ""}
@@ -63,7 +61,6 @@ export default function CentroAyuda() {
       </header>
 
       <section className="help-intro">
-        <h2>Busca información sobre SENADOCS aquí</h2>
 
         {/* ✅ Si no hay sección activa, mostrar ilustraciones por defecto */}
         {seccionActiva === null && (
@@ -98,7 +95,10 @@ export default function CentroAyuda() {
         {/* ✅ Si hay sección activa, mostrar el componente correspondiente */}
         {seccionActiva === "funcionalidades" && <Funcionalidades />}
         {seccionActiva === "manuales" && <Manuales />} 
+        {seccionActiva === "reglas" && <Reglas/>}
+        {seccionActiva === "sistema" && <Sistema/>}
         {seccionActiva === "contacto" && <Contacto/>}
+
       </section>
     </div>
   );

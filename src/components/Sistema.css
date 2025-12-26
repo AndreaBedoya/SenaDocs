@@ -1,36 +1,34 @@
-.ayuda {
+.manuales {
   padding: 40px;
   background-color: #f9f9f9;
   text-align: center;
   font-family: "Segoe UI", sans-serif;
-  width: 70dvw;
 }
 
-.ayuda h2 {
+.manuales h2 {
   font-size: 2rem;
-  color: #004d40;
+  color: #006400;
   margin-bottom: 10px;
 }
 
-.ayuda p {
+.manuales p {
   font-size: 1rem;
-  color: #555;
+  color: #444;
   margin-bottom: 30px;
 }
 
 .grid-manuales {
-  display: flex;
-  width: 65vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
   justify-content: center;
 }
 
 .card-manual {
   background-color: #fff;
-  border-radius: 8px;
-  width: 18vw;
+  border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease;
 }
 
@@ -38,25 +36,19 @@
   transform: translateY(-5px);
 }
 
-.card-manual .icono {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  color: #008000;
-}
-
 .card-manual h3 {
   font-size: 1.2rem;
   color: #004d40;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .card-manual p {
   font-size: 0.95rem;
-  color: #666;
-  margin-bottom: 12px;
+  color: #555;
+  margin-bottom: 15px;
 }
 
-.card-manual a {
+.btn-descargar {
   display: inline-block;
   padding: 8px 16px;
   background-color: #008000;
@@ -66,6 +58,6 @@
   font-weight: bold;
 }
 
-.card-manual a:hover {
+.btn-descargar:hover {
   background-color: #006400;
 }
