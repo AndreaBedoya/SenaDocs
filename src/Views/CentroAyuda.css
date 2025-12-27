@@ -17,13 +17,13 @@
 }
 
 .logoAyuda {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
   color: white;
 }
 
 .logoAyuda span {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
   color: #001d0c;
 }
@@ -46,87 +46,94 @@
   cursor: pointer;
 }
 
-.HeaderAyuda {
-  flex: 0 0 auto;             /* ✅ altura fija */
+.HeaderAyuda {            
   text-align: center;
-  padding: 50px 20px;              /* 🔧 reducido para que todo quepa */
+  padding: 50px 20px;              
   background: #007A33;
+  height: 30vh;
+  justify-content: center;
+  align-items: center;
 }
 
-.HeaderAyuda h1 {
-  font-size: 24px;
-  margin-bottom: 15px;
+.HeaderAyuda h2 {
+  font-size: 1.7rem;
+  padding: 20px;
   color: white;
 }
 
-.BusquedaAyuda {
-  width: 60vh;                /* 🔧 más compacto */
-  padding: 14px;
-  margin: 20px 0px;
-  font-size: 14px;
-  border-radius: 30px;
-  border: 1px solid #ccc;
-  background: white;
-}
 
 .Busquedas {
   margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.Busquedas button {
-  background: #00A859;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 20px;
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.help-intro {
-  flex: 1 1 auto;             /* ✅ ocupa el espacio restante */
-  padding: 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;    /* ✅ centra verticalmente */
-}
-
-.help-intro h2 {
-  font-size: 1.6rem;
-  margin-bottom: 20px;
-}
-
-.contenedorAyuda {
   display: flex;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
 }
 
+.Busquedas button {
+  width: 13vw;
+  background: #00A859;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 25px;
+  color: white;
+  font-weight: 500;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+section.help-intro{
+  margin: 0;
+  padding: 0;
+}
+
+.help-intro {         
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    
+}
+
+.contenedorAyuda{
+  margin: 20px;
+  width: 100%;
+  height: 26.6vw;
+}
+
+.contenedorTarjetasAyuda {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.contenedorAyuda h2 {
+  font-size: 2rem;
+  color: #004d40;
+  margin: 10px 0;
+}   
+
 .TarjetaAyuda {
   display: flex;
   flex-direction: column;
   align-items: center;
+   margin-top: 3%;
 }
 
 .card {
-  width: 18vw;                /* 🔧 más compacto */
-  height: 28vh;               /* ✅ ajustado para caber sin scroll */
+  width: 18vw;     
+  height: 28vh;               
   background: #f9f9f9;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   padding: 10px;
   text-align: center;
+  margin: 20px;
 }
 
 .card svg {
   width: 100%;
-  height: 20vh;               /* 🔧 reducido para caber */
+  height: 20vh;             
   border-radius: 8px;
   margin-bottom: 8px;
 }
@@ -135,4 +142,58 @@
   font-size: 1.1rem;
   font-weight: 500;
   color: #444;
+}
+
+
+/* Modal */
+.modal-Ayuda {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-contenido {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 50dvw;
+  height: 50dvh;
+  text-align: left;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal-contenido h3 {
+  font-size: 1.4rem;
+  color: #006400;
+  margin-bottom: 10px;
+}
+
+.modal-contenido p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.cerrar {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+}
+
+.cerrar:hover{
+  background: transparent;
 }

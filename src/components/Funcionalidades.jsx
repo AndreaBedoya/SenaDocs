@@ -1,47 +1,38 @@
-import { useState } from "react";
 import "./Funcionalidades.css";
 
-export default function Funcionalidades() {
-  const funcionalidades = [
-    {
-      titulo: "Renombrar PDF",
-      descripcion: "Esta funcionalidad permite subir documentos exclusivamente en formato PDF, siempre que el nombre del archivo incluya tres elementos obligatorios: número de documento, nombre completo (nombres y apellidos), y número de ficha. Esta estructura es esencial para que el sistema procese correctamente el archivo. Se creó con el objetivo de reducir el tiempo invertido en renombrar archivos manualmente, una tarea que antes se hacía uno por uno y que ahora se automatiza para mejorar la eficiencia institucional."
-    },
-    {
-      titulo: "Juicios Evaluativos",
-      descripcion: "Carga y análisis de resultados académicos para calcular porcentajes de aprobación."
-    },
-    {
-      titulo: "Novedades Académicas",
-      descripcion: "Registro y visualización de novedades académicas de los aprendices."
-    }
-  ];
+const funcionalidades = [
+  {
+    titulo: "Renombrar PDF",
+    descripcion: "Permite subir múltiples archivos PDF y procesarlos automáticamente para asignarles nombres estandarizados basados en datos como número de identificación, nombre completo y ficha; además, organiza los documentos en carpetas por ficha dentro de una carpeta principal definida por el usuario y registra cada archivo en la base de datos, garantizando orden, trazabilidad y reducción de errores humanos en la gestión documental.",
+    icono: "📄"
+  },
+  {
+    titulo: "Juicios evaluativos",
+    descripcion: "Este módulo permite calcular y dar seguimiento a los juicios evaluativos de los aprendices, mostrando de manera estructurada el porcentaje de avance en los estados Aprobado y Por Evaluar. La información se organiza en una tabla que incluye número de identificación, nombre completo, ficha, cantidad de juicios aprobados, juicios pendientes y el total de juicios registrados. Además, ofrece la opción de descargar los resultados en formato PDF, garantizando un control académico claro, ordenado y fácilmente exportable.",
+    icono: "🗂️"
+  },
+  {
+    titulo: "Novedades academicas",
+    descripcion: "La funcionalidad de novedades académicas centraliza el registro y análisis de situaciones como retiros, traslados de centro o cambios de ficha, extraídas directamente de documentos en Excel. Cada novedad se vincula al aprendiz correspondiente y se organiza en una tabla que muestra la cantidad y el tipo de novedades registradas. A partir de esta información, el sistema genera gráficas dinámicas que facilitan la visualización de tendencias y el seguimiento académico, ofreciendo un control claro y profesional sobre los procesos administrativos..",
+    icono: "👤"
+  }
+];
 
+export default function SeccionFuncionalidades() {
   return (
-    <div className="contenedorFuncionalidades">
-      {funcionalidades.map((item, index) => (
-        <FlipCard key={index} titulo={item.titulo} descripcion={item.descripcion} />
-      ))}
-    </div>
-  );
-}
+    <section className="funcionalidades">
+      <h2>Funcionalidades del Sistema</h2>
+      <p>Descubre las herramientas disponibles para gestionar, organizar y analizar tus documentos.</p>
 
-function FlipCard({ titulo, descripcion }) {
-  const [flipped, setFlipped] = useState(false);
-
-  return (
-    <div
-      className={`flip-card ${flipped ? "flipped" : ""}`}
-      onClick={() => setFlipped(!flipped)}
-    >
-      <div className="flip-card-inner">
-        <div className="flip-card-front">
-          <h3>{titulo}</h3> {/* ✅ Solo el título */}
-        </div>
-        <div className="flip-card-back">
-          <p>{descripcion}</p> {/* ✅ Descripción al girar */}
-        </div>
+      <div className="grid-funcionalidades">
+        {funcionalidades.map((item, index) => (
+          <div className="card-funcionalidad" key={index}>
+            <div className="icono">{item.icono}</div>
+            <h3>{item.titulo}</h3>
+            <p>{item.descripcion}</p>
+          </div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 }
