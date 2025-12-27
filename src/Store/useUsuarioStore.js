@@ -34,7 +34,7 @@ export const useUsuarioStore = create(
         }
 
         try {
-          const res = await fetch("http://localhost:4000/api/usuarios/perfil", {
+          const res = await fetch("http://localhost:4000/api/perfil", {
             headers: { Authorization: `Bearer ${token}` }
           });
 

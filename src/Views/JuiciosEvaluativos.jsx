@@ -29,6 +29,7 @@ export default function JuiciosEvaluativos() {
   const [juicios, setJuicios] = useState([]);
   const [loading, setLoading] = useState(false);
   const [paginationModel, setPaginationModel] = useState({ pageSize: 5, page: 0 });
+  const [currentArchivoId, setCurrentArchivoId] = useState(null);
 
   const handleEvaluativo = async () => {
     if (!excelEvaluativo) return;
@@ -42,7 +43,6 @@ export default function JuiciosEvaluativos() {
         method: "POST",
         body: formData,
       });
-
       const data = await res.json();
       if (data.resumen) {
         const conIds = data.resumen.map((j, index) => ({
@@ -50,7 +50,9 @@ export default function JuiciosEvaluativos() {
           totalJuicios: j.juiciosAprobados + j.juiciosPorEvaluar,
           ...j
         }));
+
         setJuicios(conIds);
+        setCurrentArchivoId(data.archivoId);
       }
     } catch (error) {
       console.error("Error procesando juicios:", error);
@@ -58,6 +60,34 @@ export default function JuiciosEvaluativos() {
       setLoading(false);
     }
   };
+
+    const descargarExcel = async (archivoId) => {
+        try {
+            const res = await fetch(`http://localhost:4000/api/juicios-evaluativos/reporte/excel-tyt/${archivoId}`, {
+                method: "GET",
+            });
+
+            if (!res.ok) throw new Error("Error al descargar el archivo");
+
+            const blob = await res.blob();
+
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+
+            link.setAttribute("download", `Reporte_Juicios_${archivoId}.xlsx`);
+
+            document.body.appendChild(link);
+            link.click();
+
+            link.parentNode.removeChild(link);
+            window.URL.revokeObjectURL(url);
+
+        } catch (error) {
+            console.error("Error en la descarga:", error);
+            alert("No se pudo descargar el archivo");
+        }
+    };
 
   const columnas = [
     { field: "documento", headerName: "Documento", flex: 1 },
@@ -88,7 +118,7 @@ export default function JuiciosEvaluativos() {
       headerName: "Total de Juicios",
       flex: 1,
     },
-    {
+    /*{
       field: "acciones",
       headerName: "Acciones",
       flex: 2,
@@ -104,7 +134,7 @@ export default function JuiciosEvaluativos() {
           </Button>
         </div>
       ),
-    },
+    },*/
   ];
 
   return (
@@ -151,7 +181,18 @@ export default function JuiciosEvaluativos() {
             localeText={localeText}
           />
         </div>
-      )}
+      )},
+        {juicios.length > 0 && !loading && (
+            <div>
+                <Button
+                    variant="contained"
+                    color="success"
+                    onClick={() => descargarExcel(currentArchivoId)}
+                >
+                    Descargar
+                </Button>
+            </div>
+        )},
     </div>
   );
 }
