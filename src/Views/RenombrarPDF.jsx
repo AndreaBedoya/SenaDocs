@@ -47,7 +47,7 @@ export default function RenombrarPDF() {
     });
 
     try {
-      const response = await fetch("http://localhost:4000/api/documents/renombrar-descargar", {
+      const response = await fetch("http://localhost:4000/api/documents/renombrar-guardar-escritorio", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
